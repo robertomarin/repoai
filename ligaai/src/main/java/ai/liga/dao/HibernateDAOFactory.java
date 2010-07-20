@@ -1,4 +1,4 @@
-package liga.ai.dao;
+package ai.liga.dao;
 
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;

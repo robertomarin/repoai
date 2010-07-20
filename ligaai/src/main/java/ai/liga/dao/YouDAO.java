@@ -1,10 +1,10 @@
-package liga.ai.dao;
+package ai.liga.dao;
 
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 
-import br.com.youmovies.you.entity.You;
+import ai.liga.you.entity.You;
 
 public class YouDAO extends GenericHibernateDAO<You> {
 

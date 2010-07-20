@@ -1,4 +1,4 @@
-package liga.ai.dao;
+package ai.liga.dao;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;

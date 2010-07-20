@@ -1,4 +1,4 @@
-package br.com.youmovies.jmdb.dao;
+package ai.liga.jmdb.dao;
 
 import org.hibernate.FlushMode;
 import org.hibernate.SessionFactory;

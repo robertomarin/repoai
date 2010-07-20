@@ -1,4 +1,4 @@
-package liga.ai.dao;
+package ai.liga.dao;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -6,7 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.com.youmovies.you.entity.You;
+import ai.liga.you.entity.You;
 
 public class YouDAOTest {
 

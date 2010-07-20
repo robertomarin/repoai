@@ -1,4 +1,4 @@
-package liga.ai.dao;
+package ai.liga.dao;
 
 import java.io.Serializable;
 
