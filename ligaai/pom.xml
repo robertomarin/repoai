@@ -50,8 +50,8 @@
 	</dependencies>
 	<repositories>
 		<repository>
-			<id>jboss</id>
-			<url>http://repository.jboss.com/maven2</url>
+			<id>Java.net</id>
+			<url>http://download.java.net/maven/2/</url>
 		</repository>
 	</repositories>
 	<build>
