@@ -48,7 +48,12 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
-
+	<repositories>
+		<repository>
+			<id>jboss</id>
+			<url>http://repository.jboss.com/maven2</url>
+		</repository>
+	</repositories>
 	<build>
 		<finalName>ROOT</finalName>
 		<resources>
