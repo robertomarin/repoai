@@ -3,22 +3,23 @@
 	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
 	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 
-
 <hibernate-configuration>
 
 	<session-factory>
-		<property name="hibernate.connection.url">jdbc:mysql://localhost/liga.ai</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost/liga_ai</property>
 		<property name="hibernate.connection.username">root</property>
-		<property name="hibernate.connection.password"></property>
+		<property name="hibernate.connection.password">root</property>
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
 		<property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
-		<property name="hibernate.hbm2ddl.auto">create</property>
+		<!--<property name="hibernate.hbm2ddl.auto">create</property>-->
 		<property name="current_session_context_class">thread</property>
+		<property name="hibernate.connection.charSet">utf-8</property>
+		<property name="hibernate.connection.characterEncoding">utf-8</property>
 		<property name="hibernate.show_sql">true</property>
 
 		<!-- mapping files -->
-		<mapping class="br.com.youmovies.you.entity.You" />
+		<mapping class="ai.liga.microurl.model.Microurl" />
 	</session-factory>
 
 </hibernate-configuration>

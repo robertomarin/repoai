@@ -29,12 +29,12 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-annotations</artifactId>
-			<version>3.4.0.GA</version>
+			<version>3.3.1.GA</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate</artifactId>
-			<version>3.2.7.ga</version>
+			<version>3.2.6.ga</version>
 		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
