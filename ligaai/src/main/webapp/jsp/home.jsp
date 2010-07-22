@@ -4,9 +4,9 @@
 <html>
 	<h1>Bem vindo ao liga.ai</h1>
 	
-	<h2>Aqui é muito legal, veja a hora atual</h2>
+	<h2>Aqui Ã© muito legal, veja a hora atual</h2>
 	<jsp:useBean id="now" class="java.util.Date" />
-	<fmt:formatDate value="${now}" pattern="HH:mm dd/MM/yy"/>
+	<fmt:formatDate value="${now}" pattern="HH:mm:ss dd/MM/yy"/>
 	
 	<h3>Gostou? Nem eu!</h3>
 </html>

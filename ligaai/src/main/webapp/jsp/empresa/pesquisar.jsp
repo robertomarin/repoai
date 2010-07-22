@@ -9,7 +9,8 @@
 	Detalhes da Empresa
 	Empresa: ${empresa.id}
 	Nome: ${empresa.nome}
-	Data Criacao: <fmt:formatDate value="${empresa.dataCriacao.time}" pattern="dd/MM/yyyy HH:mm:ss" />
+	
+	Data Criação : <fmt:formatDate value="${empresa.dataCriacao.time}" pattern="dd/MM/yyyy HH:mm:ss" />
 	
 	<c:forEach items="${empresa.funcionarios}" var="funcionario">
 		Funcionario: ${funcionario.nome}

@@ -3,17 +3,18 @@ package ai.liga.dao;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
+import org.springframework.stereotype.Component;
 
-
-import ai.liga.filter.OpenSessionInViewFilter;
+import ai.liga.model.Empresa;
 
 /**
  * @author marin
  */
-//@Repository
+@Component
 public class HibernateDAOFactory {
 
-	private static final Logger logger = Logger.getLogger(HibernateDAOFactory.class);
+	private static final Logger logger = Logger
+			.getLogger(HibernateDAOFactory.class);
 
 	private final SessionFactory sessionFactory;
 
@@ -25,20 +26,16 @@ public class HibernateDAOFactory {
 		return sessionFactory;
 	}
 
-	public YouDAO getYouDAO() {
-		return new YouDAO(sessionFactory);
-	}
-
 	public void close() {
 		Session currentSession = sessionFactory.getCurrentSession();
 		if (currentSession == null) {
-			throw new IllegalStateException("Current Session n�o pode ser null, " + OpenSessionInViewFilter.class
-					+ " falhou!");
+			throw new IllegalStateException(
+					"Current Session não�o pode ser null, falhou!");
 		}
 
 		if (currentSession.getTransaction() == null) {
-			throw new IllegalStateException("Transaction n�o pode ser null, " + OpenSessionInViewFilter.class
-					+ " falhou!");
+			throw new IllegalStateException(
+					"Transaction não pode ser null, falhou!");
 		}
 
 		currentSession.getTransaction().commit();
@@ -47,6 +44,10 @@ public class HibernateDAOFactory {
 
 	public void beginTransaction() {
 		sessionFactory.getCurrentSession().beginTransaction();
+	}
+
+	public GenericHibernateDAO<Empresa> getEmpresaDAO() {
+		return new GenericHibernateDAO<Empresa>(Empresa.class, sessionFactory);
 	}
 
 }

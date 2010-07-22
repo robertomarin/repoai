@@ -10,7 +10,7 @@ public class Tester {
 
 	@Test
 	public void test() throws Exception {
-		System.out.println("http://liga.ai/" + BaseConverterUtil.toBase62(1));;
+		System.out.println("http://liga.ai/" + BaseConverterUtil.toBase62(23423423));;
 	}
 
 }
