@@ -11,8 +11,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	url encurtada: <a href="${url}">${url}</a>
-	<br />
-	url original : <a href="${urlo}">${urlo}</a>
+	<h1>Bem vindo ao liga.ai</h1>
+	
+		
+	<h2>Aqui é muito legal, veja a hora atual</h2>
+	<jsp:useBean id="now" class="java.util.Date" />
+	<fmt:formatDate value="${now}" pattern="HH:mm:ss dd/MM/yy"/>
+	<h3>Gostou? Nem eu!</h3>
 </body>
 </html>
