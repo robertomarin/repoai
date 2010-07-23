@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	<WatchedResource>WEB-INF/web.xml</WatchedResource>
+	<Resource
+		name="jdbc/central"
+		username="site_servico_account"
+		password="site_servico_account"
+		driverClassName="net.sourceforge.jtds.jdbc.Driver"
+		logAbandoned="true"
+		removeAbandoned="true"
+		removeAbandonedTimeout="300"
+		maxActive="20"
+		maxIdle="10"
+		maxWait="10000"
+		type="javax.sql.DataSource"
+		url="jdbc:jtds:sqlserver://200.143.19.11:1811/buscape"
+		validationQuery="select 1" />
+	
+	<!-- SERVIDOR 23 GENERICO -->
+	<Resource
+		name="jdbc/23"
+		username="site_publicador"
+		password="public"
+		driverClassName="com.mysql.jdbc.Driver"
+		logAbandoned="true"
+		removeAbandoned="true"
+		removeAbandonedTimeout="300"
+		maxActive="20"
+		maxIdle="10"
+		maxWait="10000"
+		type="javax.sql.DataSource"
+		url="jdbc:mysql://200.143.19.17:3306/publicador"
+		validationQuery="select 1" />
+
+	<!-- SERVIDOR 77 GENERICO -->
+	<Resource
+		name="jdbc/77"
+		username="sms"
+		password="smqwoh129yas"
+		driverClassName="net.sourceforge.jtds.jdbc.Driver"
+		logAbandoned="true"
+		removeAbandoned="true"
+		removeAbandonedTimeout="300"
+		maxActive="20"
+		maxIdle="10"
+		maxWait="10000"
+		type="javax.sql.DataSource"
+		url="jdbc:jtds:sqlserver://200.143.19.77/"
+		validationQuery="select 1" />
+	
+	<!-- SERVIDOR 84 GENERICO -->
+	<Resource
+		name="jdbc/84"
+		username="site_vip_account"
+		password="site_vip_account"
+		driverClassName="net.sourceforge.jtds.jdbc.Driver"
+		logAbandoned="true"
+		removeAbandoned="true"
+		removeAbandonedTimeout="300"
+		maxActive="20"
+		maxIdle="10"
+		maxWait="10000"
+		type="javax.sql.DataSource"
+		url="jdbc:jtds:sqlserver://200.143.19.11:1811/"
+		validationQuery="select 1" />
+	
+	<!-- SERVIDOR 85 GENERICO -->
+	<Resource
+		name="jdbc/85"
+		username="site_servico_account"
+		password="site_servico_account"
+		driverClassName="net.sourceforge.jtds.jdbc.Driver"
+		logAbandoned="true"
+		removeAbandoned="true"
+		removeAbandonedTimeout="300"
+		maxActive="20"
+		maxIdle="10"
+		maxWait="10000"
+		type="javax.sql.DataSource"
+		url="jdbc:jtds:sqlserver://200.143.19.11:1811/"
+		validationQuery="select 1" />
+		
+	<!-- SERVIDOR VIP -->
+	<Resource
+		name="jdbc/vip"
+		username="site_vip_account"
+		password="site_vip_account"
+		driverClassName="net.sourceforge.jtds.jdbc.Driver"
+		logAbandoned="true"
+		removeAbandoned="true"
+		removeAbandonedTimeout="300"
+		maxActive="20"
+		maxIdle="10"
+		maxWait="10000"
+		type="javax.sql.DataSource"
+		url="jdbc:jtds:sqlserver://200.143.19.11:1811/"
+		validationQuery="select 1" />
+	
+	<!-- SERVIDOR 74 GENERICO -->
+	<Resource
+		name="jdbc/74"
+		username="camila"
+		password="camila"
+		driverClassName="net.sourceforge.jtds.jdbc.Driver"
+		logAbandoned="true"
+		removeAbandoned="true"
+		removeAbandonedTimeout="300"
+		maxActive="20"
+		maxIdle="10"
+		maxWait="10000"
+		type="javax.sql.DataSource"
+		url="jdbc:jtds:sqlserver://200.143.19.11:1811/"
+		validationQuery="select 1" />
+	
+	<!-- SERVIDOR TOP OFERTAS -->
+	<Resource
+		name="jdbc/top_ofertas"
+		username="site_servico_account"
+		password="site_servico_account"
+		driverClassName="net.sourceforge.jtds.jdbc.Driver"
+		logAbandoned="true"
+		removeAbandoned="true"
+		removeAbandonedTimeout="300"
+		maxActive="20"
+		maxIdle="10"
+		maxWait="10000"
+		type="javax.sql.DataSource"
+		url="jdbc:jtds:sqlserver://200.143.19.11:1811/"
+		validationQuery="select 1" />
+
+	<!-- Banco Novo de Opiniao de Produtos -->
+	<Resource
+		name="jdbc/opiniao_produto"
+		username="camila"
+		password="camila"
+		driverClassName="net.sourceforge.jtds.jdbc.Driver"
+		logAbandoned="true"
+		removeAbandoned="true"
+		removeAbandonedTimeout="300"
+		maxActive="20"
+		maxIdle="10"
+		maxWait="10000"
+		type="javax.sql.DataSource"
+		url="jdbc:jtds:sqlserver://200.143.19.11:1811/"
+		validationQuery="select 1" />
+
+	<!-- ALERTA	DE	PREÇOS -->
+	<Resource
+		name="jdbc/alerta"
+		username="site_alerta_account"
+		password="site_alerta_account"
+		driverClassName="net.sourceforge.jtds.jdbc.Driver"
+		logAbandoned="true"
+		removeAbandoned="true"
+		removeAbandonedTimeout="300"
+		maxActive="20"
+		maxIdle="10"
+		maxWait="10000"
+		type="javax.sql.DataSource"
+		url="jdbc:jtds:sqlserver://200.143.19.11:1811/buscape5"
+		validationQuery="select 1" />
+	
+	<!-- CIDADES -->
+	<Resource
+		name="jdbc/cidade_br"
+		username="site_vip_account"
+		password="vipacc"
+		driverClassName="net.sourceforge.jtds.jdbc.Driver"
+		logAbandoned="true"
+		removeAbandoned="true"
+		removeAbandonedTimeout="300"
+		maxActive="20"
+		maxIdle="10"
+		maxWait="10000"
+		type="javax.sql.DataSource"
+		url="jdbc:jtds:sqlserver://200.143.19.84/buscape"
+		validationQuery="select 1" />
+
+	<!-- SERVIDOR empresas -->
+	<Resource
+		name="jdbc/emp"
+		username="site_servico_account"
+		password="site_servico_account"
+		driverClassName="net.sourceforge.jtds.jdbc.Driver"
+		logAbandoned="true"
+		removeAbandoned="true"
+		removeAbandonedTimeout="300"
+		maxActive="20"
+		maxIdle="10"
+		maxWait="10000"
+		type="javax.sql.DataSource"
+		url="jdbc:jtds:sqlserver://200.143.19.11:1811/"
+		validationQuery="select 1" />
+
+	<!-- SERVIDOR 89 -->
+	<Resource
+		name="jdbc/89"
+		username="camila"
+		password="melo"
+		driverClassName="net.sourceforge.jtds.jdbc.Driver"
+		logAbandoned="true"
+		removeAbandoned="true"
+		removeAbandonedTimeout="300"
+		maxActive="20"
+		maxIdle="10"
+		maxWait="10000"
+		type="javax.sql.DataSource"
+		url="jdbc:jtds:sqlserver://200.143.19.89/"
+		validationQuery="select 1" />
+
+	<!-- EMPRESAS POR PARCEIRO -->
+	<Resource
+		name="jdbc/empresasParc"
+		username="site_terra_account"
+		password="teracc"
+		driverClassName="net.sourceforge.jtds.jdbc.Driver"
+		logAbandoned="true"
+		removeAbandoned="true"
+		removeAbandonedTimeout="300"
+		maxActive="20"
+		maxIdle="10"
+		maxWait="10000"
+		type="javax.sql.DataSource"
+		url="jdbc:jtds:sqlserver://192.168.0.74/"
+		validationQuery="select 1" />
+
+	<!-- Elephant2 -->
+	<Environment
+		name="url/blackbox"
+		type="java.lang.String"
+		value="http://200.143.27.38:8080/" />
+	<Environment
+		name="url/blackboxMidia"
+		type="java.lang.String"
+		value="http://200.143.27.39:8080/" />
+<!--	<Environment-->
+<!--		name="url/blackbox"-->
+<!--		type="java.lang.String"-->
+<!--		value="http://api.elephant2.com/" />-->
+<!--	<Environment-->
+<!--		name="url/blackboxMidia"-->
+<!--		type="java.lang.String"-->
+<!--		value="http://image.elephant2.com/" />-->
+<!--	<Environment-->
+<!--		name="url/blackbox"-->
+<!--		type="java.lang.String"-->
+<!--		value="http://10.1.0.41/" />-->
+<!--	<Environment-->
+<!--		name="url/blackboxMidia"-->
+<!--		type="java.lang.String"-->
+<!--		value="http://10.1.0.43:8080/" />-->
+	<Environment
+		name="url/sitemap"
+		type="java.lang.String"
+		value="C:/dev/apache-tomcat-5.5.20/wtpwebapps/sitemap/" />
+
+</Context>
