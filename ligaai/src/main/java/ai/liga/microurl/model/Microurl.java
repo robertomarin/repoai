@@ -9,7 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-@Entity(name = "microurl2")
+import ai.liga.microurl.util.BaseConverter;
+
+@Entity(name = "microurl")
 public class Microurl {
 
 	@Id
@@ -28,6 +30,10 @@ public class Microurl {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getMicro() {
+		return "http://liga.ai/" + BaseConverter.toBase62(getId());
 	}
 
 	public String getUrl() {

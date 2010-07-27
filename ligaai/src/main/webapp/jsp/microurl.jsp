@@ -4,6 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <html>
 <head>
@@ -11,8 +12,32 @@
 <title>Insert title here</title>
 </head>
 <body>
-	url encurtada: <a href="${url}">${url}</a>
-	<br />
-	url original : <a href="${urlo}">${urlo}</a>
+	<form action="/microurl">
+		<input type="text" name="url" />
+		<input type="submit" />
+	</form>
+	
+	<c:if test="${fn:length(microurl.micro) == fn:length(microurl.url)}">
+		Puxa! Não pudemos ajudar ajudar no tamanho de sua url, as duas tem o mesmo tamanho ${fn:length(microurl.micro)} caracteres.
+	</c:if>
+	<c:if test="${fn:length(microurl.micro) > fn:length(microurl.url)}">
+		Xi! Nossa url está maior do que a url original em ${fn:length(microurl.micro) - fn:length(microurl.url) } caracteres.
+	</c:if>
+	<c:if test="${fn:length(microurl.micro) < fn:length(microurl.url)}">
+		Você irá economizar ${fn:length(microurl.url) - fn:length(microurl.micro)} caracteres.
+	</c:if>
+	
+	<c:if test="${msg == null}">
+		url encurtada: <a href="${microurl.micro}">${microurl.micro}</a>
+		<br />
+		url original : <a href="${microurl.url}">${microurl.url}</a>
+	</c:if>
+	
+	<c:if test="${msg != null}">
+		<c:choose>
+			<c:when test="${msg == 1}">A url recebida é vazia, por favor, insira uma url! :)</c:when>
+			<c:when test="${msg == 2}">A url recebida </c:when>
+		</c:choose>
+	</c:if>
 </body>
 </html>

@@ -7,8 +7,6 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-//import br.com.youmovies.spring.CtxHelper;
-
 /**
  * @author marin
  */
@@ -19,15 +17,15 @@ public class GenericDAO<T> {
 
 	protected Class<T> persistentClass;
 
-	private final SessionFactory sessionFactory = null;//(SessionFactory) new CtxHelper().getBean("sessionFactory");
+	private final SessionFactory sessionFactory = null;
 
 	public GenericDAO(final Class persistentClass) {
 		this.persistentClass = persistentClass;
 	}
 
 	/**
-	 * Nao esquecer ao fim do uso de uma session recuperada por esse m�todo de fecha-la usando o metodo
-	 * {@link #closeSession()}
+	 * Nao esquecer ao fim do uso de uma session recuperada por esse m�todo de
+	 * fecha-la usando o metodo {@link #closeSession()}
 	 * 
 	 * @return uma Session para uso geral
 	 */
@@ -36,7 +34,8 @@ public class GenericDAO<T> {
 	}
 
 	/**
-	 * Carrega o objeto do tipo T com o identificador especificado, assumindo que o objeto existe
+	 * Carrega o objeto do tipo T com o identificador especificado, assumindo
+	 * que o objeto existe
 	 * 
 	 * @param id
 	 * @return objeto carregado
@@ -91,15 +90,16 @@ public class GenericDAO<T> {
 	}
 
 	/**
-	 * Remove um objeto de mesmo tipo da classe usada como parametro no construtor da classe com o id do parametro
-	 * enviado
+	 * Remove um objeto de mesmo tipo da classe usada como parametro no
+	 * construtor da classe com o id do parametro enviado
 	 * 
 	 * @param id
 	 *            identificador �nico do objeto a ser removido
 	 */
 	protected void delete(final Serializable id) {
 		logger.info("Apagando " + persistentClass + " com id " + id);
-		final Object apagar = this.sessionFactory.getCurrentSession().load(persistentClass, id);
+		final Object apagar = this.sessionFactory.getCurrentSession().load(
+				persistentClass, id);
 		this.sessionFactory.getCurrentSession().delete(apagar);
 	}
 
@@ -112,19 +112,22 @@ public class GenericDAO<T> {
 	 */
 	protected T get(final Serializable id) {
 		logger.info("Carregando " + persistentClass + " com id " + id);
-		final T retorno = (T) this.sessionFactory.getCurrentSession().get(persistentClass, id);
+		final T retorno = (T) this.sessionFactory.getCurrentSession().get(
+				persistentClass, id);
 		return retorno;
 	}
 
 	/**
-	 * Retorna um Criteria configurado para cachear ou nao os resultados retornados
+	 * Retorna um Criteria configurado para cachear ou nao os resultados
+	 * retornados
 	 * 
 	 * @param cacheable
-	 *            especifica se os resultados retornados por esse Criteria devem ser cacheados (depende de configuracao
-	 *            de cache)
+	 *            especifica se os resultados retornados por esse Criteria devem
+	 *            ser cacheados (depende de configuracao de cache)
 	 * @return objeto Criteria baseado na session corrente do Hibernate
 	 */
 	protected Criteria getCriteria(final boolean cacheable) {
-		return this.sessionFactory.getCurrentSession().createCriteria(this.persistentClass).setCacheable(cacheable);
+		return this.sessionFactory.getCurrentSession()
+				.createCriteria(this.persistentClass).setCacheable(cacheable);
 	}
 }

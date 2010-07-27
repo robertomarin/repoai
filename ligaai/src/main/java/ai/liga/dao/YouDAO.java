@@ -15,7 +15,7 @@ public class YouDAO extends GenericHibernateDAO<You> {
 	}
 
 	public You findByMail(final String mail) {
-		Criteria c = factory.getCurrentSession().createCriteria(persistentClass);
+		Criteria c = sf.getCurrentSession().createCriteria(persistentClass);
 		c.add(Restrictions.eq("mail", mail));
 		return persistentClass.cast(c.uniqueResult());
 	}

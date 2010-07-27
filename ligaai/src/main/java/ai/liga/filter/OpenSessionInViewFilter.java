@@ -15,7 +15,6 @@ import org.hibernate.StaleObjectStateException;
 
 import ai.liga.dao.HibernateUtil;
 
-
 public class OpenSessionInViewFilter implements Filter {
 
 	private static final Logger logger = Logger.getLogger(OpenSessionInViewFilter.class);
@@ -23,7 +22,7 @@ public class OpenSessionInViewFilter implements Filter {
 	private SessionFactory sf;
 
 	public void doFilter(final ServletRequest request, final ServletResponse response, final FilterChain chain)
-	throws IOException, ServletException {
+			throws IOException, ServletException {
 
 		try {
 			logger.debug("Starting a database transaction");
@@ -35,9 +34,8 @@ public class OpenSessionInViewFilter implements Filter {
 
 			// Commit and cleanup
 			logger.debug("Committing the database transaction");
-			sf.getCurrentSession().getTransaction().commit();
 
-			// TODO � neces�rio?
+			sf.getCurrentSession().getTransaction().commit();
 			sf.getCurrentSession().close();
 
 		} catch (StaleObjectStateException staleEx) {
@@ -77,6 +75,8 @@ public class OpenSessionInViewFilter implements Filter {
 	}
 
 	public void destroy() {
+		sf.close();
+		logger.info("SessionFactory closed");
 	}
 
 }

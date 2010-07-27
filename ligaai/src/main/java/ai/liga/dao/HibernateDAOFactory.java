@@ -5,6 +5,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
 import org.springframework.stereotype.Component;
 
+import ai.liga.microurl.dao.MicrourlDao;
+import ai.liga.microurl.model.Microurl;
 import ai.liga.model.Empresa;
 
 /**
@@ -48,6 +50,10 @@ public class HibernateDAOFactory {
 
 	public GenericHibernateDAO<Empresa> getEmpresaDAO() {
 		return new GenericHibernateDAO<Empresa>(Empresa.class, sessionFactory);
+	}
+
+	public MicrourlDao getMicrourlDao() {
+		return new MicrourlDao(Microurl.class, sessionFactory);
 	}
 
 }
