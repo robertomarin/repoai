@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import ai.liga.dao.HibernateDAOFactory;
 import ai.liga.microurl.dao.MicrourlDao;
 import ai.liga.microurl.model.Microurl;
+import ai.liga.microurl.util.BaseConverter;
 
 @Service
 public class MicrourlService {
@@ -36,9 +37,7 @@ public class MicrourlService {
 		}
 
 		microurl = save(url);
-		if (isValid(microurl)) {
-			cache.put(microurl.getUrl(), microurl);
-		}
+		put(microurl);
 
 		return microurl;
 	}
@@ -47,10 +46,14 @@ public class MicrourlService {
 		if (cache.isEmpty()) {
 			List<Microurl> all = microurlDao.loadAll();
 			for (Microurl microurl : all) {
-				if (isValid(microurl)) {
-					cache.put(microurl.getUrl(), microurl);
-				}
+				put(microurl);
 			}
+		}
+	}
+
+	private void put(Microurl microurl) {
+		if (isValid(microurl)) {
+			cache.put(microurl.getUrl(), microurl);
 		}
 	}
 
@@ -71,6 +74,20 @@ public class MicrourlService {
 
 	private boolean isUrl(String url) {
 		return regexProtocol.matcher(url).find() && GenericValidator.isUrl(url);
+	}
+
+	public Microurl getExpandedUrl(String path) {
+		path = path.replace("/", "");
+		Microurl microurl = cache.get(path);
+		if (microurl == null) {
+			int id = BaseConverter.fromBase62(path);
+			if (id > 0) {
+				microurl = microurlDao.load(id);
+				put(microurl);
+			}
+		}
+
+		return microurl;
 	}
 
 }

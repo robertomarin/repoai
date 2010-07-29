@@ -23,10 +23,11 @@ public class MicrourlServiceTest {
 	public static String ftp = "ftp://liga.ai/";
 
 	public final Pattern regexProtocol = Pattern.compile("^(https?|ftp)://");
-	
+
 	@Theory
 	public void test(String url) throws Exception {
 		assertTrue(regexProtocol.matcher(url).find());
 		assertTrue(GenericValidator.isUrl(url));
 	}
+
 }

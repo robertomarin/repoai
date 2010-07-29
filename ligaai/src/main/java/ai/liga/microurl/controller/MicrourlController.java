@@ -1,5 +1,7 @@
 package ai.liga.microurl.controller;
 
+import net.sf.json.spring.web.servlet.view.JsonView;
+
 import org.apache.commons.validator.GenericValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +26,16 @@ public class MicrourlController {
 	public ModelAndView get(@RequestParam(required = false) String url) {
 		ModelAndView mav = new ModelAndView("microurl");
 
+		return populate(url, mav);
+	}
+
+	@RequestMapping("/ajax/microurl/")
+	public ModelAndView getByAjax(@RequestParam(required = false) String url) {
+		ModelAndView mav = new ModelAndView(new JsonView());
+		return populate(url, mav);
+	}
+
+	private ModelAndView populate(String url, ModelAndView mav) {
 		if (GenericValidator.isBlankOrNull(url)) {
 			mav.addObject("msg", 1);
 			return mav;
@@ -38,4 +50,5 @@ public class MicrourlController {
 		mav.addObject("urlo", url);
 		return mav;
 	}
+
 }

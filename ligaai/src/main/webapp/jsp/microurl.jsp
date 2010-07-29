@@ -12,7 +12,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="/microurl">
+	<form action="/ajax/microurl/">
 		<input type="text" name="url" />
 		<input type="submit" />
 	</form>

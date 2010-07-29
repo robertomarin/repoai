@@ -1,14 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<groupId>ai</groupId>
 	<artifactId>ligaai</artifactId>
 	<version>0.0.1</version>
 	<packaging>war</packaging>
 
 	<name>ligaa</name>
-	<url>http://maven.apache.org</url>
+	<url>http://liga.ai</url>
+
+	<developers>
+		<developer>
+			<name>Alexandre Navarro</name>
+			<email>alexandrenavarro@gmail.com</email>
+			<roles>
+				<role>Java Developer</role>
+				<role>Infrastructure</role>
+				<role>Owner</role>
+			</roles>
+		</developer>
+		<developer>
+			<name>Julivan Damaceno</name>
+			<email>jul.dsantos@gmail.com</email>
+			<roles>
+				<role>Front Developer</role>
+				<role>Designer</role>
+				<role>Owner</role>
+			</roles>
+		</developer>
+		<developer>
+			<name>Roberto Marin</name>
+			<email>robertomarin@gmail.com</email>
+			<roles>
+				<role>Java Developer</role>
+				<role>Architect</role>
+				<role>Owner</role>
+			</roles>
+		</developer>
+	</developers>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -73,6 +103,22 @@
 			<groupId>oro</groupId>
 			<artifactId>oro</artifactId>
 			<version>2.0.8</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.json-lib</groupId>
+			<artifactId>json-lib</artifactId>
+			<version>2.3</version>
+			<classifier>jdk15</classifier>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.json-lib</groupId>
+			<artifactId>json-lib-ext-spring</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2.1</version>
 		</dependency>
 	</dependencies>
 

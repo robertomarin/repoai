@@ -63,9 +63,7 @@ public class BaseConverter {
 		int multiplier = 1;
 
 		while (iterator > 0) {
-			returnValue = returnValue
-					+ (baseDigits.indexOf(number.substring(iterator - 1,
-							iterator)) * multiplier);
+			returnValue = returnValue + (baseDigits.indexOf(number.substring(iterator - 1, iterator)) * multiplier);
 			multiplier = multiplier * base;
 			--iterator;
 		}
