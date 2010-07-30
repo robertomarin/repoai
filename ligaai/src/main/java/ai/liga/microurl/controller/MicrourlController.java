@@ -1,5 +1,7 @@
 package ai.liga.microurl.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import net.sf.json.spring.web.servlet.view.JsonView;
 
 import org.apache.commons.validator.GenericValidator;
@@ -23,31 +25,30 @@ public class MicrourlController {
 	}
 
 	@RequestMapping("/microurl")
-	public ModelAndView get(@RequestParam(required = false) String url) {
+	public ModelAndView get(@RequestParam(required = false) String url, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("microurl");
-
-		return populate(url, mav);
+		return populate(url, mav, request);
 	}
 
 	@RequestMapping("/ajax/microurl/")
-	public ModelAndView getByAjax(@RequestParam(required = false) String url) {
+	public ModelAndView getByAjax(@RequestParam(required = false) String url, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView(new JsonView());
-		return populate(url, mav);
+		return populate(url, mav, request);
 	}
 
-	private ModelAndView populate(String url, ModelAndView mav) {
+	private ModelAndView populate(String url, ModelAndView mav, HttpServletRequest request) {
 		if (GenericValidator.isBlankOrNull(url)) {
 			mav.addObject("msg", 1);
 			return mav;
 		}
 
-		Microurl microurl = microurlService.getMicrourl(url);
+		Microurl microurl = new Microurl(url, request.getRemoteAddr());
+		microurl = microurlService.persist(microurl);
 		if (microurl == null) {
 			mav.addObject("msg", 2);
 		}
-
+		
 		mav.addObject("microurl", microurl);
-		mav.addObject("urlo", url);
 		return mav;
 	}
 

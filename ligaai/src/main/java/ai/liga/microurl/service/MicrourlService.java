@@ -28,15 +28,19 @@ public class MicrourlService {
 		microurlDao = hibernateDAOFactory.getMicrourlDao();
 	}
 
-	public Microurl getMicrourl(String url) {
-		cache();
-
-		Microurl microurl = cache.get(url);
-		if (microurl != null) {
-			return microurl;
+	public Microurl persist(Microurl microurl) {
+		if (microurl == null) {
+			throw new IllegalStateException("Microurl cannot be null");
 		}
 
-		microurl = save(url);
+		cache();
+
+		Microurl m = cache.get(microurl.getUrl());
+		if (m != null) {
+			return m;
+		}
+
+		microurl = save(microurl);
 		put(microurl);
 
 		return microurl;
@@ -61,19 +65,17 @@ public class MicrourlService {
 		return microurl != null && !GenericValidator.isBlankOrNull(microurl.getUrl());
 	}
 
-	private Microurl save(String url) {
-		if (!isUrl(url)) {
+	private Microurl save(Microurl microurl) {
+		if (!isUrl(microurl.getUrl())) {
 			return null;
 		}
 
-		Microurl microurl = new Microurl();
-		microurl.setUrl(url);
 		microurl = microurlDao.merge(microurl);
 		return microurl;
 	}
 
 	private boolean isUrl(String url) {
-		return regexProtocol.matcher(url).find() && GenericValidator.isUrl(url);
+		return regexProtocol.matcher(url).find() && !GenericValidator.isUrl(url);
 	}
 
 	public Microurl getExpandedUrl(String path) {
@@ -86,8 +88,7 @@ public class MicrourlService {
 				put(microurl);
 			}
 		}
-
-		return microurl;
+		return microurl.hit();
 	}
 
 }

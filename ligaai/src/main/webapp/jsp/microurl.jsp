@@ -12,8 +12,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="/ajax/microurl/">
-		<input type="text" name="url" />
+	<form action="" id="microurl">
+		<input type="text" name="url" id="url" />
 		<input type="submit" />
 	</form>
 	
@@ -39,5 +39,8 @@
 			<c:when test="${msg == 2}">A url recebida </c:when>
 		</c:choose>
 	</c:if>
+	<script type="text/javascript" src="/js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.jsonp-2.1.2.min.js"></script>
+	<script type="text/javascript" src="/js/ligaai.js"></script>
 </body>
 </html>
