@@ -1,7 +1,10 @@
 package ai.liga.ligaai.dao;
 
 import java.util.Calendar;
+import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
 
@@ -22,6 +25,13 @@ public class LigaAiDao extends GenericHibernateDAO<LigaAi> {
 		ligaAi = (LigaAi) session.merge(ligaAi);
 
 		return ligaAi;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<LigaAi> loadAll() {
+		Criteria c = super.getCriteria(true);
+		c.setFetchMode("ligaai", FetchMode.JOIN);
+		return c.list();
 	}
 
 }

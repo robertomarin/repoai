@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import ai.liga.controller.HomeController;
 import ai.liga.microurl.model.Microurl;
 import ai.liga.microurl.service.MicrourlService;
 
@@ -17,10 +18,12 @@ import ai.liga.microurl.service.MicrourlService;
 public class ExpandMicrourlController {
 
 	private final MicrourlService microurlService;
+	private final HomeController homeController;
 
 	@Autowired
-	public ExpandMicrourlController(MicrourlService microurlService) {
+	public ExpandMicrourlController(MicrourlService microurlService, HomeController homeController) {
 		this.microurlService = microurlService;
+		this.homeController = homeController;
 	}
 
 	@RequestMapping("/*")
@@ -34,6 +37,6 @@ public class ExpandMicrourlController {
 			return new ModelAndView(view);
 		}
 
-		return new ModelAndView("home");
+		return homeController.home();
 	}
 }

@@ -34,6 +34,14 @@
 		<input type="submit" />
 	</form>
 	
+	<c:forEach items="${ligaais}" var="ligaai">
+	
+		<c:out value="${ligaai.contacts[0].type}" escapeXml="false"/>	
+		<c:out value="${ligaai.message}" escapeXml="false"/>
+		<c:out value="${ligaai.created}" escapeXml="false"/>
+		<br/>
+	</c:forEach>
+	
 	<script type="text/javascript" src="/js/jquery-1.4.2.min.js"></script>
 	<script type="text/javascript" src="/js/jquery.jsonp-2.1.2.min.js"></script>
 	<script type="text/javascript" src="/js/ligaai.js"></script>
