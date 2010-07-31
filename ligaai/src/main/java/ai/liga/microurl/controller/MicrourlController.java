@@ -30,7 +30,7 @@ public class MicrourlController {
 		return populate(url, mav, request);
 	}
 
-	@RequestMapping("/ajax/microurl/")
+	@RequestMapping("/ajax/microurl")
 	public ModelAndView getByAjax(@RequestParam(required = false) String url, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView(new JsonView());
 		return populate(url, mav, request);
@@ -47,7 +47,7 @@ public class MicrourlController {
 		if (microurl == null) {
 			mav.addObject("msg", 2);
 		}
-		
+
 		mav.addObject("microurl", microurl);
 		return mav;
 	}

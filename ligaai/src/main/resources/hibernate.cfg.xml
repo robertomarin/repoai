@@ -20,6 +20,8 @@
 
 		<!-- mapping files -->
 		<mapping class="ai.liga.microurl.model.Microurl" />
+		<mapping class="ai.liga.ligaai.model.LigaAi" />
+		<mapping class="ai.liga.ligaai.model.Contact" />
 	</session-factory>
 
 </hibernate-configuration>

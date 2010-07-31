@@ -5,6 +5,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
 import org.springframework.stereotype.Component;
 
+import ai.liga.ligaai.dao.LigaAiDao;
+import ai.liga.ligaai.model.LigaAi;
 import ai.liga.microurl.dao.MicrourlDao;
 import ai.liga.microurl.model.Microurl;
 import ai.liga.model.Empresa;
@@ -15,8 +17,7 @@ import ai.liga.model.Empresa;
 @Component
 public class HibernateDAOFactory {
 
-	private static final Logger logger = Logger
-			.getLogger(HibernateDAOFactory.class);
+	private static final Logger logger = Logger.getLogger(HibernateDAOFactory.class);
 
 	private final SessionFactory sessionFactory;
 
@@ -31,13 +32,11 @@ public class HibernateDAOFactory {
 	public void close() {
 		Session currentSession = sessionFactory.getCurrentSession();
 		if (currentSession == null) {
-			throw new IllegalStateException(
-					"Current Session não�o pode ser null, falhou!");
+			throw new IllegalStateException("Current Session não�o pode ser null, falhou!");
 		}
 
 		if (currentSession.getTransaction() == null) {
-			throw new IllegalStateException(
-					"Transaction não pode ser null, falhou!");
+			throw new IllegalStateException("Transaction não pode ser null, falhou!");
 		}
 
 		currentSession.getTransaction().commit();
@@ -54,6 +53,10 @@ public class HibernateDAOFactory {
 
 	public MicrourlDao getMicrourlDao() {
 		return new MicrourlDao(Microurl.class, sessionFactory);
+	}
+
+	public LigaAiDao getLigaAiDao() {
+		return new LigaAiDao(LigaAi.class, sessionFactory);
 	}
 
 }

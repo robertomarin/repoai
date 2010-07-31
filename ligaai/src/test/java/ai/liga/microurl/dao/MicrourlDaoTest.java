@@ -2,10 +2,8 @@ package ai.liga.microurl.dao;
 
 import java.util.List;
 
-import org.hibernate.CacheMode;
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
-import org.hibernate.FlushMode;
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
 import org.junit.Before;

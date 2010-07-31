@@ -50,7 +50,7 @@ public class Microurl {
 	}
 
 	public String getMicro() {
-		return "http://liga.ai/" + BaseConverter.toBase62(getId());
+		return BaseConverter.toBase62(getId());
 	}
 
 	public String getUrl() {

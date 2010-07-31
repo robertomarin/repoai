@@ -1,7 +1,7 @@
 package ai.liga;
 
 import org.hibernate.cfg.AnnotationConfiguration;
-import org.hibernate.tool.hbm2ddl.SchemaUpdate;
+import org.hibernate.tool.hbm2ddl.SchemaExport;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -15,7 +15,7 @@ public class GeraTabelas {
 	public void geraTabelas() {
 		AnnotationConfiguration ac = new AnnotationConfiguration();
 		ac.configure();
-		new SchemaUpdate(ac).execute(true, true);
-		//new SchemaExport(ac).create(true, true);
+		// new SchemaUpdate(ac).execute(true, true);
+		new SchemaExport(ac).create(true, true);
 	}
 }

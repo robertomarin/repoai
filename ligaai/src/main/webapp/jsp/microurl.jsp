@@ -12,11 +12,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="" id="microurl">
+	<form id="microurl">
 		<input type="text" name="url" id="url" />
 		<input type="submit" />
 	</form>
 	
+	<%-- 
 	<c:if test="${fn:length(microurl.micro) == fn:length(microurl.url)}">
 		Puxa! Não pudemos ajudar ajudar no tamanho de sua url, as duas tem o mesmo tamanho ${fn:length(microurl.micro)} caracteres.
 	</c:if>
@@ -32,13 +33,16 @@
 		<br />
 		url original : <a href="${microurl.url}">${microurl.url}</a>
 	</c:if>
-	
 	<c:if test="${msg != null}">
 		<c:choose>
 			<c:when test="${msg == 1}">A url recebida é vazia, por favor, insira uma url! :)</c:when>
 			<c:when test="${msg == 2}">A url recebida </c:when>
 		</c:choose>
 	</c:if>
+	--%>
+	<div id="microurlmicro"> </div>
+	<div id="microurlurl"> </div>
+	
 	<script type="text/javascript" src="/js/jquery-1.4.2.min.js"></script>
 	<script type="text/javascript" src="/js/jquery.jsonp-2.1.2.min.js"></script>
 	<script type="text/javascript" src="/js/ligaai.js"></script>

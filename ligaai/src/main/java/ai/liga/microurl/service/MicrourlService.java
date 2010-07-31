@@ -75,7 +75,7 @@ public class MicrourlService {
 	}
 
 	private boolean isUrl(String url) {
-		return regexProtocol.matcher(url).find() && !GenericValidator.isUrl(url);
+		return regexProtocol.matcher(url).find() && GenericValidator.isUrl(url);
 	}
 
 	public Microurl getExpandedUrl(String path) {
