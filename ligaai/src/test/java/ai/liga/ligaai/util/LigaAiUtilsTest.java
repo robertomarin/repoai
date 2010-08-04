@@ -25,9 +25,9 @@ public class LigaAiUtilsTest {
 	public void extractTagsFrom() {
 		Set<Tag> tags = ligaAiUtils.extractTags(message);
 
-		Assert.assertTrue(tags.contains("mensagem"));
-		Assert.assertTrue(tags.contains("tudo"));
-		Assert.assertTrue(tags.contains("caseinsensitive"));
+		Assert.assertTrue(tags.contains(new Tag("mensagem")));
+		Assert.assertTrue(tags.contains(new Tag("tudo")));
+		Assert.assertTrue(tags.contains(new Tag("caseinsensitive")));
 	}
 
 }

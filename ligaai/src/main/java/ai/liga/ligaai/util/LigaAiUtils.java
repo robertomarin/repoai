@@ -25,8 +25,9 @@ public class LigaAiUtils {
 		Set<Tag> tags = new HashSet<Tag>();
 		while (matcher.find()) {
 			String name = matcher.group(1);
-			if (GenericValidator.isBlankOrNull(name)) {
-				new Tag(name);
+			System.out.println(name);
+			if (!GenericValidator.isBlankOrNull(name)) {
+				tags.add(new Tag(name));
 			}
 		}
 

@@ -19,7 +19,11 @@
 		<property name="hibernate.show_sql">true</property>
 
 		<!-- mapping files -->
-		 <mapping package="ai.liga.*" />
+		
+		<mapping class="ai.liga.microurl.model.Microurl" />
+		<mapping class="ai.liga.ligaai.model.LigaAi" />
+		<mapping class="ai.liga.ligaai.model.Contact" />
+		<mapping class="ai.liga.ligaai.model.Tag" />
 	</session-factory>
 
 </hibernate-configuration>
