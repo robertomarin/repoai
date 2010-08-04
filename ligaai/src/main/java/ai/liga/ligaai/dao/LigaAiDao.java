@@ -7,6 +7,7 @@ import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
+import org.hibernate.criterion.Order;
 
 import ai.liga.dao.GenericHibernateDAO;
 import ai.liga.ligaai.model.LigaAi;
@@ -27,11 +28,14 @@ public class LigaAiDao extends GenericHibernateDAO<LigaAi> {
 		return ligaAi;
 	}
 
-	@SuppressWarnings("unchecked")
 	public List<LigaAi> loadAll() {
 		Criteria c = super.getCriteria(true);
 		c.setFetchMode("ligaai", FetchMode.JOIN);
-		return c.list();
+		c.addOrder(Order.desc("created"));
+
+		@SuppressWarnings("unchecked")
+		List<LigaAi> list = (List<LigaAi>) c.list();
+		return list;
 	}
 
 }

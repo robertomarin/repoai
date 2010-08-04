@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import net.sf.json.spring.web.servlet.view.JsonView;
 
+import org.apache.commons.validator.GenericValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,28 +17,47 @@ import ai.liga.ligaai.model.Contact;
 import ai.liga.ligaai.model.ContactType;
 import ai.liga.ligaai.model.LigaAi;
 import ai.liga.ligaai.service.LigaAiService;
+import ai.liga.ligaai.util.LigaAiUtils;
 
 @Controller
 public class LigaAiController {
 
 	private final LigaAiService ligaAiService;
 
+	private final LigaAiUtils ligaAiUtils;
+
 	@Autowired
-	public LigaAiController(LigaAiService ligaAiService) {
+	public LigaAiController(LigaAiService ligaAiService, LigaAiUtils ligaAiUtils) {
 		this.ligaAiService = ligaAiService;
+		this.ligaAiUtils = ligaAiUtils;
 	}
 
 	@RequestMapping("/ajax/ligaai")
-	public ModelAndView post(@RequestParam String message, @RequestParam String contact,
-			@RequestParam String contactType, HttpServletRequest request) {
+	public ModelAndView post(@RequestParam(required = false) String message,
+			@RequestParam(required = false) String contact, @RequestParam(required = false) String contactType,
+			HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView(new JsonView());
+
+		if (GenericValidator.isBlankOrNull(message)) {
+			return mav.addObject("msg", "Mensagem não pode vir em branco.");
+		}
+
+		if (GenericValidator.isBlankOrNull(contactType)) {
+			return mav.addObject("msg", "Tipo de contato deve ser preenchido.");
+		}
+
+		if (GenericValidator.isBlankOrNull(contact)) {
+			return mav.addObject("msg", "Contato deve ser preenchido.");
+		}
 
 		LigaAi ligaAi = new LigaAi();
 		ligaAi.setMessage(message);
+		ligaAi.setTags(ligaAiUtils.extractTags(message));
 		ligaAi.setRemoteAddress(request.getRemoteAddr());
 		ligaAi.setContacts(new ArrayList<Contact>());
 		ligaAi.getContacts().add(new Contact(contact, ContactType.valueOf(contactType)));
 
 		ligaAi = ligaAiService.merge(ligaAi);
-		return new ModelAndView(new JsonView()).addObject("ligaai", ligaAi);
+		return mav.addObject("ligaai", ligaAi).addObject("ok", "true");
 	}
 }

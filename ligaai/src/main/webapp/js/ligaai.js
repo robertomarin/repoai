@@ -16,16 +16,17 @@ $(function() {
 	});
 	
 	$('#ligaai').submit(function() {
-		alert('sdfasdfadsf asdf');
 		var url = '/ajax/ligaai?'
 			+ 'message=' + $('#message').val()
 			+ '&contact=' + $('#contact').val()
 			+ '&contactType=' + $('#contactType').val();
 		
 		$.getJSON(url, function(data) {
-					
-			var microurl = document.location.protocol + '//' + document.location.hostname + '/' + data.microurl.micro;
-			
+			if(data.ok) {
+				var microurl = document.location.protocol + '//' + document.location.hostname + '/' + data.microurl.micro;
+			} else {
+				alert('bug?');
+			}
 		});
 		
 		return false;

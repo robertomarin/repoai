@@ -46,10 +46,9 @@
 	</form>
 	
 	<c:forEach items="${ligaais}" var="ligaai">
-	
 		<c:out value="${ligaai.contacts[0].type}" escapeXml="false"/>	
+		<c:out value="${ligaai.contacts[0].content}" escapeXml="false"/>
 		<c:out value="${ligaai.message}" escapeXml="false"/>
-		<c:out value="${ligaai.created}" escapeXml="false"/>
 		<br/>
 	</c:forEach>
 	

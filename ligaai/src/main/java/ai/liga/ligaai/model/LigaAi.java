@@ -2,6 +2,7 @@ package ai.liga.ligaai.model;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -37,6 +39,9 @@ public class LigaAi {
 
 	@Column(name = "remoteaddress", length = 100, updatable = false)
 	private String remoteAddress;
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	private Set<Tag> tags;
 
 	private int likes;
 
@@ -97,6 +102,14 @@ public class LigaAi {
 
 	public void setDislikes(int dislikes) {
 		this.dislikes = dislikes;
+	}
+
+	public Set<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(Set<Tag> tags) {
+		this.tags = tags;
 	}
 
 }
