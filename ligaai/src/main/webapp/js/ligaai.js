@@ -20,10 +20,12 @@ $(function() {
 			+ 'message=' + $('#message').val()
 			+ '&contact=' + $('#contact').val()
 			+ '&contactType=' + $('#contactType').val();
+			+ 'email=' + $('#email').val();
 		
 		$.getJSON(url, function(data) {
 			if(data.ok) {
-				var microurl = document.location.protocol + '//' + document.location.hostname + '/' + data.microurl.micro;
+				//var microurl = document.location.protocol + '//' + document.location.hostname + '/' + data.microurl.micro;
+				$('#content article:first').prepend('<article><div class="userPic">foto</div><div class="userInfo"><header><hgroup><h1>Nome do rebento</h1><h2>' + $('#contact').val() + '</h2></hgroup></header></div></article>');
 			} else {
 				alert('bug?');
 			}
@@ -31,4 +33,17 @@ $(function() {
 		
 		return false;
 	});
+	
+	/*!
+	 * Mask definitions
+	 */
+	 $('.phone').mask('(99) 9999-9999');
+	 
+	 /*!
+	  * About
+	 */
+	 
+	 $('#aboutText').click(function(){
+		$('#aboutContent').slideToggle('slow');
+	 });
 });
