@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,6 +26,9 @@ public class LigaAi {
 	@Id
 	@GeneratedValue
 	private Long id;
+
+	@ManyToOne()
+	private User user;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(joinColumns = { @JoinColumn(name = "ligaai_id") }, inverseJoinColumns = { @JoinColumn(name = "contact_id") })
@@ -41,6 +45,7 @@ public class LigaAi {
 	private String remoteAddress;
 
 	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(joinColumns = { @JoinColumn(name = "ligaai_id") }, inverseJoinColumns = { @JoinColumn(name = "tag_id") })
 	private Set<Tag> tags;
 
 	private int likes;

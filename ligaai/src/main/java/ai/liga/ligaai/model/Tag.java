@@ -25,16 +25,16 @@ public class Tag {
 	}
 
 	public Tag(String id) {
-		this.id = !GenericValidator.isBlankOrNull(id) ? id.toLowerCase() : "";
+		this.setId(id);
 		this.created = Calendar.getInstance();
 	}
 
-	public String getName() {
+	public String getId() {
 		return id;
 	}
 
-	public void setName(String name) {
-		this.id = name;
+	public void setId(String id) {
+		this.id = !GenericValidator.isBlankOrNull(id) ? id.toLowerCase() : "";
 	}
 
 	public Calendar getCreated() {
