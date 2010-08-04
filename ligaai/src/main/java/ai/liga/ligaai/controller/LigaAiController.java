@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ai.liga.ligaai.model.Contact;
 import ai.liga.ligaai.model.ContactType;
 import ai.liga.ligaai.model.LigaAi;
+import ai.liga.ligaai.model.User;
 import ai.liga.ligaai.service.LigaAiService;
 import ai.liga.ligaai.util.LigaAiUtils;
 
@@ -35,7 +36,7 @@ public class LigaAiController {
 	@RequestMapping("/ajax/ligaai")
 	public ModelAndView post(@RequestParam(required = false) String message,
 			@RequestParam(required = false) String contact, @RequestParam(required = false) String contactType,
-			HttpServletRequest request) {
+			String email, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView(new JsonView());
 
 		if (GenericValidator.isBlankOrNull(message)) {
@@ -50,12 +51,17 @@ public class LigaAiController {
 			return mav.addObject("msg", "Contato deve ser preenchido.");
 		}
 
+		if (!GenericValidator.isEmail(email)) {
+			return mav.addObject("msg", "Email inválido.");
+		}
+
 		LigaAi ligaAi = new LigaAi();
 		ligaAi.setMessage(message);
 		ligaAi.setTags(ligaAiUtils.extractTags(message));
 		ligaAi.setRemoteAddress(request.getRemoteAddr());
 		ligaAi.setContacts(new ArrayList<Contact>());
 		ligaAi.getContacts().add(new Contact(contact, ContactType.valueOf(contactType)));
+		ligaAi.setUser(new User(email));
 
 		ligaAi = ligaAiService.merge(ligaAi);
 		return mav.addObject("ligaai", ligaAi).addObject("ok", "true");

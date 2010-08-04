@@ -27,7 +27,8 @@ public class LigaAi {
 	@GeneratedValue
 	private Long id;
 
-	@ManyToOne()
+	@ManyToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name = "user_id")
 	private User user;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -44,7 +45,7 @@ public class LigaAi {
 	@Column(name = "remoteaddress", length = 100, updatable = false)
 	private String remoteAddress;
 
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	@JoinTable(joinColumns = { @JoinColumn(name = "ligaai_id") }, inverseJoinColumns = { @JoinColumn(name = "tag_id") })
 	private Set<Tag> tags;
 
@@ -58,6 +59,14 @@ public class LigaAi {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public List<Contact> getContacts() {

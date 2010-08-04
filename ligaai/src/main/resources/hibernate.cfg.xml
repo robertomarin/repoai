@@ -24,6 +24,7 @@
 		<mapping class="ai.liga.ligaai.model.LigaAi" />
 		<mapping class="ai.liga.ligaai.model.Contact" />
 		<mapping class="ai.liga.ligaai.model.Tag" />
+		<mapping class="ai.liga.ligaai.model.User" />
 	</session-factory>
 
 </hibernate-configuration>

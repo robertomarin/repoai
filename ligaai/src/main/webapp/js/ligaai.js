@@ -16,11 +16,16 @@ $(function() {
 	});
 	
 	$('#ligaai').submit(function() {
+		var x = escape;
+		if(encodeURIComponent) {
+			x = encodeURIComponent;
+		}
+		
 		var url = '/ajax/ligaai?'
-			+ 'message=' + $('#message').val()
-			+ '&contact=' + $('#contact').val()
-			+ '&contactType=' + $('#contactType').val();
-			+ 'email=' + $('#email').val();
+			+ 'message=' + x($('#message').val())
+			+ '&contact=' + x($('#contact').val())
+			+ '&email=' + x($('#email').val())
+			+ '&contactType=' + x($('#contactType').val());
 		
 		$.getJSON(url, function(data) {
 			if(data.ok) {

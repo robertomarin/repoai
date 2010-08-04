@@ -79,12 +79,18 @@
 								<option value="MSN">MSN</option>
 								<option value="TWITTER">Twitter</option>
 								<option value="FACEBOOK">Facebook</option>
-								<option value="ORKUT">Orkut<option>
-								<option value="EMAIl">E-mail<option>
+								<option value="ORKUT">Orkut</option>
+								<option value="EMAIl">E-mail</option>
 							</select>
 							<input type="text" id="contact" class="phone" />
-							<input type="submit" value="envia.ai" />
 							<textarea id="message"></textarea>
+							
+							
+							
+							
+							
+							<input type="text" id="email" />
+							<input type="submit" value="envia.ai" />
 							<p><input type="checkbox" checked="checked" /> Li e concordo com os <a href="#" title="Veja os termos de uso do liga.ai">termos de uso</a></p>						
 						</form>
 					</section>
