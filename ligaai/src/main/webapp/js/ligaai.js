@@ -25,7 +25,7 @@ $(function() {
 			+ 'message=' + x($('#message').val())
 			+ '&contact=' + x($('#contact').val())
 			+ '&email=' + x($('#email').val())
-			+ '&contactType=' + x($('#contactType').val());
+			+ '&contactType=' + x($('.contactType').val());
 		
 		$.getJSON(url, function(data) {
 			if(data.ok) {
@@ -39,11 +39,6 @@ $(function() {
 		return false;
 	});
 	
-	/*!
-	 * Mask definitions
-	 */
-	 $('.phone').mask('(99) 9999-9999');
-	 
 	 /*!
 	  * About
 	 */
@@ -51,4 +46,39 @@ $(function() {
 	 $('#aboutText').click(function(){
 		$('#aboutContent').slideToggle('slow');
 	 });
+	 
+	 /*!
+	  * Input clone
+	 */
+
+	 $('.contactInfo').focus(function(){
+		$('#cloneable').clone(true).removeAttr("id").fadeIn(350).insertAfter($(this).parent());
+		$(this).unbind('focus');
+	 });
+	 
+	 /*!
+	  * Input masking
+	 */
+	 $('.phone').mask('(99) 9999-9999');
+	 
+	 $('.contactType').each(function(){
+		 $(this).change(function(){
+			 if($(this).val() == 'PHONE') {
+				 $(this).parent().find('.contactInfo').mask('(99) 9999-9999'); 
+			  } else{
+				 $(this).parent().find('.contactInfo').unmask(); 
+			  };
+		 });
+	 });
+	 
+	 /**Subscribe dialog**/
+	 $('#subscribe').dialog({
+		autoOpen: false,
+		modal: true,
+		width: 445,
+		height: 'auto',
+		closeText: '[x]'
+	 });
+	 
+	 $('#subscribeButton').click(function(){$('#subscribe').dialog('open');});
 });
