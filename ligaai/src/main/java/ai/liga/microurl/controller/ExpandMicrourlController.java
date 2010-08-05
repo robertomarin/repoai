@@ -37,6 +37,6 @@ public class ExpandMicrourlController {
 			return new ModelAndView(view);
 		}
 
-		return homeController.home();
+		return null;
 	}
 }

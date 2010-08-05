@@ -6,10 +6,11 @@ import org.hibernate.classic.Session;
 import org.springframework.stereotype.Component;
 
 import ai.liga.ligaai.dao.LigaAiDao;
+import ai.liga.ligaai.dao.UserDao;
 import ai.liga.ligaai.model.LigaAi;
+import ai.liga.ligaai.model.User;
 import ai.liga.microurl.dao.MicrourlDao;
 import ai.liga.microurl.model.Microurl;
-import ai.liga.model.Empresa;
 
 /**
  * @author marin
@@ -47,16 +48,16 @@ public class HibernateDAOFactory {
 		sessionFactory.getCurrentSession().beginTransaction();
 	}
 
-	public GenericHibernateDAO<Empresa> getEmpresaDAO() {
-		return new GenericHibernateDAO<Empresa>(Empresa.class, sessionFactory);
-	}
-
 	public MicrourlDao getMicrourlDao() {
 		return new MicrourlDao(Microurl.class, sessionFactory);
 	}
 
 	public LigaAiDao getLigaAiDao() {
 		return new LigaAiDao(LigaAi.class, sessionFactory);
+	}
+
+	public UserDao getUserDao() {
+		return new UserDao(User.class, sessionFactory);
 	}
 
 }

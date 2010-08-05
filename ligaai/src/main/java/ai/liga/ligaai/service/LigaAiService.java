@@ -25,7 +25,7 @@ public class LigaAiService {
 	}
 
 	public List<LigaAi> getTop() {
-		
+
 		return ligaAiDao.loadAll();
 	}
 
