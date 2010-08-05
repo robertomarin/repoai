@@ -27,6 +27,7 @@
 		</script>
 		<script language="javascript" src="/js/maskinput.js"></script>
 		<script language="javascript" src="/js/ligaai.js"></script>
+		<script language="javascript" src="/js/jquery-ui-1.8.2.custom.min.js"></script>
 		<!--[if lt IE 9]>
 			<script src="/js/html5.js"></script>
 		<![endif]-->
@@ -69,26 +70,38 @@
 				<div class="container">
 					<header>
 						<h1 class="ligaStyle">Me Liga<span class="baseColor">.</span>ai</h1>
+						<span id="subscribeButton">LOGAR</span>
 					</header>
 					<section>
 						<form id="ligaai">
-							<select id="contactType">
-								<option value="PHONE">Telefone</option>
-								<option value="SKYPE">Skype</option>
-								<option value="GTALK">Google Talk</option>
-								<option value="MSN">MSN</option>
-								<option value="TWITTER">Twitter</option>
-								<option value="FACEBOOK">Facebook</option>
-								<option value="ORKUT">Orkut</option>
-								<option value="EMAIl">E-mail</option>
-							</select>
-							<input type="text" id="contact" class="phone" />
+							<div id="cloneable">
+								<select class="contactType">
+									<option value="PHONE" selected>Telefone</option>
+									<option value="SKYPE">Skype</option>
+									<option value="GTALK">Google Talk</option>
+									<option value="MSN">MSN</option>
+									<option value="TWITTER">Twitter</option>
+									<option value="FACEBOOK">Facebook</option>
+									<option value="ORKUT">Orkut</option>
+									<option value="EMAIl">E-mail</option>
+								</select>
+								<input type="text" id="contact" class="phone contactInfo" />
+							</div>
+							<div class="contactContainer">
+								<select class="contactType">
+									<option value="PHONE" selected>Telefone</option>
+									<option value="SKYPE">Skype</option>
+									<option value="GTALK">Google Talk</option>
+									<option value="MSN">MSN</option>
+									<option value="TWITTER">Twitter</option>
+									<option value="FACEBOOK">Facebook</option>
+									<option value="ORKUT">Orkut</option>
+									<option value="EMAIl">E-mail</option>
+								</select>
+								<input type="text" id="contact" class="phone contactInfo" />
+							</div>
+							
 							<textarea id="message"></textarea>
-							
-							
-							
-							
-							
 							<input type="text" id="email" />
 							<input type="submit" value="envia.ai" />
 							<p><input type="checkbox" checked="checked" /> Li e concordo com os <a href="#" title="Veja os termos de uso do liga.ai">termos de uso</a></p>						
@@ -165,6 +178,30 @@
 				Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
 			</div>
 		</div>
+		<!-- LIGHTBOX -->
+		<div id="subscribe">
+			<form>
+				<strong class="ligaStyle">registra<span class="baseColor">.</span>ai</strong>
+				<ul>
+					<li><label>Nome de usuario</label> <input type="text" /></li>
+					<li><label>Senha</label> <input type="text" /></li>
+					<li><label>E-mail</label> <input type="text" /></li>
+					<li id="terms">
+						<code>
+							Terms of Service
+							These Terms of Service (“Terms”) govern your access to and use of the services and Twitter’s websites (the “Services”), and any information, text, graphics, or other materials uploaded, downloaded or appearing on the Services (collectively referred to as “Content”). Your access to and use of the Services is conditioned on your acceptance of and compliance with these Terms. By accessing or using the Services you agree to be bound by these Terms.
+
+							Basic Terms
+
+							You are responsible for your use of the Services, for any content you post to the Services, and for any consequences thereof. The Content you submit, post, or display will be able to be viewed by other users of the Services and through third party services and websites (go to the account settings page to control who sees your Content). You should only provide Content that you are comfortable sharing with others under these Terms.
+						</code>
+					</li>
+					<li>Ao clicar em registrar, estou concordando com os termos de uso</li>
+					<li><input type="submit" value="registra.ai" /></li>
+				</ul>
+			</form>
+		</div>
+		<!-- LIGHTBOX -->
 		<!--GA-->
 		<script type="text/javascript">
 			 var _gaq = _gaq || [];
