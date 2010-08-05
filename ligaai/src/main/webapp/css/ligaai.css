@@ -51,6 +51,8 @@ input[type=submit]{
 /***Liga***/
 #liga{background: #fff url(/img/separador.png) repeat-x bottom; padding-bottom: 10px; margin-top: -10px;}
 #liga .ligaStyle{margin-bottom: 10px;}
+#liga #cloneable{display: none;}
+#liga .contactContainer{margin: 2px 0;}
 
 /***Shorten url***/
 #shortenUrl{background: #fff url(/img/separador.png) repeat-x bottom; border-top: 18px solid #ff00cc; padding: 10px 0;}
@@ -120,3 +122,28 @@ input[type=submit]{
 }
 #about p#aboutText:hover{color: #ff00cc;}
 #about #aboutContent{display: none; margin-top: 10px; height: 140px;}
+
+/***Subscribe Lightbox***/
+#subscribe{
+	background: #fff;
+	border: 1px solid #ff00cc;
+	border-top: 15px solid #ff00cc;
+	border-radius: 0 0 5px 5px; -moz-border-radius: 0 0 5px 5px; -webkit-border-radius: 0 0 5px 5px;
+	display: none;
+	padding: 10px;
+}
+#subscribe ul{margin-top: 10px;}
+#subscribe li{margin: 2px 0;}
+#subscribe li label{width: 100px; text-align: right; float: left; padding: 4px;}
+#subscribe #terms{
+	border: 1px solid #ccc;
+	padding: 5px;
+	height: 100px;
+	overflow: auto;
+	border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;
+}
+.ui-dialog-titlebar{height: 45px;}
+.ui-dialog-titlebar-close{position: absolute; right: 5px; top: 45px; color: #fff;}
+.ui-widget-overlay{position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.ui-widget-overlay{background: #000; opacity: .5;filter:Alpha(Opacity=50); }
+.ui-widget-shadow{margin: -8px 0 0 -8px; padding: 8px; background: #aaaaaa; opacity: .3;filter:Alpha(Opacity=30); -moz-border-radius: 8px; -webkit-border-radius: 8px; }
