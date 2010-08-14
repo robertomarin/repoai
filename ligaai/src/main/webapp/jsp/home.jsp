@@ -54,7 +54,7 @@
 						<div id="doneShortenUrl" class="hide">
 							<span class="baseColor">Sua url encurtada</span>
 							<input type="text" id="microurlmicro" readonly="readonly" />
-							<div id="clickToCopy" class="hide">Clique para copiar</div>
+							<div id="clickToCopy">Clique para copiar</div>
 							<ul>
 								<li><a href="#" title="Postar essa url no Twitter" id="twitter">Twitte essa url</a></li>
 								<li>|</li>
