@@ -13,14 +13,14 @@ import org.springframework.web.servlet.ModelAndView;
 import ai.liga.ligaai.cookie.CookieComponent;
 import ai.liga.ligaai.cookie.Cookies;
 import ai.liga.ligaai.model.User;
-import ai.liga.ligaai.service.UsuarioService;
+import ai.liga.ligaai.service.UserService;
 
 public class CookiesInterceptor implements HandlerInterceptor {
 
-	private final UsuarioService usuarioService;
+	private final UserService usuarioService;
 
 	@Autowired
-	public CookiesInterceptor(UsuarioService usuarioService, CookieComponent cookieComponent) {
+	public CookiesInterceptor(UserService usuarioService, CookieComponent cookieComponent) {
 		this.usuarioService = usuarioService;
 	}
 

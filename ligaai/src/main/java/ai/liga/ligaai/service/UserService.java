@@ -8,18 +8,17 @@ import ai.liga.ligaai.dao.UserDao;
 import ai.liga.ligaai.model.User;
 
 @Service
-public class UsuarioService {
+public class UserService {
 
 	private UserDao userDao;
 
 	@Autowired
-	public UsuarioService(HibernateDAOFactory factory) {
+	public UserService(HibernateDAOFactory factory) {
 		userDao = factory.getUserDao();
 	}
 
 	public User merge(User user) {
 		user = userDao.merge(user);
-
 		
 		
 		return null;

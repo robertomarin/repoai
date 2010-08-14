@@ -25,8 +25,6 @@ public class HomeController {
 	@RequestMapping("/")
 	public ModelAndView home(@CookieValue(value = Constants.USER_COOKIE, required = false) String userCookie) {
 
-		System.out.println(userCookie);
-
 		List<LigaAi> ligaais = ligaAiService.getTop();
 		return new ModelAndView("home").addObject("ligaais", ligaais);
 
