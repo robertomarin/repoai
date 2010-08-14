@@ -7,8 +7,8 @@ $(function() {
 		
 		$.getJSON(url, function(data) {
 			var microurl = document.location.protocol + '//' + document.location.hostname + '/' + data.microurl.micro;
-			
-			$('#microurlmicro').html('<a href="' + microurl + '" target="_blank">' + microurl + '</a>');
+			$('#doneShortenUrl').fadeIn();
+			$('#microurlmicro').val(microurl);
 			$('#microurlurl').html('<a href="' + data.microurl.url + '" target="_blank">' + data.microurl.url + '</a>');
 		});
 		
@@ -51,15 +51,15 @@ $(function() {
 	  * Input clone
 	 */
 
-	 $('.contactInfo').focus(function(){
+	 /*$('.contactInfo').focus(function(){
 		$('#cloneable').clone(true).removeAttr("id").fadeIn(350).insertAfter($(this).parent());
 		$(this).unbind('focus');
-	 });
+	 });*/
 	 
 	 /*!
 	  * Input masking
 	 */
-	 $('.phone').mask('(99) 9999-9999');
+	 //$('.phone').mask('(99) 9999-9999');
 	 
 	 $('.contactType').each(function(){
 		 $(this).change(function(){
