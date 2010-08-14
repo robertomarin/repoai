@@ -1,14 +1,22 @@
 
 $.ajaxSetup({ scriptCharset: "utf-8" , contentType: "application/json; charset=utf-8"});
+var encodeUrl = escape;
+if(encodeURIComponent) {
+	encodeUrl = encodeURIComponent;
+}
 
 $(function() {
 	$('#microurl').submit(function() {
-		var url = '/ajax/microurl?url=' + $('#url').val();
-		
+		var url = '/ajax/microurl?url=' + encodeUrl($('#url').val());
 		$.getJSON(url, function(data) {
 			var microurl = document.location.protocol + '//' + document.location.hostname + '/' + data.microurl.micro;
 			$('#doneShortenUrl').fadeIn();
 			$('#microurlmicro').val(microurl);
+			
+			var clip = new ZeroClipboard.Client();
+			clip.setText( microurl );
+			clip.glue( 'microurlmicro' );
+			
 			$('#microurlurl').html('<a href="' + data.microurl.url + '" target="_blank">' + data.microurl.url + '</a>');
 		});
 		
@@ -16,16 +24,13 @@ $(function() {
 	});
 	
 	$('#ligaai').submit(function() {
-		var x = escape;
-		if(encodeURIComponent) {
-			x = encodeURIComponent;
-		}
-		
 		var url = '/ajax/ligaai?'
-			+ 'message=' + x($('#message').val())
-			+ '&contact=' + x($('#contact').val())
-			+ '&email=' + x($('#email').val())
-			+ '&contactType=' + x($('.contactType').val());
+			+ 'message=' + encodeUrl($('#message').val())
+			+ '&contact=' + encodeUrl($('#contact').val())
+			+ '&email=' + encodeUrl($('#email').val())
+			+ '&contactType=' + encodeUrl($('.contactType').val());
+		
+		
 		
 		$.getJSON(url, function(data) {
 			if(data.ok) {

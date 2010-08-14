@@ -18,6 +18,7 @@ import ai.liga.microurl.service.MicrourlService;
 public class ExpandMicrourlController {
 
 	private final MicrourlService microurlService;
+
 	private final HomeController homeController;
 
 	@Autowired

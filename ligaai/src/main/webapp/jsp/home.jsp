@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     
 <!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -25,6 +25,7 @@
 			}
 		</script>
 		<script language="javascript" src="/js/maskinput.js"></script>
+		<script type="text/javascript" src="/js/ZeroClipboard.js"></script>
 		<script language="javascript" src="/js/ligaai.js"></script>
 		<script language="javascript" src="/js/jquery-ui-1.8.2.custom.min.js"></script>
 		<!--[if lt IE 9]>
@@ -32,6 +33,13 @@
 		<![endif]-->
 	</head>
 	<body class="morningBackground">
+	
+	
+
+	<script language="JavaScript">
+
+	</script>
+	
 		<div class="wrapper">
 			<header id="logo">
 				<h1 class="ligaStyle">Liga<span class="baseColor">.</span>ai</h1>
@@ -202,6 +210,7 @@
 				</ul>
 			</form>
 		</div>
+		
 		<!-- LIGHTBOX -->
 		<!--GA-->
 		<script type="text/javascript">
