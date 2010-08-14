@@ -225,6 +225,7 @@
 					<ul>
 						<li><label>Nome de usuário</label></li>
 						<li><input type="text" /></li>
+						<li><input type="submit" value="envia.ai" /></li>
 					</ul>
 				</form>
 			</div>
