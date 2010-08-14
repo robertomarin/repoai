@@ -53,22 +53,27 @@ $(function() {
 	
 	
 	$('#ligaai').submit(function() {
-		var url = '/ajax/ligaai?'
-			+ 'message=' + encodeUrl($('#message').val())
-			+ '&contact=' + encodeUrl($('#contact').val())
-			+ '&email=' + encodeUrl($('#email').val())
-			+ '&contactType=' + encodeUrl($('.contactType').val());
-		
-		
-		
-		$.getJSON(url, function(data) {
-			if(data.ok) {
-				//var microurl = document.location.protocol + '//' + document.location.hostname + '/' + data.microurl.micro;
-				$('#content article:first').prepend('<article><div class="userPic">foto</div><div class="userInfo"><header><hgroup><h1>Nome do rebento</h1><h2>' + $('#contact').val() + '</h2></hgroup></header></div></article>');
-			} else {
-				alert('bug?');
-			}
-		});
+		var usuario;
+		if(usuario != null){
+			var url = '/ajax/ligaai?'
+				+ 'message=' + encodeUrl($('#message').val())
+				+ '&contact=' + encodeUrl($('#contact').val())
+				+ '&email=' + encodeUrl($('#email').val())
+				+ '&contactType=' + encodeUrl($('.contactType').val());
+			
+			
+			
+			$.getJSON(url, function(data) {
+				if(data.ok) {
+					//var microurl = document.location.protocol + '//' + document.location.hostname + '/' + data.microurl.micro;
+					$('#content article:first').prepend('<article><div class="userPic">foto</div><div class="userInfo"><header><hgroup><h1>Nome do rebento</h1><h2>' + $('#contact').val() + '</h2></hgroup></header></div></article>');
+				} else {
+					alert('bug?');
+				}
+			});
+		} else{
+			$('#subscribe').dialog('open');
+		}
 		
 		return false;
 	});
@@ -109,9 +114,21 @@ $(function() {
 	 $('#subscribe').dialog({
 		autoOpen: false,
 		width: 445,
-		height: 500,
+		height: 'auto',
 		closeText: 'X'
 	 });
 	 
-	 $('#subscribeButton').click(function(){$('#subscribe').dialog('open');});
+	 $('#login').click(function(){
+		$('#registerForm').hide();
+		$('#loginForm').fadeIn();		
+	 });
+	 $('#register').click(function(){
+		$('#loginForm').hide();
+		$('#registerForm').fadeIn();		
+	 });
+	 $('#forgotPass').click(function(){
+		$('#loginForm').hide();
+		$('#registerForm').hide();
+		$('#reserForm').fadeIn();		
+	 });
 });

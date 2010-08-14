@@ -158,6 +158,14 @@ input[type=submit]{
 	border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px;
 	padding: 15px;
 }
+#subscribe .content .ligaStyle{
+	clear:both;
+	float:left;
+	margin-bottom:6px;
+	width:100%;
+}
+#subscribe .content .formAction{cursor: pointer;}
+#subscribe .content .formAction:hover{text-decoration: underline;}
 #subscribe .content ul{margin: 20px 0 0;}
 #subscribe .content li{margin: 2px 0;}
 #subscribe .content li label{font-weight: bold;}

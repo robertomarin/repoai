@@ -70,7 +70,6 @@
 				<div class="container">
 					<header>
 						<h1 class="ligaStyle">Me Liga<span class="baseColor">.</span>ai</h1>
-						<span id="subscribeButton">LOGAR</span>
 					</header>
 					<section>
 						<form id="ligaai">
@@ -183,10 +182,11 @@
 		<!-- LIGHTBOX -->
 		<div id="subscribe">
 			<div class="content">
-				<form>
+				<form id="registerForm">
 					<strong class="ligaStyle">registra<span class="baseColor">.</span>ai</strong>
+					<p>Já tem uma conta? <span id="login" class="formAction baseColor">Faça login</span></p>
 					<ul>
-						<li><label>Nome de usuario</label></li>
+						<li><label>Nome de usuário</label></li>
 						<li><input type="text" /></li>
 						<li><label>Senha</label></li>
 						<li><input type="text" /></li>
@@ -204,6 +204,27 @@
 						</li>
 						<li>Ao clicar em registrar, estou concordando com os termos de uso</li>
 						<li><input type="submit" value="registra.ai" /></li>
+					</ul>
+				</form>
+				<form id="loginForm" class="hide">
+					<strong class="ligaStyle">loga<span class="baseColor">.</span>ai</strong>
+					<p>Não tem uma conta? <span id="register" class="formAction baseColor">registre-se</span></p>
+					<ul>
+						<li><label>Nome de usuário</label></li>
+						<li><input type="text" /></li>
+						<li><label>Senha</label></li>
+						<li><input type="text" /></li>
+						<li><span id="forgotPass" class="formAction baseColor">Esqueceu sua senha?</span></li>
+						<li><input type="checkbox" />Lembrar-me nesse computador</li>
+						<li><input type="submit" value="loga.ai" /></li>
+					</ul>
+				</form>
+				<form id="reserForm" class="hide">
+					<strong class="ligaStyle">lembra<span class="baseColor">.</span>ai</strong>
+					<p>Nós enviaremos um e-mail de como criar uma nova senha</p>
+					<ul>
+						<li><label>Nome de usuário</label></li>
+						<li><input type="text" /></li>
 					</ul>
 				</form>
 			</div>
