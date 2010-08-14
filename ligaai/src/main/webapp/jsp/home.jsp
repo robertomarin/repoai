@@ -45,12 +45,12 @@
 						<h1>O liga.ai encurta urls para você...</h1>
 					</header>
 					<section>
-						<form>
-							<input type="text" class="shortenField" />
+						<form id="microurl">
+							<input type="text" name="url" id="url" class="shortenField" />
 							<input type="submit" value="encurta.ai" class="shortenSubmit" />
 						</form>
 						<div id="doneShortenUrl">
-							<span class="baseColor">Sua url encurtada</span> <input type="text" readonly="readonly" />
+							<span class="baseColor">Sua url encurtada</span> <input type="text" id="microurlmicro" readonly="readonly" />
 							<ul>
 								<li><a href="#" title="Postar essa url no Twitter">Twitte essa url</a></li>
 								<li>|</li>
@@ -74,6 +74,7 @@
 					</header>
 					<section>
 						<form id="ligaai">
+							<!-- 
 							<div id="cloneable">
 								<select class="contactType">
 									<option value="PHONE" selected>Telefone</option>
@@ -85,8 +86,9 @@
 									<option value="ORKUT">Orkut</option>
 									<option value="EMAIl">E-mail</option>
 								</select>
-								<input type="text" id="contact" class="phone contactInfo" />
+								<input type="text" name="contact" id="contact" class="phone contactInfo" />
 							</div>
+							 -->
 							<div class="contactContainer">
 								<select class="contactType">
 									<option value="PHONE" selected>Telefone</option>
@@ -98,7 +100,7 @@
 									<option value="ORKUT">Orkut</option>
 									<option value="EMAIl">E-mail</option>
 								</select>
-								<input type="text" id="contact" class="phone contactInfo" />
+								<input type="text" name="contact" id="contact" class="phone contactInfo" />
 							</div>
 							
 							<textarea id="message"></textarea>
