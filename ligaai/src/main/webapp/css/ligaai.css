@@ -5,6 +5,7 @@ html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address
 body{color: #3b3b3b; font-family: Helvetica, Arial; font-size: 12px;}
 .morningBackground{background: url(/img/bg_1.jpg) no-repeat top center;}
 .wrapper{margin: 0 auto; width: 1008px;}
+.hide{display: none;}
 
 header#logo{height: 220px; padding-top: 10px;}
 footer{
@@ -37,6 +38,15 @@ input[type=submit]{
 }
 .container{width: 635px; margin: 10px auto;}
 
+/**Message**/
+.message{
+	background: #ff99cc;
+	border: 1px solid #ff00cc;
+	font-weight: bold;
+	margin: 10px auto;
+	padding: 5px;
+}
+
 #content article{
 	background: url(/img/separador.png) repeat-x bottom;
 	float: left;
@@ -51,22 +61,32 @@ input[type=submit]{
 /***Liga***/
 #liga{background: #fff url(/img/separador.png) repeat-x bottom; padding-bottom: 10px; margin-top: -10px;}
 #liga .ligaStyle{margin-bottom: 10px;}
-#liga #cloneable{display: none;}
 #liga .contactContainer{margin: 2px 0;}
 
 /***Shorten url***/
 #shortenUrl{background: #fff url(/img/separador.png) repeat-x bottom; border-top: 18px solid #ff00cc; padding: 10px 0;}
+#shortenUrl #loader{margin: 15px auto; width:16px;}
 #shortenUrl section{margin-top: 10px;}
-#shortenUrl #doneShortenUrl{display: none; margin: 10px 0 20px 0;}
-#shortenUrl #doneShortenUrl .baseColor{font-weight: bold; font-size: 16px;}
+#shortenUrl #doneShortenUrl{margin: 10px 0 20px 0; position: relative;}
+#shortenUrl #doneShortenUrl input[type="text"]{width: 265px;}
+#shortenUrl #doneShortenUrl .baseColor{font-weight: bold; font-size: 16px; position:relative;}
 #shortenUrl .shortenField{width: 472px; padding: 6px 10px;}
-#shortenUrl ul{text-align: center;}
+#shortenUrl ul{text-align: center; margin: 10px;}
 #shortenUrl ul li{display: inline; margin: 0 5px;}
 #shortenUrl ul li a{color: #3b3b3b;}
 #shortenUrl #copyClipboard{cursor: pointer; text-decoration: underline;}
 #shortenUrl #copyClipboard:hover{text-decoration: none;}
 #shortenUrl .shortenSubmit{font-size: 22px; font-weight: bold;}
-
+#shortenUrl #clickToCopy{
+	background:none repeat scroll 0 0 #FF00CC;
+	color:#fff;
+	top:0;
+	left:308px;
+	padding:5px;
+	position:absolute;
+	width:106px;
+	border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;
+}
 
 /***User list***/
 #content .users{line-height: 20px;}
