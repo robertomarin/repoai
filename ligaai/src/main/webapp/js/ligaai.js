@@ -40,7 +40,7 @@ $(function() {
 					clip.addEventListener('onComplete', clipComplete);
 					clip.setText(microurl);
 					clip.glue('microurlmicro');
-				}else {
+				}else{
 					$('.message').html('Ocorreu um erro na hora de encurtar :(').fadeIn();
 					$('#loader').hide();
 				}
@@ -75,6 +75,23 @@ $(function() {
 		} else{
 			$('#subscribe').dialog('open');
 		}
+		
+		return false;
+	});
+	
+	$('#user-register').submit(function() {
+		var url = '/ajax/user/create?'
+			+ 'email=' + encodeUrl($('#email').val())
+			+ '&password=' + encodeUrl($('#password').val());
+		
+		$.getJSON(url, function(data) {
+			if(data.ok) {
+				//var microurl = document.location.protocol + '//' + document.location.hostname + '/' + data.microurl.micro;
+				alert('ok');
+			} else {
+				alert('bug?');
+			}
+		});
 		
 		return false;
 	});

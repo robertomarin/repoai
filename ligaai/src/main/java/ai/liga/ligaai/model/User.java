@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class User {
@@ -17,6 +19,8 @@ public class User {
 	private Long id;
 
 	@Column(unique = true, nullable = false, updatable = false, length = 30)
+	@NotNull
+	@Size(min = 3, max = 30)
 	private String email;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -24,6 +28,8 @@ public class User {
 	private Calendar created;
 
 	@Column(length = 32)
+	@Size(min = 6, max = 20)
+	@NotNull
 	private String password;
 
 	public User() {

@@ -1,50 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:jms="http://www.springframework.org/schema/jms"
-	xmlns:lang="http://www.springframework.org/schema/lang" xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
-		http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms.xsd
-		http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
-		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+	
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-	<context:annotation-config />
 	<context:component-scan base-package="ai.liga" />
+	<mvc:annotation-driven />
+	
+	<mvc:view-controller path="/" view-name="home" />
+	
+	<mvc:interceptors>
+		<bean class="ai.liga.interceptor.CookiesInterceptor" />
+	</mvc:interceptors>
 
-	<bean id="viewResolver"
-		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-		<property name="viewClass"
-			value="org.springframework.web.servlet.view.JstlView" />
-		<property name="prefix" value="/jsp/" />
-		<property name="suffix" value=".jsp" />
+	<!-- Resolves view names to protected .jsp resources within the /WEB-INF/views directory -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/jsp/"/>
+		<property name="suffix" value=".jsp"/>
 	</bean>
-
+	
 	<bean name="jsonView" class="net.sf.json.spring.web.servlet.view.JsonView" />
 
-	<bean id="handlerMapping"
-		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-		<property name="mappings">
-			<props>
-				<prop key="/">homeController</prop>
-				<prop key="/microurl">microurlController</prop>
-				<prop key="/ajax/ligaai">ligaAiController</prop>
-				<prop key="/ajax/microurl">microurlController</prop>
-				<prop key="/*">expandMicrourlController</prop>
-			</props>
-		</property>
-		<property name="interceptors">
-			<list>
-				<bean class="ai.liga.interceptor.CookiesInterceptor" />
-			</list>
-		</property>
-	</bean>
-
+<!--	<bean id="handlerMapping"-->
+<!--		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">-->
+<!--		<property name="mappings">-->
+<!--			<props>-->
+<!--				<prop key="/microurl">microurlController</prop>-->
+<!--				<prop key="/ajax/ligaai">ligaAiController</prop>-->
+<!--				<prop key="/ajax/microurl">microurlController</prop>-->
+<!--				<prop key="/ajax/user/create">userController</prop>-->
+<!--				<prop key="/*">expandMicrourlController</prop>-->
+<!--			</props>-->
+<!--		</property>-->
+<!--		<property name="interceptors">-->
+<!--			<list>-->
+<!--				<bean class="ai.liga.interceptor.CookiesInterceptor" />-->
+<!--			</list>-->
+<!--		</property>-->
+<!--	</bean>-->
 
 </beans>

@@ -22,7 +22,7 @@ public class HomeController {
 		this.ligaAiService = ligaAiService;
 	}
 
-	@RequestMapping("/")
+	@RequestMapping("/home.html")
 	public ModelAndView home(@CookieValue(value = Constants.USER_COOKIE, required = false) String userCookie) {
 
 		List<LigaAi> ligaais = ligaAiService.getTop();
