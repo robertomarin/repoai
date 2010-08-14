@@ -108,10 +108,9 @@ $(function() {
 	 /**Subscribe dialog**/
 	 $('#subscribe').dialog({
 		autoOpen: false,
-		modal: true,
 		width: 445,
-		height: 'auto',
-		closeText: '[x]'
+		height: 500,
+		closeText: 'X'
 	 });
 	 
 	 $('#subscribeButton').click(function(){$('#subscribe').dialog('open');});
