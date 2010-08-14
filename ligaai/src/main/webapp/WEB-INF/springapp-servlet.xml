@@ -34,6 +34,7 @@
 			<props>
 				<prop key="/">homeController</prop>
 				<prop key="/microurl">microurlController</prop>
+				<prop key="/ajax/ligaai">ligaAiController</prop>
 				<prop key="/ajax/microurl">microurlController</prop>
 				<prop key="/*">expandMicrourlController</prop>
 			</props>
