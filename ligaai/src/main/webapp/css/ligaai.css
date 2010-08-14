@@ -147,25 +147,45 @@ input[type=submit]{
 
 /***Subscribe Lightbox***/
 #subscribe{
-	background: #fff;
-	border: 1px solid #ff00cc;
-	border-top: 15px solid #ff00cc;
-	border-radius: 0 0 5px 5px; -moz-border-radius: 0 0 5px 5px; -webkit-border-radius: 0 0 5px 5px;
+	background: url(/img/transparentBg.png);
+	border: 1px solid transparent;
+	border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px;
 	display: none;
 	padding: 10px;
 }
-#subscribe ul{margin-top: 10px;}
-#subscribe li{margin: 2px 0;}
-#subscribe li label{width: 100px; text-align: right; float: left; padding: 4px;}
-#subscribe #terms{
+#subscribe .content{
+	background: #fff; 
+	border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px;
+	padding: 15px;
+}
+#subscribe .content ul{margin: 20px 0 0;}
+#subscribe .content li{margin: 2px 0;}
+#subscribe .content li label{font-weight: bold;}
+#subscribe .content li input{margin-bottom: 10px;}
+#subscribe .content li input[type="submit"]{
+	backgroud-color: #ff7ce5;
+	padding: 10px;
+	font-size: 20px;
+	margin-top: 10px;
+}
+#subscribe .content #terms{
 	border: 1px solid #ccc;
 	padding: 5px;
 	height: 100px;
 	overflow: auto;
+	margin: 5px 0;
 	border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;
 }
 .ui-dialog-titlebar{height: 45px;}
-.ui-dialog-titlebar-close{position: absolute; right: 5px; top: 45px; color: #fff;}
+.ui-dialog-titlebar-close{
+	color: #ccc;
+	font-size:18px;
+	font-weight:bold;
+	position:absolute;
+	right:22px;
+	text-decoration:none;
+	top:61px;
+}
 .ui-widget-overlay{position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 .ui-widget-overlay{background: #000; opacity: .5;filter:Alpha(Opacity=50); }
 .ui-widget-shadow{margin: -8px 0 0 -8px; padding: 8px; background: #aaaaaa; opacity: .3;filter:Alpha(Opacity=30); -moz-border-radius: 8px; -webkit-border-radius: 8px; }
