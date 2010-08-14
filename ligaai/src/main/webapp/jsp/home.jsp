@@ -182,26 +182,31 @@
 		</div>
 		<!-- LIGHTBOX -->
 		<div id="subscribe">
-			<form>
-				<strong class="ligaStyle">registra<span class="baseColor">.</span>ai</strong>
-				<ul>
-					<li><label>Nome de usuario</label> <input type="text" /></li>
-					<li><label>Senha</label> <input type="text" /></li>
-					<li><label>E-mail</label> <input type="text" /></li>
-					<li id="terms">
-						<code>
-							Terms of Service
-							These Terms of Service (“Terms”) govern your access to and use of the services and Twitter’s websites (the “Services”), and any information, text, graphics, or other materials uploaded, downloaded or appearing on the Services (collectively referred to as “Content”). Your access to and use of the Services is conditioned on your acceptance of and compliance with these Terms. By accessing or using the Services you agree to be bound by these Terms.
-
-							Basic Terms
-
-							You are responsible for your use of the Services, for any content you post to the Services, and for any consequences thereof. The Content you submit, post, or display will be able to be viewed by other users of the Services and through third party services and websites (go to the account settings page to control who sees your Content). You should only provide Content that you are comfortable sharing with others under these Terms.
-						</code>
-					</li>
-					<li>Ao clicar em registrar, estou concordando com os termos de uso</li>
-					<li><input type="submit" value="registra.ai" /></li>
-				</ul>
-			</form>
+			<div class="content">
+				<form>
+					<strong class="ligaStyle">registra<span class="baseColor">.</span>ai</strong>
+					<ul>
+						<li><label>Nome de usuario</label></li>
+						<li><input type="text" /></li>
+						<li><label>Senha</label></li>
+						<li><input type="text" /></li>
+						<li><label>E-mail</label></li>
+						<li><input type="text" /></li>
+						<li id="terms">
+							<code>
+								Terms of Service
+								These Terms of Service (“Terms”) govern your access to and use of the services and Twitter’s websites (the “Services”), and any information, text, graphics, or other materials uploaded, downloaded or appearing on the Services (collectively referred to as “Content”). Your access to and use of the Services is conditioned on your acceptance of and compliance with these Terms. By accessing or using the Services you agree to be bound by these Terms.
+	
+								Basic Terms
+	
+								You are responsible for your use of the Services, for any content you post to the Services, and for any consequences thereof. The Content you submit, post, or display will be able to be viewed by other users of the Services and through third party services and websites (go to the account settings page to control who sees your Content). You should only provide Content that you are comfortable sharing with others under these Terms.
+							</code>
+						</li>
+						<li>Ao clicar em registrar, estou concordando com os termos de uso</li>
+						<li><input type="submit" value="registra.ai" /></li>
+					</ul>
+				</form>
+			</div>
 		</div>
 		
 		<!-- LIGHTBOX -->
