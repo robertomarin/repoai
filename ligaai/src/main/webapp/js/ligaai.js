@@ -8,6 +8,8 @@ if(encodeURIComponent) {
 $(function() {
 	$('#microurl').submit(function() {
 		if($.trim($('#url').val()) != ''){
+			$('#microurlmicro').removeClass('copiedSuccessfully');
+			$('#clickToCopy').html('Clique para copiar');
 			var url = '/ajax/microurl?url=' + encodeUrl($('#url').val());
 			$('#loader').show();
 			$.getJSON(url, function(data) {
@@ -18,16 +20,24 @@ $(function() {
 					$('#doneShortenUrl').fadeIn();
 					$('#microurlmicro').val(microurl);
 					$('#twitter').attr('href', 'http://twitter.com/timeline/home?status=' + microurl);
-					$('#savedChars').html($('#url').val().length - microurl.length);
+					
+					var savedChars = $('#url').val().length - microurl.length;
+					
+					if(savedChars <= 0){
+						$('#savedChars').html('nenhum :(');
+					} else{
+						$('#savedChars').html(savedChars);
+					}
 
 					//Configurando copy to clipboard
-					var clipOver = function(client){$('#clickToCopy').fadeIn();};
-			        var clipOut = function(client){$('#clickToCopy').fadeOut();};
+			        var clipComplete = function(client){
+			        	$('#microurlmicro').addClass('copiedSuccessfully');
+			        	$('#clickToCopy').html('URL Copiada');
+			        };
 
 					ZeroClipboard.setMoviePath('/js/ZeroClipboard.swf');
 					var clip = new ZeroClipboard.Client();
-					clip.addEventListener('onMouseOver', clipOver);
-					clip.addEventListener('onMouseOut', clipOut);
+					clip.addEventListener('onComplete', clipComplete);
 					clip.setText(microurl);
 					clip.glue('microurlmicro');
 				}else {
