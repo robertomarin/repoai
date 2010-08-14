@@ -13,7 +13,7 @@ $(function() {
 			var url = '/ajax/microurl?url=' + encodeUrl($('#url').val());
 			$('#loader').show();
 			$.getJSON(url, function(data) {
-				if(data.microurl.url){
+				if(data.microurl != null){
 					$('#loader, .message').hide();
 					var microurl = document.location.protocol + '//' + document.location.hostname + (document.location.port ? ':' + document.location.port : '') + '/' + data.microurl.micro;
 					
@@ -42,6 +42,7 @@ $(function() {
 					clip.glue('microurlmicro');
 				}else {
 					$('.message').html('Ocorreu um erro na hora de encurtar :(').fadeIn();
+					$('#loader').hide();
 				}
 				$('#microurlurl').html('<a href="' + data.microurl.url + '" target="_blank">' + data.microurl.url + '</a>');
 			});
