@@ -7,21 +7,40 @@ if(encodeURIComponent) {
 
 $(function() {
 	$('#microurl').submit(function() {
-		var url = '/ajax/microurl?url=' + encodeUrl($('#url').val());
-		$.getJSON(url, function(data) {
-			var microurl = document.location.protocol + '//' + document.location.hostname + '/' + data.microurl.micro;
-			$('#doneShortenUrl').fadeIn();
-			$('#microurlmicro').val(microurl);
-			
-			var clip = new ZeroClipboard.Client();
-			clip.setText( microurl );
-			clip.glue( 'microurlmicro' );
-			
-			$('#microurlurl').html('<a href="' + data.microurl.url + '" target="_blank">' + data.microurl.url + '</a>');
-		});
-		
+		if($.trim($('#url').val()) != ''){
+			var url = '/ajax/microurl?url=' + encodeUrl($('#url').val());
+			$('#loader').show();
+			$.getJSON(url, function(data) {
+				if(data.microurl.url){
+					$('#loader, .message').hide();
+					var microurl = document.location.protocol + '//' + document.location.hostname + (document.location.port ? ':' + document.location.port : '') + '/' + data.microurl.micro;
+					
+					$('#doneShortenUrl').fadeIn();
+					$('#microurlmicro').val(microurl);
+					$('#twitter').attr('href', 'http://twitter.com/timeline/home?status=' + microurl);
+					$('#savedChars').html($('#url').val().length - microurl.length);
+
+					//Configurando copy to clipboard
+					var clipOver = function(client){$('#clickToCopy').fadeIn();};
+			        var clipOut = function(client){$('#clickToCopy').fadeOut();};
+
+					ZeroClipboard.setMoviePath('/js/ZeroClipboard.swf');
+					var clip = new ZeroClipboard.Client();
+					clip.addEventListener('onMouseOver', clipOver);
+					clip.addEventListener('onMouseOut', clipOut);
+					clip.setText(microurl);
+					clip.glue('microurlmicro');
+				}else {
+					$('.message').html('Ocorreu um erro na hora de encurtar :(').fadeIn();
+				}
+				$('#microurlurl').html('<a href="' + data.microurl.url + '" target="_blank">' + data.microurl.url + '</a>');
+			});
+		}else{
+			$('.message').fadeIn();
+		}
 		return false;
 	});
+	
 	
 	$('#ligaai').submit(function() {
 		var url = '/ajax/ligaai?'
