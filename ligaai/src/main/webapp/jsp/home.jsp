@@ -33,13 +33,6 @@
 		<![endif]-->
 	</head>
 	<body class="morningBackground">
-	
-	
-
-	<script language="JavaScript">
-
-	</script>
-	
 		<div class="wrapper">
 			<header id="logo">
 				<h1 class="ligaStyle">Liga<span class="baseColor">.</span>ai</h1>
@@ -48,6 +41,7 @@
 			<!--Shorten url-->
 			<article id="shortenUrl">
 				<div class="container">
+					<div class="message hide">Insere sua url ai :)</div>
 					<header>
 						<h1>O liga.ai encurta urls para você...</h1>
 					</header>
@@ -56,16 +50,15 @@
 							<input type="text" name="url" id="url" class="shortenField" />
 							<input type="submit" value="encurta.ai" class="shortenSubmit" />
 						</form>
-						<div id="doneShortenUrl">
-							<span class="baseColor">Sua url encurtada</span> <input type="text" id="microurlmicro" readonly="readonly" />
+						<div id="loader" class="hide"><img src="/img/loader.gif" /></div>
+						<div id="doneShortenUrl" class="hide">
+							<span class="baseColor">Sua url encurtada</span>
+							<input type="text" id="microurlmicro" readonly="readonly" />
+							<div id="clickToCopy" class="hide">Clique para copiar</div>
 							<ul>
-								<li><a href="#" title="Postar essa url no Twitter">Twitte essa url</a></li>
+								<li><a href="#" title="Postar essa url no Twitter" id="twitter">Twitte essa url</a></li>
 								<li>|</li>
-								<li><span id="copyClipboard">Copy to clipboard</span></li>
-								<li>|</li>
-								<li>Você economizou <strong class="baseColor">5</strong> caracteres</li>
-								<li>|</li>
-								<li>Cliques: 56</li>
+								<li>Você economizou <strong class="baseColor" id="savedChars"></strong> caracteres</li>
 							</ul>
 						</div>
 					</section>
@@ -82,7 +75,7 @@
 					<section>
 						<form id="ligaai">
 							<!-- 
-							<div id="cloneable">
+							<div id="cloneable" class="hide">
 								<select class="contactType">
 									<option value="PHONE" selected>Telefone</option>
 									<option value="SKYPE">Skype</option>
@@ -125,7 +118,7 @@
 				<c:forEach items="${ligaais}" var="ligaai">
 					<article class="users">
 						<div class="userPic">
-							<img src="user.jpg" class="userPic" alt="Me liga ai!" />
+							<img src="" class="userPic" alt="Me liga ai!" />
 						</div>
 						<div class="userInfo">
 							<header>
