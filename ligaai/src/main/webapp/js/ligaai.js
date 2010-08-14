@@ -79,14 +79,13 @@ $(function() {
 		return false;
 	});
 	
-	$('#user-register').submit(function() {
+	$('#registerForm').submit(function() {
 		var url = '/ajax/user/create?'
 			+ 'email=' + encodeUrl($('#email').val())
 			+ '&password=' + encodeUrl($('#password').val());
 		
 		$.getJSON(url, function(data) {
 			if(data.ok) {
-				//var microurl = document.location.protocol + '//' + document.location.hostname + '/' + data.microurl.micro;
 				alert('ok');
 			} else {
 				alert('bug?');
@@ -142,7 +141,12 @@ $(function() {
 	 });
 	 $('#register').click(function(){
 		$('#loginForm').hide();
-		$('#registerForm').fadeIn();		
+		$('#registerForm').fadeIn();
+	 });
+	 $('#logo').click(function(){
+		 $('#subscribe').dialog('open');
+		 $('#loginForm').hide();
+		 $('#registerForm').fadeIn();		
 	 });
 	 $('#forgotPass').click(function(){
 		$('#loginForm').hide();

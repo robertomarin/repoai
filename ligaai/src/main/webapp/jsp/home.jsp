@@ -103,7 +103,6 @@
 							</div>
 							
 							<textarea id="message"></textarea>
-							<input type="text" id="email" />
 							<input type="submit" value="envia.ai" />
 							<p><input type="checkbox" checked="checked" /> Li e concordo com os <a href="#" title="Veja os termos de uso do liga.ai">termos de uso</a></p>						
 						</form>
@@ -187,11 +186,11 @@
 					<p>Já tem uma conta? <span id="login" class="formAction baseColor">Faça login</span></p>
 					<ul>
 						<li><label>Nome de usuário</label></li>
-						<li><input type="text" /></li>
+						<li><input id="name" type="text" /></li>
 						<li><label>Senha</label></li>
-						<li><input type="text" /></li>
+						<li><input id="password" type="password" /></li>
 						<li><label>E-mail</label></li>
-						<li><input type="text" /></li>
+						<li><input id="email" type="text" /></li>
 						<li id="terms">
 							<code>
 								Terms of Service

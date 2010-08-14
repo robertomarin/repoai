@@ -6,7 +6,7 @@
 		<to>/home.html</to>
 	</rule>
 	<rule match-type="regex">
-		<from>/([0-9a-zA-Z]+)</from>
+		<from>^/([0-9a-zA-Z]+)$</from>
 		<to>/expand/$1</to>
 	</rule>
 </urlrewrite>

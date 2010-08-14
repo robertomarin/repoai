@@ -3,7 +3,6 @@ package ai.liga.microurl.service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 import org.apache.commons.validator.GenericValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +19,6 @@ public class MicrourlService {
 	private Map<String, Microurl> cache = new HashMap<String, Microurl>();
 
 	private MicrourlDao microurlDao;
-
-	public final Pattern regexProtocol = Pattern.compile("^(https?|ftp)://");
 
 	@Autowired
 	public MicrourlService(HibernateDAOFactory hibernateDAOFactory) {
@@ -66,16 +63,8 @@ public class MicrourlService {
 	}
 
 	private Microurl save(Microurl microurl) {
-		if (!isUrl(microurl.getUrl())) {
-			return null;
-		}
-
 		microurl = microurlDao.merge(microurl);
 		return microurl;
-	}
-
-	private boolean isUrl(String url) {
-		return regexProtocol.matcher(url).find() && GenericValidator.isUrl(url);
 	}
 
 	public Microurl getExpandedUrl(String path) {
