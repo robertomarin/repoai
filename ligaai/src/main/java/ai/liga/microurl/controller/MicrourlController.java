@@ -48,7 +48,7 @@ public class MicrourlController {
 			mav.addObject("msg", 2);
 		}
 
-		return mav.addObject("microurl", microurl);
+		return mav.addObject("microurl", microurl).addObject("ok", "true");
 	}
 
 }
