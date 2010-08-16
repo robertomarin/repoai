@@ -4,7 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 
-public class Transform {
+public class ImageTransform {
 
 	public BufferedImage makeSquareCrop(BufferedImage image) {
 
@@ -23,24 +23,21 @@ public class Transform {
 	}
 
 	public BufferedImage makeResize(BufferedImage image, int width, int height) {
-		int type = image.getType() == 0 ? BufferedImage.TYPE_INT_ARGB : image
-				.getType();
-		BufferedImage bi = new BufferedImage(width, height, type);
-		Graphics2D g = bi.createGraphics();
-
+		int w = image.getWidth();
+		int h = image.getHeight();
+		BufferedImage dimg;
+		
+		dimg = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+		Graphics2D g = dimg.createGraphics();
 		g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
-				RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-
-		g.setRenderingHint(RenderingHints.KEY_RENDERING,
-				RenderingHints.VALUE_RENDER_QUALITY);
-
-		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-				RenderingHints.VALUE_ANTIALIAS_ON);
-
-		g.drawImage(image, 0, 0, width, height, null);
+				RenderingHints.VALUE_INTERPOLATION_BILINEAR);	
+		
+		g.drawImage(image, 0, 0, width, height, 0, 0, w, h, null);
 		g.dispose();
 
-		return bi;
+		return dimg;
+
 	}
+	
 
 }
