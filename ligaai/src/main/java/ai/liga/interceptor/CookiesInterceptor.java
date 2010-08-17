@@ -1,11 +1,9 @@
 package ai.liga.interceptor;
 
-import static ai.liga.util.Constants.USER;
-
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.validator.GenericValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,22 +18,20 @@ public class CookiesInterceptor implements HandlerInterceptor {
 
 	private final UserService usuarioService;
 
+	private final CookieComponent cookieComponent;
+
 	@Autowired
 	public CookiesInterceptor(UserService usuarioService, CookieComponent cookieComponent) {
 		this.usuarioService = usuarioService;
+		this.cookieComponent = cookieComponent;
 	}
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-		String userCookie = Cookies.getCookieValue(request.getCookies(), USER);
-
-		// if (!GenericValidator.isBlankOrNull(userCookie)) {
-		// }
-		// System.out.println(userCookie);
-		//
-		// User user = new User("robertomarin+legal@gmail.com");
-		// request.setAttribute("user", user);
-
+		User user = cookieComponent.getUserFromCookie(Cookies.getCookie(request.getCookies(), Constants.USER));
+		if (user != null) {
+			request.setAttribute(Constants.USER, user);
+		}
 		return true;
 	}
 
@@ -43,7 +39,11 @@ public class CookiesInterceptor implements HandlerInterceptor {
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 
-		System.out.println(request.getAttribute(Constants.USER));
+		User user = User.class.cast(request.getAttribute(Constants.USER));
+		Cookie userCookie = cookieComponent.getCookieFromUser(user);
+		if (userCookie != null) {
+			response.addCookie(userCookie);
+		}
 
 	}
 

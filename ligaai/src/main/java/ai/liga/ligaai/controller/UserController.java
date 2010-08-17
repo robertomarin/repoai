@@ -35,9 +35,11 @@ public class UserController {
 	public UserController(UserService userService) {
 		this.userService = userService;
 	}
-	
+
 	@RequestMapping("/user.html")
-	public String view() {
+	public String view(HttpServletRequest request) {
+		User user = (User) request.getAttribute(Constants.USER);
+		System.out.println(user);
 		return "user";
 	}
 
@@ -47,17 +49,17 @@ public class UserController {
 		if (result.hasErrors()) {
 			return mav.addObject("errors", result.getFieldErrors());
 		}
-		
-		if(userService.exists(user)) {
+
+		if (userService.exists(user)) {
 			result.addError(new FieldError("user", "email", "E-mail já cadastrado."));
 			return mav.addObject("errors", result.getFieldErrors());
 		}
-		
+
 		User merged = userService.save(user);
 		request.setAttribute(Constants.USER, merged);
-		
+
 		return mav.addObject(Constants.USER, merged).addObject("ok", "true");
-		
+
 	}
 
 }

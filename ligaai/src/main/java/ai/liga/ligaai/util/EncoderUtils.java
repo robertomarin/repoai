@@ -18,7 +18,7 @@ public class EncoderUtils {
 			return null;
 		}
 
-		return Base64.encodeBase64String(decodedString.getBytes());
+		return Base64.encodeBase64URLSafeString(decodedString.trim().getBytes());
 	}
 
 	public static String decodeBase64(String base64String) {

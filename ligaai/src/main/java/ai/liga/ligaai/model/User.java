@@ -11,7 +11,13 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import ai.liga.util.Constants;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
 @Entity
+@XStreamAlias(Constants.USER)
 public class User {
 
 	@Id
@@ -23,14 +29,15 @@ public class User {
 	@Size(min = 3, max = 30, message = "E-mail deve ter de 3 a 30 caracteres")
 	private String email;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(updatable = false)
-	private Calendar created;
-
 	@Column(length = 32)
 	@Size(min = 6, max = 20, message = "Senha deve ter entre 6 e 20 caracteres")
 	@NotNull(message = "Senha deve ser preenchida")
 	private String password;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(updatable = false)
+	@XStreamOmitField
+	private Calendar created;
 
 	public User() {
 	}

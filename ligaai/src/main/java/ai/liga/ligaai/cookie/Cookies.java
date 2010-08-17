@@ -175,24 +175,18 @@ public class Cookies {
 		return null;
 	}
 
-	public static String getItemValue(final Cookie cookie, final String paramName) {
+	public static String getItemValue(final Cookie cookie, final String param) {
 		if (cookie == null) {
 			return null;
 		}
 
-		String sValue = cookie.getValue();
-		String sParamNameEncoded = paramName;
-		try {
-			sParamNameEncoded = URLEncoder.encode(paramName, ENCODE);
-		} catch (UnsupportedEncodingException e) {
-			log.error("Erro ao tentar dar encode. cookieName=" + cookie.getName() + ",paramName=" + paramName + ". ", e);
-		}
-		if (sValue != null) {
-			String sElemen[] = sValue.split("&");
-			for (String element : sElemen) {
-				if ((element.indexOf(paramName) >= 0) || (element.indexOf(sParamNameEncoded) >= 0)) {
-					String sA[] = element.split("=");
-					if (sA.length == 2 && (sA[0].equals(paramName) || sA[0].equals(sParamNameEncoded))) {
+		String value = EncoderUtils.decodeUrl(cookie.getValue());
+		if (value != null) {
+			String tokens[] = value.split("[\",&]");
+			for (String token : tokens) {
+				if (token.startsWith(param)) {
+					String sA[] = token.split("=");
+					if (sA.length == 2 && (sA[0].equals(param) || sA[0].equals(param))) {
 						return sA[1];
 					}
 				}
