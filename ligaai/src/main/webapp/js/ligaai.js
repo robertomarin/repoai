@@ -52,6 +52,21 @@ $(function() {
 		return false;
 	});
 	
+	$('#message').blur(function(){
+		var mVal = $(this).val();
+		if(mVal == 'Me liga.ai ;-)' || $.trim(mVal) == ''){
+			$(this).removeClass('typeMessage');
+			 $(this).val('Me liga.ai ;-)');
+		};
+	});
+	
+	$('#message').focus(function(){
+		var mVal = $(this).val();
+		$(this).addClass('typeMessage');
+		if(mVal == 'Me liga.ai ;-)'){
+			$(this).val('');
+		};
+	});
 	
 	$('#ligaai').submit(function() {
 		var usuario;
