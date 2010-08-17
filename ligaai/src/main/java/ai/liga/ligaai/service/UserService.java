@@ -1,5 +1,7 @@
 package ai.liga.ligaai.service;
 
+import java.util.Calendar;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,11 +19,14 @@ public class UserService {
 		userDao = factory.getUserDao();
 	}
 
-	public User merge(User user) {
+	public boolean exists(User user) {
+		return userDao.findByEmail(user) != null;
+	}
+
+	public User save(User user) {
+		user.setCreated(Calendar.getInstance());
 		user = userDao.merge(user);
-		
-		
-		return null;
+		return user;
 	}
 
 }

@@ -19,8 +19,8 @@ public class User {
 	private Long id;
 
 	@Column(unique = true, nullable = false, updatable = false, length = 30)
-	@NotNull
-	@Size(min = 3, max = 30)
+	@NotNull(message = "E-mail deve ser preenchido")
+	@Size(min = 3, max = 30, message = "E-mail deve ter de 3 a 30 caracteres")
 	private String email;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -28,8 +28,8 @@ public class User {
 	private Calendar created;
 
 	@Column(length = 32)
-	@Size(min = 6, max = 20)
-	@NotNull
+	@Size(min = 6, max = 20, message = "Senha deve ter entre 6 e 20 caracteres")
+	@NotNull(message = "Senha deve ser preenchida")
 	private String password;
 
 	public User() {

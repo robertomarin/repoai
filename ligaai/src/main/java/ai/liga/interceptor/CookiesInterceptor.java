@@ -1,6 +1,6 @@
 package ai.liga.interceptor;
 
-import static ai.liga.util.Constants.USER_COOKIE;
+import static ai.liga.util.Constants.USER;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,6 +14,7 @@ import ai.liga.ligaai.cookie.CookieComponent;
 import ai.liga.ligaai.cookie.Cookies;
 import ai.liga.ligaai.model.User;
 import ai.liga.ligaai.service.UserService;
+import ai.liga.util.Constants;
 
 public class CookiesInterceptor implements HandlerInterceptor {
 
@@ -26,15 +27,14 @@ public class CookiesInterceptor implements HandlerInterceptor {
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-		String userCookie = Cookies.getCookieValue(request.getCookies(), USER_COOKIE);
+		String userCookie = Cookies.getCookieValue(request.getCookies(), USER);
 
-		if (!GenericValidator.isBlankOrNull(userCookie)) {
-		}
-		System.out.println(userCookie);
-
-		User user = new User("robertomarin+legal@gmail.com");
-		request.setAttribute("user", user);
-		
+		// if (!GenericValidator.isBlankOrNull(userCookie)) {
+		// }
+		// System.out.println(userCookie);
+		//
+		// User user = new User("robertomarin+legal@gmail.com");
+		// request.setAttribute("user", user);
 
 		return true;
 	}
@@ -42,6 +42,8 @@ public class CookiesInterceptor implements HandlerInterceptor {
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
+
+		System.out.println(request.getAttribute(Constants.USER));
 
 	}
 

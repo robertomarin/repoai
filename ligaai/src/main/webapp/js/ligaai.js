@@ -62,8 +62,6 @@ $(function() {
 				+ '&email=' + encodeUrl($('#email').val())
 				+ '&contactType=' + encodeUrl($('.contactType').val());
 			
-			
-			
 			$.getJSON(url, function(data) {
 				if(data.ok) {
 					//var microurl = document.location.protocol + '//' + document.location.hostname + '/' + data.microurl.micro;
@@ -85,10 +83,8 @@ $(function() {
 			+ '&password=' + encodeUrl($('#password').val());
 		
 		$.getJSON(url, function(data) {
-			if(data.ok) {
-				alert('ok');
-			} else {
-				alert('bug?');
+			for(i = 0; i < data.errors.length; i++) {
+				alert(data.errors[i].defaultMessage)
 			}
 		});
 		
