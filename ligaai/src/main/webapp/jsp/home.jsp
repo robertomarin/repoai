@@ -59,9 +59,8 @@
 						</header>
 						<section>
 							<form id="ligaai">
-								<!-- 
 								<div id="cloneable" class="hide">
-									<select class="contactType">
+									<select class="contactType" name="contactType">
 										<option value="PHONE" selected>Telefone</option>
 										<option value="SKYPE">Skype</option>
 										<option value="GTALK">Google Talk</option>
@@ -73,9 +72,8 @@
 									</select>
 									<input type="text" name="contact" id="contact" class="phone contactInfo" />
 								</div>
-								 -->
 								<div class="contactContainer">
-									<select class="contactType">
+									<select class="contactType" name="contactType">
 										<option value="PHONE" selected>Telefone</option>
 										<option value="SKYPE" class="skype">Skype</option>
 										<option value="GTALK">Google Talk</option>
@@ -91,6 +89,7 @@
 								<textarea id="message">Me liga.ai ;-)</textarea>
 								<p><input type="checkbox" checked="checked" /> Li e concordo com os <a href="#" title="Veja os termos de uso do liga.ai">termos de uso</a></p>						
 								<input type="submit" value="envia.ai" class="sendButton" />
+								<input type="hidden" id="email" value="jul.dsantos@gmail.com" />
 							</form>
 						</section>
 					</div>
@@ -186,16 +185,16 @@
 		<!-- LIGHTBOX -->
 		<div id="subscribe">
 			<div class="content">
-				<form id="registerForm">
+				<form id="u_criar">
 					<strong class="ligaStyle">registra<span class="baseColor">.</span>ai</strong>
 					<p>Já tem uma conta? <span id="login" class="formAction baseColor">Faça login</span></p>
 					<ul>
 						<li><label>Nome de usuário</label></li>
 						<li><input id="name" type="text" /></li>
-						<li><label>Senha</label></li>
-						<li><input id="password" type="password" /></li>
 						<li><label>E-mail</label></li>
 						<li><input id="email" type="text" /></li>
+						<li><label>Senha</label></li>
+						<li><input id="password" type="password" /></li>
 						<li id="terms">
 							<code>
 								Terms of Service
@@ -210,12 +209,12 @@
 						<li><input type="submit" value="registra.ai" /></li>
 					</ul>
 				</form>
-				<form id="loginForm" class="hide">
+				<form id="u_entrar" class="hide">
 					<strong class="ligaStyle">loga<span class="baseColor">.</span>ai</strong>
 					<p>Não tem uma conta? <span id="register" class="formAction baseColor">registre-se</span></p>
 					<ul>
-						<li><label>Nome de usuário</label></li>
-						<li><input type="text" /></li>
+						<li><label>E-mail</label></li>
+						<li><input type="text" id="email" /></li>
 						<li><label>Senha</label></li>
 						<li><input type="text" /></li>
 						<li><span id="forgotPass" class="formAction baseColor">Esqueceu sua senha?</span></li>
