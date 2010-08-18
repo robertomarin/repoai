@@ -1,4 +1,4 @@
-package ai.liga.ligaai.cookie;
+package ai.liga.cookie;
 
 import static ai.liga.util.Constants.ENCODE;
 

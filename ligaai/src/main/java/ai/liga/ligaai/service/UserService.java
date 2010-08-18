@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ai.liga.dao.HibernateDAOFactory;
-import ai.liga.ligaai.dao.UserDao;
 import ai.liga.ligaai.model.User;
+import ai.liga.user.dao.UserDao;
 
 @Service
 public class UserService {

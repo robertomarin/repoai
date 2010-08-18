@@ -1,4 +1,4 @@
-package ai.liga.ligaai.dao;
+package ai.liga.user.dao;
 
 import java.util.List;
 

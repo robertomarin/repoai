@@ -1,4 +1,4 @@
-package ai.liga.ligaai.cookie;
+package ai.liga.cookie;
 
 import javax.servlet.http.Cookie;
 

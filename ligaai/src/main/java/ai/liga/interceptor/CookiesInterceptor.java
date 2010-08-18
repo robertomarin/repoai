@@ -8,10 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import ai.liga.ligaai.cookie.CookieComponent;
-import ai.liga.ligaai.cookie.Cookies;
+import ai.liga.cookie.CookieComponent;
+import ai.liga.cookie.Cookies;
 import ai.liga.ligaai.model.User;
 import ai.liga.ligaai.service.UserService;
+import ai.liga.util.$;
 import ai.liga.util.Constants;
 
 public class CookiesInterceptor implements HandlerInterceptor {
@@ -30,7 +31,7 @@ public class CookiesInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		User user = cookieComponent.getUserFromCookie(Cookies.getCookie(request.getCookies(), Constants.USER));
 		if (user != null) {
-			request.setAttribute(Constants.USER, user);
+			$.setUserOnRequest(request, user);
 		}
 		return true;
 	}
@@ -39,7 +40,7 @@ public class CookiesInterceptor implements HandlerInterceptor {
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 
-		User user = User.class.cast(request.getAttribute(Constants.USER));
+		User user = $.getUserFromRequest(request);
 		Cookie userCookie = cookieComponent.getCookieFromUser(user);
 		if (userCookie != null) {
 			response.addCookie(userCookie);

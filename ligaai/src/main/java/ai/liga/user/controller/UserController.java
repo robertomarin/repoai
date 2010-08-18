@@ -1,4 +1,4 @@
-package ai.liga.ligaai.controller;
+package ai.liga.user.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ai.liga.ligaai.model.User;
 import ai.liga.ligaai.service.UserService;
+import ai.liga.util.$;
 import ai.liga.util.Constants;
 
 @Controller
@@ -36,6 +37,7 @@ public class UserController {
 
 	@RequestMapping("/u/registrar")
 	public String registrar(HttpServletRequest request) {
+		$.getUserFromRequest(request);
 		User user = (User) request.getAttribute(Constants.USER);
 		System.out.println(user);
 		return "/u/registrar";
@@ -54,7 +56,7 @@ public class UserController {
 			return mav.addObject("errors", result.getFieldErrors());
 		}
 
-		request.setAttribute(Constants.USER, user);
+		$.setUserOnRequest(request, user);
 		return mav.addObject(Constants.USER, user).addObject("ok", "true");
 	}
 
@@ -71,7 +73,7 @@ public class UserController {
 		}
 
 		user = userService.save(user);
-		request.setAttribute(Constants.USER, user);
+		$.setUserOnRequest(request, user);
 		return mav.addObject(Constants.USER, user).addObject("ok", "true");
 	}
 
