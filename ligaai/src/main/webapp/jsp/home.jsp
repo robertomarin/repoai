@@ -14,20 +14,6 @@
 		<link type="image/x-icon" href="/img/favicon.ico" rel="shortcut icon" />
 		<!--css-->
 		<link rel="stylesheet" href="/css/ligaai.css" />
-		<!--js-->
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
-		<script type="text/javascript"> 
-			if(typeof jQuery != 'function'){
-				var jHead=document.createElement('script'); 
-				jHead.type='text/javascript'; 
-				jHead.src='/js/jquery-1.4.2.min.js" />'; 
-				document.getElementsByTagName('head')[0].appendChild(jHead);
-			}
-		</script>
-		<script language="javascript" src="/js/maskinput.js"></script>
-		<script type="text/javascript" src="/js/ZeroClipboard.js"></script>
-		<script language="javascript" src="/js/ligaai.js"></script>
-		<script language="javascript" src="/js/jquery-ui-1.8.2.custom.min.js"></script>
 		<!--[if lt IE 9]>
 			<script src="/js/html5.js"></script>
 		<![endif]-->
@@ -248,8 +234,22 @@
 				</form>
 			</div>
 		</div>
-		
 		<!-- LIGHTBOX -->
+		
+		<!--js-->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+		<script type="text/javascript"> 
+			if(typeof jQuery != 'function'){
+				var jHead=document.createElement('script'); 
+				jHead.type='text/javascript'; 
+				jHead.src='/js/jquery-1.4.2.min.js" />'; 
+				document.getElementsByTagName('head')[0].appendChild(jHead);
+			}
+		</script>
+		<script language="javascript" src="/js/maskinput.js"></script>
+		<script type="text/javascript" src="/js/ZeroClipboard.js"></script>
+		<script language="javascript" src="/js/ligaai.js"></script>
+		<script language="javascript" src="/js/jquery-ui-1.8.2.custom.min.js"></script>
 		<!--GA-->
 		<script type="text/javascript">
 			 var _gaq = _gaq || [];
