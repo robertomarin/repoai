@@ -223,7 +223,7 @@
 						<li><input type="submit" value="loga.ai" /></li>
 					</ul>
 				</form>
-				<form id="reserForm" class="hide">
+				<form id="resetForm" class="hide">
 					<strong class="ligaStyle">lembra<span class="baseColor">.</span>ai</strong>
 					<p>Nós enviaremos um e-mail de como criar uma nova senha</p>
 					<ul>
