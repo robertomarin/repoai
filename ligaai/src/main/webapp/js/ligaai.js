@@ -148,7 +148,11 @@ $(function() {
 		closeText: 'X',
 		show: 'slow',
 		open: function() {
-			$('.ui-widget-overlay').click(function(){$('#subscribe').dialog('close');})	
+			$('.ui-widget-overlay').click(function(){$('#subscribe').dialog('close');});
+		},
+	 	close: function() {
+			$('#loginForm, #resetForm').hide();
+			$('#registerForm').fadeIn();
 		}
 	});
 
@@ -164,11 +168,10 @@ $(function() {
 	 $('#logo').click(function(){
 		 $('#subscribe').dialog('open');
 		 $('#loginForm').hide();
-		 $('#registerForm').fadeIn();		
+		 $('#registerForm').fadeIn();
 	 });
 	 $('#forgotPass').click(function(){
-		$('#loginForm').hide();
-		$('#registerForm').hide();
-		$('#reserForm').fadeIn();		
+		$('#registerForm, #loginForm').hide();
+		$('#resetForm').fadeIn();		
 	 });
 });
