@@ -99,7 +99,7 @@ $(function() {
 		
 		$.getJSON(url, function(data) {
 			for(i = 0; i < data.errors.length; i++) {
-				alert(data.errors[i].defaultMessage)
+				alert(data.errors[i].defaultMessage);
 			}
 		});
 		
@@ -113,7 +113,7 @@ $(function() {
 		
 		$.getJSON(url, function(data) {
 			for(i = 0; i < data.errors.length; i++) {
-				alert(data.errors[i].defaultMessage)
+				alert(data.errors[i].defaultMessage);
 			}
 		});
 		
