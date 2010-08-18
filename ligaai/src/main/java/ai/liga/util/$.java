@@ -2,7 +2,7 @@ package ai.liga.util;
 
 import javax.servlet.http.HttpServletRequest;
 
-import ai.liga.ligaai.model.User;
+import ai.liga.user.model.User;
 
 public class $ {
 
