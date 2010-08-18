@@ -94,8 +94,8 @@ $(function() {
 	
 	$('#u_criar').submit(function() {
 		var url = '/u/criar?'
-			+ 'email=' + encodeUrl($('#email').val())
-			+ '&password=' + encodeUrl($('#password').val());
+			+ 'email=' + encodeUrl($(this).find('#email').val())
+			+ '&password=' + encodeUrl($(this).find('#password').val());
 		
 		$.getJSON(url, function(data) {
 			for(i = 0; i < data.errors.length; i++) {
@@ -108,8 +108,8 @@ $(function() {
 	
 	$('#u_entrar').submit(function() {
 		var url = '/u/entrar?'
-			+ 'email=' + encodeUrl($('#email').val())
-			+ '&password=' + encodeUrl($('#password').val());
+			+ 'email=' + encodeUrl($(this).find('#email').val())
+			+ '&password=' + encodeUrl($(this).find('#password').val());
 		
 		$.getJSON(url, function(data) {
 			for(i = 0; i < data.errors.length; i++) {
@@ -132,10 +132,10 @@ $(function() {
 	  * Input clone
 	 */
 
-	 /*$('.contactInfo').focus(function(){
+	 $('.contactInfo').focus(function(){
 		$('#cloneable').clone(true).removeAttr("id").fadeIn(350).insertAfter($(this).parent());
 		$(this).unbind('focus');
-	 });*/
+	 });
 	 
 	 /*!
 	  * Input masking
@@ -165,27 +165,27 @@ $(function() {
 			$('.ui-widget-overlay').click(function(){$('#subscribe').dialog('close');});
 		},
 	 	close: function() {
-			$('#loginForm, #resetForm').hide();
-			$('#registerForm').fadeIn();
+			$('#u_entrar, #resetForm').hide();
+			$('#u_criar').fadeIn();
 		}
 	});
 
 	 
 	 $('#login').click(function(){
-		$('#registerForm').hide();
-		$('#loginForm').fadeIn();		
+		$('#u_criar').hide();
+		$('#u_entrar').fadeIn();		
 	 });
 	 $('#register').click(function(){
-		$('#loginForm').hide();
-		$('#registerForm').fadeIn();
+		$('#u_entrar').hide();
+		$('#u_criar').fadeIn();
 	 });
 	 $('#logo').click(function(){
 		 $('#subscribe').dialog('open');
-		 $('#loginForm').hide();
-		 $('#registerForm').fadeIn();
+		 $('#u_entrar').hide();
+		 $('#u_criar').fadeIn();
 	 });
 	 $('#forgotPass').click(function(){
-		$('#registerForm, #loginForm').hide();
+		$('#u_criar, #u_entrar').hide();
 		$('#resetForm').fadeIn();		
 	 });
 });
