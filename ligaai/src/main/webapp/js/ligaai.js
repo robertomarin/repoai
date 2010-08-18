@@ -140,11 +140,18 @@ $(function() {
 	 
 	 /**Subscribe dialog**/
 	 $('#subscribe').dialog({
+		bgiframe: true,
 		autoOpen: false,
 		width: 445,
 		height: 'auto',
-		closeText: 'X'
-	 });
+		modal: true,
+		closeText: 'X',
+		show: 'slow',
+		open: function() {
+			$('.ui-widget-overlay').click(function(){$('#subscribe').dialog('close');})	
+		}
+	});
+
 	 
 	 $('#login').click(function(){
 		$('#registerForm').hide();
