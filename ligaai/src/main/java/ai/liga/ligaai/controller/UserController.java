@@ -1,7 +1,5 @@
 package ai.liga.ligaai.controller;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -36,15 +34,32 @@ public class UserController {
 		this.userService = userService;
 	}
 
-	@RequestMapping("/user.html")
-	public String view(HttpServletRequest request) {
+	@RequestMapping("/u/registrar")
+	public String registrar(HttpServletRequest request) {
 		User user = (User) request.getAttribute(Constants.USER);
 		System.out.println(user);
-		return "user";
+		return "/u/registrar";
 	}
 
-	@RequestMapping("/ajax/user/create")
-	public ModelAndView register(@Valid User user, BindingResult result, HttpServletRequest request) {
+	@RequestMapping("/u/entrar")
+	public ModelAndView entrar(@Valid User user, BindingResult result, HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView(new JsonView());
+		if (result.hasErrors()) {
+			return mav.addObject("errors", result.getFieldErrors());
+		}
+
+		user = userService.login(user);
+		if (user == null) {
+			result.addError(new FieldError("user", "email", "E-mail ou senha inválidos."));
+			return mav.addObject("errors", result.getFieldErrors());
+		}
+
+		request.setAttribute(Constants.USER, user);
+		return mav.addObject(Constants.USER, user).addObject("ok", "true");
+	}
+
+	@RequestMapping("/u/criar")
+	public ModelAndView criar(@Valid User user, BindingResult result, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView(new JsonView());
 		if (result.hasErrors()) {
 			return mav.addObject("errors", result.getFieldErrors());
@@ -55,11 +70,9 @@ public class UserController {
 			return mav.addObject("errors", result.getFieldErrors());
 		}
 
-		User merged = userService.save(user);
-		request.setAttribute(Constants.USER, merged);
-
-		return mav.addObject(Constants.USER, merged).addObject("ok", "true");
-
+		user = userService.save(user);
+		request.setAttribute(Constants.USER, user);
+		return mav.addObject(Constants.USER, user).addObject("ok", "true");
 	}
 
 }

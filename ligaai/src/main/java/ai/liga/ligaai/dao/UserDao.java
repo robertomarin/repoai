@@ -36,4 +36,19 @@ public class UserDao extends GenericHibernateDAO<User> {
 
 		return !list.isEmpty() ? list.get(0) : null;
 	}
+
+	public User login(User user) {
+		if (GenericValidator.isBlankOrNull(user.getEmail())) {
+			return null;
+		}
+
+		Criteria c = super.getCriteria(true);
+		c.add(Restrictions.eq("email", user.getEmail()));
+		c.add(Restrictions.eq("password", user.getPassword()));
+
+		@SuppressWarnings("unchecked")
+		List<User> list = c.list();
+
+		return !list.isEmpty() ? list.get(0) : null;
+	}
 }

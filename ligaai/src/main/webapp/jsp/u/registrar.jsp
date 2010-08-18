@@ -11,7 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form id="registerForm">
+	<form id="u_registrar	">
 		<strong class="ligaStyle">registra<span class="baseColor">.</span>ai</strong>
 		<p>Já tem uma conta? <span id="login" class="formAction baseColor">Faça login</span></p>
 		<ul>

@@ -33,7 +33,7 @@ public class LigaAiController {
 		this.ligaAiUtils = ligaAiUtils;
 	}
 
-	@RequestMapping("/ajax/ligaai")
+	@RequestMapping("/ligaai/criar")
 	public ModelAndView post(@RequestParam(required = false) String message,
 			@RequestParam(required = false) String contact, @RequestParam(required = false) String contactType,
 			String email, HttpServletRequest request) {

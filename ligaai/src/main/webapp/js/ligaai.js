@@ -71,7 +71,7 @@ $(function() {
 	$('#ligaai').submit(function() {
 		var usuario;
 		if(usuario != null){
-			var url = '/ajax/ligaai?'
+			var url = '/ligaai/criar?'
 				+ 'message=' + encodeUrl($('#message').val())
 				+ '&contact=' + encodeUrl($('#contact').val())
 				+ '&email=' + encodeUrl($('#email').val())
@@ -92,8 +92,22 @@ $(function() {
 		return false;
 	});
 	
-	$('#registerForm').submit(function() {
-		var url = '/ajax/user/create?'
+	$('#u_criar').submit(function() {
+		var url = '/u/criar?'
+			+ 'email=' + encodeUrl($('#email').val())
+			+ '&password=' + encodeUrl($('#password').val());
+		
+		$.getJSON(url, function(data) {
+			for(i = 0; i < data.errors.length; i++) {
+				alert(data.errors[i].defaultMessage)
+			}
+		});
+		
+		return false;
+	});
+	
+	$('#u_entrar').submit(function() {
+		var url = '/u/entrar?'
 			+ 'email=' + encodeUrl($('#email').val())
 			+ '&password=' + encodeUrl($('#password').val());
 		

@@ -24,7 +24,6 @@ public class MicrourlDao extends GenericHibernateDAO<Microurl> {
 
 		microurl.setCreated(Calendar.getInstance());
 		microurl = (Microurl) session.merge(microurl);
-
 		
 		return microurl;
 	}

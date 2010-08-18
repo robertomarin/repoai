@@ -29,22 +29,4 @@
 	
 	<bean name="jsonView" class="net.sf.json.spring.web.servlet.view.JsonView" />
 
-<!--	<bean id="handlerMapping"-->
-<!--		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">-->
-<!--		<property name="mappings">-->
-<!--			<props>-->
-<!--				<prop key="/microurl">microurlController</prop>-->
-<!--				<prop key="/ajax/ligaai">ligaAiController</prop>-->
-<!--				<prop key="/ajax/microurl">microurlController</prop>-->
-<!--				<prop key="/ajax/user/create">userController</prop>-->
-<!--				<prop key="/*">expandMicrourlController</prop>-->
-<!--			</props>-->
-<!--		</property>-->
-<!--		<property name="interceptors">-->
-<!--			<list>-->
-<!--				<bean class="ai.liga.interceptor.CookiesInterceptor" />-->
-<!--			</list>-->
-<!--		</property>-->
-<!--	</bean>-->
-
 </beans>
