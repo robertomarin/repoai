@@ -7,8 +7,8 @@ import org.apache.commons.validator.GenericValidator;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
-import ai.liga.ligaai.model.User;
 import ai.liga.ligaai.util.EncoderUtils;
+import ai.liga.user.model.User;
 import ai.liga.util.Constants;
 import ai.liga.xstream.XStreamWrapper;
 

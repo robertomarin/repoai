@@ -7,10 +7,10 @@ import org.springframework.stereotype.Component;
 
 import ai.liga.ligaai.dao.LigaAiDao;
 import ai.liga.ligaai.model.LigaAi;
-import ai.liga.ligaai.model.User;
 import ai.liga.microurl.dao.MicrourlDao;
 import ai.liga.microurl.model.Microurl;
 import ai.liga.user.dao.UserDao;
+import ai.liga.user.model.User;
 
 /**
  * @author marin

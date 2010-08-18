@@ -16,9 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
 import ai.liga.ligaai.model.Contact;
 import ai.liga.ligaai.model.ContactType;
 import ai.liga.ligaai.model.LigaAi;
-import ai.liga.ligaai.model.User;
 import ai.liga.ligaai.service.LigaAiService;
 import ai.liga.ligaai.util.LigaAiUtils;
+import ai.liga.user.model.User;
 
 @Controller
 public class LigaAiController {

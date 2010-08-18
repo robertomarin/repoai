@@ -20,6 +20,8 @@ import javax.persistence.TemporalType;
 
 import org.apache.commons.validator.GenericValidator;
 
+import ai.liga.user.model.User;
+
 @Entity
 public class LigaAi {
 

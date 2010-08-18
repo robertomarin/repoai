@@ -1,4 +1,4 @@
-package ai.liga.ligaai.model;
+package ai.liga.user.model;
 
 import java.util.Calendar;
 

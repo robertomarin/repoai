@@ -14,7 +14,7 @@ import javax.xml.transform.stream.StreamResult;
 import org.junit.Test;
 import org.w3c.dom.Document;
 
-import ai.liga.ligaai.model.User;
+import ai.liga.user.model.User;
 
 public class XStreamWrapperTest {
 
