@@ -34,6 +34,16 @@ public class LigaAiController {
 	}
 
 	@RequestMapping("/ligaai/criar")
+	public ModelAndView post(LigaAi ligaAi) {
+		ModelAndView mav = new ModelAndView(new JsonView());
+		
+		System.out.println(ligaAi.getMessage());
+		System.out.println(ligaAi.getContacts().size());
+		
+		return mav;
+	}
+	
+	@RequestMapping("/ligaai/criar")
 	public ModelAndView post(@RequestParam(required = false) String message,
 			@RequestParam(required = false) String contact, @RequestParam(required = false) String contactType,
 			String email, HttpServletRequest request) {

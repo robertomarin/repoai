@@ -95,7 +95,7 @@ $(function() {
 	$('#u_criar').submit(function() {
 		var url = '/u/criar?'
 			+ 'name=' + encodeUrl($(this).find('#name').val())
-			+ 'email=' + encodeUrl($(this).find('#email').val())
+			+ '&email=' + encodeUrl($(this).find('#email').val())
 			+ '&password=' + encodeUrl($(this).find('#password').val());
 		
 		$.getJSON(url, function(data) {

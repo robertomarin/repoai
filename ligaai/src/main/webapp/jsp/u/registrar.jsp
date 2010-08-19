@@ -11,16 +11,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form id="u_registrar">
+	<form id="u_criar">
 		<strong class="ligaStyle">registra<span class="baseColor">.</span>ai</strong>
 		<p>Já tem uma conta? <span id="login" class="formAction baseColor">Faça login</span></p>
 		<ul>
 			<li><label>Nome de usuário</label></li>
 			<li><input id="name" type="text" /></li>
-			<li><label>Senha</label></li>
-			<li><input id="password" type="password" /></li>
 			<li><label>E-mail</label></li>
 			<li><input id="email" type="text" /></li>
+			<li><label>Senha</label></li>
+			<li><input id="password" type="password" /></li>
 			<li id="terms">
 				<code>
 					Terms of Service
