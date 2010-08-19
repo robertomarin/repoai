@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import ai.liga.ligaai.service.UserService;
 import ai.liga.user.model.User;
+import ai.liga.user.service.UserService;
 import ai.liga.util.Constants;
 
 @Controller
