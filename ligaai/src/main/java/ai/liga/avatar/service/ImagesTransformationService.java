@@ -14,10 +14,6 @@ import ai.liga.image.ImageTransform;
 
 @Service
 public class ImagesTransformationService {
-	
-	public ImagesTransformationService() {
-		System.out.println("abacaxi");
-	}
 
 	private static Logger logger = Logger
 			.getLogger(ImagesTransformationService.class);
@@ -25,25 +21,20 @@ public class ImagesTransformationService {
 	@Autowired
 	private ImageTransform transform;
 
-	public boolean makeTransfomations(int resizeX, int resizeY, MultipartFile mpf) {
+	public BufferedImage makeTransfomations(int resizeX, int resizeY, MultipartFile mpf) {
 
 		BufferedImage bi;
 		try {
 			bi = ImageIO.read(mpf.getInputStream());
 		} catch (IOException e) {
 			logger.error("Erro ao ler a imagem a partir do inputStream", e);
-			return false;
+			return null;
 		}
 
 		BufferedImage imageCrop = transform.makeSquareCrop(bi);
-		BufferedImage resize = transform
+		return transform
 				.makeResize(imageCrop, resizeX, resizeY);
 
-		if (resize != null) {
-			//TODO gravar em algum lugar do disco isto dak
-			return true;
-		}
-		return false;
 	}
 
 }
