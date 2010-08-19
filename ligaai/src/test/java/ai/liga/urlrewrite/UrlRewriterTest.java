@@ -1,9 +1,8 @@
 package ai.liga.urlrewrite;
 
-import static junit.framework.Assert.*;
+import static junit.framework.Assert.assertFalse;
+import static junit.framework.Assert.assertTrue;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.regex.Pattern;
 
 import org.junit.Test;

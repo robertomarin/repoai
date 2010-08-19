@@ -11,7 +11,7 @@ public class $ {
 	}
 
 	public static void setUserOnRequest(HttpServletRequest request, User user) {
-		request.setAttribute(Constants.USER, Constants.USER);
+		request.setAttribute(Constants.USER, user);
 	}
 
 }

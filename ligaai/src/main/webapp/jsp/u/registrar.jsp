@@ -11,7 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form id="u_registrar	">
+	<form id="u_registrar">
 		<strong class="ligaStyle">registra<span class="baseColor">.</span>ai</strong>
 		<p>Já tem uma conta? <span id="login" class="formAction baseColor">Faça login</span></p>
 		<ul>
@@ -32,6 +32,18 @@
 				</code>
 			</li>
 			<li>Ao clicar em registrar, estou concordando com os termos de uso</li>
+			<li><input type="submit" value="registra.ai" /></li>
+		</ul>
+	</form>
+	
+	<form id="u_entrar">
+		<strong class="ligaStyle">registra<span class="baseColor">.</span>ai</strong>
+		<p>Já tem uma conta? <span id="login" class="formAction baseColor">Faça login</span></p>
+		<ul>
+			<li><label>E-mail</label></li>
+			<li><input id="email" type="text" /></li>
+			<li><label>Senha</label></li>
+			<li><input id="password" type="password" /></li>
 			<li><input type="submit" value="registra.ai" /></li>
 		</ul>
 	</form>

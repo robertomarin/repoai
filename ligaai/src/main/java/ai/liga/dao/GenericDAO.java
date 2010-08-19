@@ -19,7 +19,7 @@ public class GenericDAO<T> {
 
 	private final SessionFactory sessionFactory = null;
 
-	public GenericDAO(final Class persistentClass) {
+	public GenericDAO(final Class<T> persistentClass) {
 		this.persistentClass = persistentClass;
 	}
 
