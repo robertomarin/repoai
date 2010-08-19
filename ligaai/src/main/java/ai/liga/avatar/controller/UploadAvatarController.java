@@ -1,5 +1,12 @@
 package ai.liga.avatar.controller;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +22,9 @@ public class UploadAvatarController {
 
 	@Autowired
 	private ImagesTransformationService imageService;
+	
+	private static Logger logger = Logger
+	.getLogger(UploadAvatarController.class);
 
 	@RequestMapping(value = "/uploadAvatar.html", method = RequestMethod.POST)
 	public ModelAndView handleFormUpload(
@@ -32,8 +42,8 @@ public class UploadAvatarController {
 
 			}
 
-			imageService.makeTransfomations(200, 200, file);
-			mav.addObject("msg", "Recebemos seu avatar.");
+			saveImage(imageService.makeTransfomations(200, 200, file));
+			mav.addObject("msg", "Legal agora você tem um avatar no Ligaai");
 
 			return mav;
 		} else {
@@ -47,6 +57,18 @@ public class UploadAvatarController {
 	@RequestMapping("/uploadView.html")
 	public ModelAndView mountViewUp() {
 		return new ModelAndView("avatar");
+	}
+
+	private void saveImage(BufferedImage image) {
+		// TODO gravar em algum lugar do disco isto dak
+		/** var/www/html/ligaai/img-avatar */
+		try {
+			ImageIO.write(image, "jpg", new File("/teste.jpg"));
+		} catch (IOException e) {
+			//TODO Alterar aqui com as informacoes do usuario
+			logger.error("Erro ao gravar a imagem do user: "+1234, e);
+		}
+
 	}
 
 }

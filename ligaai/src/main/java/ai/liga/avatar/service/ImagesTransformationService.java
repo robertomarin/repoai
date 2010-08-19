@@ -21,7 +21,8 @@ public class ImagesTransformationService {
 	@Autowired
 	private ImageTransform transform;
 
-	public BufferedImage makeTransfomations(int resizeX, int resizeY, MultipartFile mpf) {
+	public BufferedImage makeTransfomations(int resizeX, int resizeY,
+			MultipartFile mpf) {
 
 		BufferedImage bi;
 		try {
@@ -31,9 +32,8 @@ public class ImagesTransformationService {
 			return null;
 		}
 
-		BufferedImage imageCrop = transform.makeSquareCrop(bi);
-		return transform
-				.makeResize(imageCrop, resizeX, resizeY);
+		return transform.makeResize(transform.makeSquareCrop(bi), resizeX,
+				resizeY);
 
 	}
 
