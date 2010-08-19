@@ -10,8 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ai.liga.cookie.CookieComponent;
 import ai.liga.cookie.Cookies;
-import ai.liga.ligaai.service.UserService;
 import ai.liga.user.model.User;
+import ai.liga.user.service.UserService;
 import ai.liga.util.$;
 import ai.liga.util.Constants;
 
