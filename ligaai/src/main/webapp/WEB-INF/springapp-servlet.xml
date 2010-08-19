@@ -27,6 +27,12 @@
 		<property name="suffix" value=".jsp"/>
 	</bean>
 	
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="100000" />
+		<!-- Max size in bytes. -->
+	</bean>
+	
 	<bean name="jsonView" class="net.sf.json.spring.web.servlet.view.JsonView" />
 
 </beans>
