@@ -33,6 +33,11 @@ public class LigaAiController {
 		this.ligaAiUtils = ligaAiUtils;
 	}
 
+	@RequestMapping("/ligaai.html")
+	public String view() {
+		return "ligaai";
+	}
+	
 	@RequestMapping("/ligaai/criar")
 	public ModelAndView post(LigaAi ligaAi) {
 		ModelAndView mav = new ModelAndView(new JsonView());

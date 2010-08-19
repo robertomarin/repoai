@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ai.liga.cookie.CookieComponent;
 import ai.liga.cookie.Cookies;
+import ai.liga.cookie.InvalidUserException;
 import ai.liga.user.model.User;
 import ai.liga.user.service.UserService;
 import ai.liga.util.$;
@@ -28,8 +29,18 @@ public class CookiesInterceptor implements HandlerInterceptor {
 	}
 
 	@Override
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-		User user = cookieComponent.getUserFromCookie(Cookies.getCookie(request.getCookies(), Constants.USER));
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+		User user;
+		try {
+			user = cookieComponent.getUserFromCookie(Cookies.getCookie(request.getCookies(), Constants.USER));
+		} catch (InvalidUserException e) {
+			Cookie ck = new Cookie(Constants.USER, "");
+			ck.setDomain(".liga.ai");
+			ck.setMaxAge(0);
+			ck.setPath("/");
+			response.addCookie(ck);
+			return false;
+		}
 		if (user != null) {
 			$.setUserOnRequest(request, user);
 		}
