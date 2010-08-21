@@ -11,11 +11,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/springapp-servlet.xml" })
 public class GeraTabelas {
 
-	@Test
+	 @Test
 	public void geraTabelas() {
 		AnnotationConfiguration ac = new AnnotationConfiguration();
 		ac.configure();
 		// new SchemaUpdate(ac).execute(true, true);
-		new SchemaExport(ac).create(true, true);
+		// new SchemaExport(ac).create(true, true);
 	}
 }

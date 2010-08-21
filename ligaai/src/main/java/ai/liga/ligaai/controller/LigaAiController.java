@@ -3,6 +3,7 @@ package ai.liga.ligaai.controller;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import net.sf.json.spring.web.servlet.view.JsonView;
 
@@ -37,17 +38,21 @@ public class LigaAiController {
 	public String view() {
 		return "ligaai";
 	}
-	
-	@RequestMapping("/ligaai/criar")
-	public ModelAndView post(LigaAi ligaAi) {
+
+	@RequestMapping("/ligaai/criar2")
+	public ModelAndView post(@Valid LigaAi ligaAi, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView(new JsonView());
-		
 		System.out.println(ligaAi.getMessage());
-		System.out.println(ligaAi.getContacts().size());
+		System.out.println(ligaAi.getUser().getEmail());
 		
+		if (ligaAi.getContacts() != null) {
+			System.out.println(ligaAi.getContacts().get(0).getContent());
+			System.out.println(ligaAi.getContacts().get(0).getType());
+		}
+
 		return mav;
 	}
-	
+
 	@RequestMapping("/ligaai/criar")
 	public ModelAndView post(@RequestParam(required = false) String message,
 			@RequestParam(required = false) String contact, @RequestParam(required = false) String contactType,

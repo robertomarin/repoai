@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 
 import ai.liga.util.Constants;
@@ -36,6 +37,7 @@ public class User {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(updatable = false)
+	@Null
 	@XStreamOmitField
 	private Calendar created;
 

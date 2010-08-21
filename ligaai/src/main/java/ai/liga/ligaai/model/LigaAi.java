@@ -17,6 +17,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 
 import org.apache.commons.validator.GenericValidator;
 
@@ -29,6 +31,7 @@ public class LigaAi {
 	@GeneratedValue
 	private Long id;
 
+	@Null(message = "Usuário não deveria vir preenchido.")
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "user_id")
 	private User user;
@@ -37,9 +40,11 @@ public class LigaAi {
 	@JoinTable(joinColumns = { @JoinColumn(name = "ligaai_id") }, inverseJoinColumns = { @JoinColumn(name = "contact_id") })
 	private List<Contact> contacts;
 
+	@NotNull(message = "Não foi enviada nenhuma mensagem.")
 	@Column(length = 200)
 	private String message;
 
+	@Null(message = "Created não deveria vir preenchido.")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(updatable = false)
 	private Calendar created;
@@ -47,6 +52,7 @@ public class LigaAi {
 	@Column(name = "remoteaddress", length = 100, updatable = false)
 	private String remoteAddress;
 
+	@Null(message = "Tags não deveriam vir preenchidas.")
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	@JoinTable(joinColumns = { @JoinColumn(name = "ligaai_id") }, inverseJoinColumns = { @JoinColumn(name = "tag_id") })
 	private Set<Tag> tags;
