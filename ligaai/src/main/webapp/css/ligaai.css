@@ -4,10 +4,39 @@ html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address
 /**Common properties**/
 body{color: #3b3b3b; font-family: Helvetica, Arial; font-size: 12px;}
 .morningBackground{background: url(/img/bg_1.jpg) no-repeat top center;}
-.wrapper{margin: 0 auto; width: 880px;}
+.wrapper{margin: 0 auto; width: 835px;}
 .hide{display: none;}
-
+header{position: relative;}
 header#logo{height: 220px; padding-top: 10px;}
+header ul#login{
+	background: url(/img/transparentBg.png);
+	border: 1px solid transparent;
+	border-radius: 0 0 8px 8px; 
+	-moz-border-radius: 0 0 8px 8px;
+	-webkit-border-radius: 0 0 8px 8px;
+	color: #fff;
+	font-size: 11px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 195px;
+	padding: 10px;
+}
+header ul#login li{clear: both; margin: 5px 0; width: 100%; float: left;}
+header ul#login label{display: block; float: left; width: 40px;}
+header ul#login input.fill{
+	border: 0;
+	border-radius: 0; 
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	padding: 4px;
+	float: left;
+	width: 80px;
+	margin-right: 5px;
+	font-size: 11px;
+	font-weight: bold;
+	color: #646464;
+}
 footer{
 	background: #ff71e3;
 	color: #fff;
@@ -89,7 +118,7 @@ input[type=submit]{
 #shortenUrl #loader{margin: 15px auto; width:16px;}
 #shortenUrl section{margin-top: 10px;}
 #shortenUrl #doneShortenUrl{margin: 10px 0 20px 0; position: relative;}
-#shortenUrl #doneShortenUrl input[type="text"]{width: 263px;}
+#shortenUrl #doneShortenUrl .shortenField{width: 259px;}
 #shortenUrl #doneShortenUrl .baseColor{font-weight: bold; font-size: 16px; position:relative;}
 #shortenUrl .shortenField{width: 472px; padding: 6px 10px;}
 #shortenUrl ul{text-align: center; margin: 10px;}
