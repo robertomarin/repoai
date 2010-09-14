@@ -1,11 +1,5 @@
 package ai.liga.avatar.controller;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,7 +28,7 @@ public class UploadAvatarController {
 
 		if (!file.isEmpty()) {
 			String type = file.getContentType();
-			if (!type.matches(".*(/img)|.*(/jpg)|.*(/png)")) {
+			if (!type.matches(".*(/gif)|.*(/jpg)|.*(/png)|.*(/jpeg)")) {
 				mav.addObject(
 						"msg",
 						"Opa não entendemos o formato do arquivo enviado, lembrando que os formatos suportados são: gif, jpg e png.");
@@ -42,7 +36,7 @@ public class UploadAvatarController {
 
 			}
 
-			saveImage(imageService.makeTransfomations(200, 200, file));
+			imageService.saveImage(file);
 			mav.addObject("msg", "Legal agora você tem um avatar no Ligaai");
 
 			return mav;
@@ -59,16 +53,16 @@ public class UploadAvatarController {
 		return new ModelAndView("avatar");
 	}
 
-	private void saveImage(BufferedImage image) {
-		// TODO gravar em algum lugar do disco isto dak
-		/** var/www/html/ligaai/img-avatar */
-		try {
-			ImageIO.write(image, "jpg", new File("/teste.jpg"));
-		} catch (IOException e) {
-			//TODO Alterar aqui com as informacoes do usuario
-			logger.error("Erro ao gravar a imagem do user: "+1234, e);
-		}
-
-	}
+//	private void saveImage(BufferedImage image) {
+//		// TODO gravar em algum lugar do disco isto dak
+//		/** var/www/html/ligaai/img-avatar */
+//		try {
+//			ImageIO.write(image, "jpg", new File("/teste.jpg"));
+//		} catch (IOException e) {
+//			//TODO Alterar aqui com as informacoes do usuario
+//			logger.error("Erro ao gravar a imagem do user: "+1234, e);
+//		}
+//
+//	}
 
 }

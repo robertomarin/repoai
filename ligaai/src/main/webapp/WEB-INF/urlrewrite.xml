@@ -5,6 +5,10 @@
 		<from>/</from>
 		<to>/home.html</to>
 	</rule>
+	<rule match-type="wildcard">
+		<from>/uploadView.html</from>
+		<to>/uploadView.html</to>
+	</rule>
 	<rule match-type="regex">
 		<from>^/([0-9a-zA-Z]+)$</from>
 		<to>/expand/$1</to>

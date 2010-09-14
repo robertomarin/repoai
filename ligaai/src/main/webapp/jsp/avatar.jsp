@@ -16,8 +16,12 @@
 			<input type="file" name="file" /> 
 			<input type="submit" />
 		</form>
+		<br/>
+		<div  id="avatar"> 
+			<img src="/ligaai/photos/teste.jpg">
+		</div> 
 		<c:if test="${msg != null}">
-			"${msg == 1}
+			<c:out value="${msg}" escapeXml="false"/>
 		</c:if>
 	</body>
 </html>
