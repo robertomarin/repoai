@@ -22,6 +22,12 @@
 		<div class="wrapper">
 			<header id="logo">
 				<h1 class="ligaStyle">Liga<span class="baseColor">.</span>ai</h1>
+				<ul id="login">
+					<form id="u_entrar_topo">
+						<li><label for="email">E-mail</label> <input type="text" id="email" class="fill" /></li>
+						<li><label for="password">Senha</label> <input type="password" id="password" class="fill" /> <input type="submit" value="Entrar" /></li>
+ 					</form>
+				</ul>
 			</header>
 			<div class="containerShadow">
 				<!--Shorten url-->
@@ -185,6 +191,7 @@
 		<!-- LIGHTBOX -->
 		<div id="subscribe">
 			<div class="content">
+				<div class="message hide"></div>
 				<form id="u_criar">
 					<strong class="ligaStyle">registra<span class="baseColor">.</span>ai</strong>
 					<p>Já tem uma conta? <span id="login" class="formAction baseColor">Faça login</span></p>
@@ -199,9 +206,9 @@
 							<code>
 								Terms of Service
 								These Terms of Service (“Terms”) govern your access to and use of the services and Twitter’s websites (the “Services”), and any information, text, graphics, or other materials uploaded, downloaded or appearing on the Services (collectively referred to as “Content”). Your access to and use of the Services is conditioned on your acceptance of and compliance with these Terms. By accessing or using the Services you agree to be bound by these Terms.
-	
+			
 								Basic Terms
-	
+			
 								You are responsible for your use of the Services, for any content you post to the Services, and for any consequences thereof. The Content you submit, post, or display will be able to be viewed by other users of the Services and through third party services and websites (go to the account settings page to control who sees your Content). You should only provide Content that you are comfortable sharing with others under these Terms.
 							</code>
 						</li>
@@ -210,16 +217,14 @@
 					</ul>
 				</form>
 				<form id="u_entrar" class="hide">
-					<strong class="ligaStyle">loga<span class="baseColor">.</span>ai</strong>
-					<p>Não tem uma conta? <span id="register" class="formAction baseColor">registre-se</span></p>
+					<strong class="ligaStyle">registra<span class="baseColor">.</span>ai</strong>
+					<p>Esqueceu sua senha? <span id="forgotPass" class="formAction baseColor">Recupere agora!</span></p>
 					<ul>
 						<li><label>E-mail</label></li>
-						<li><input type="text" id="email" /></li>
+						<li><input id="email" type="text" /></li>
 						<li><label>Senha</label></li>
-						<li><input type="text" /></li>
-						<li><span id="forgotPass" class="formAction baseColor">Esqueceu sua senha?</span></li>
-						<li><input type="checkbox" />Lembrar-me nesse computador</li>
-						<li><input type="submit" value="loga.ai" /></li>
+						<li><input id="password" type="password" /></li>
+						<li><input type="submit" value="registra.ai" /></li>
 					</ul>
 				</form>
 				<form id="resetForm" class="hide">
@@ -237,7 +242,7 @@
 		
 		<!--js-->
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
-		<script type="text/javascript"> 
+		<script type="text/javascript">
 			if(typeof jQuery != 'function'){
 				var jHead=document.createElement('script'); 
 				jHead.type='text/javascript'; 
@@ -247,8 +252,9 @@
 		</script>
 		<script language="javascript" src="/js/maskinput.js"></script>
 		<script type="text/javascript" src="/js/ZeroClipboard.js"></script>
-		<script language="javascript" src="/js/ligaai.js"></script>
+		<script type="text/javascript" src="/js/jquery.jsonp-2.1.2.min.js"></script>
 		<script language="javascript" src="/js/jquery-ui-1.8.2.custom.min.js"></script>
+		<script language="javascript" src="/js/ligaai.js"></script>
 		<!--GA-->
 		<script type="text/javascript">
 			 var _gaq = _gaq || [];
