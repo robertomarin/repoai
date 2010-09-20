@@ -65,9 +65,9 @@ if(encodeURIComponent) {
 }
 
 $(function() {
-	var usuario = $.cookie('u');
-	var usuarioLiga =  $.base64Decode(usuario);
-
+	var cookie = $.cookie('u');
+	var usuario = $.unserialize(cookie);
+	console.log(usuario.u)
 	$('#microurl').submit(function() {
 		if($.trim($('#url').val()) != ''){
 			$('#microurlmicro').removeClass('copiedSuccessfully');
@@ -131,8 +131,7 @@ $(function() {
 	});
 	
 	$('#ligaai').submit(function() {
-		var usuario;
-		if(usuario != null){
+		if(usuarioLiga != null){
 			var url = '/ligaai/criar?'
 				+ 'message=' + encodeUrl($('#message').val())
 				+ '&contact=' + encodeUrl($('#contact').val())
