@@ -64,12 +64,24 @@ if(encodeURIComponent) {
 	encodeUrl = encodeURIComponent;
 }
 
+function truncate(string, length, tail) {
+	if (typeof tail == 'undefined')
+		tail = '...';
+	
+	if (string && string.length <= length)
+		return string
+		
+	return string.substr(0, length) + tail;
+}
+
 $(function() {
 	if($.cookie('u') != null){
 		var x = $.cookie('u').replace(/"/g, '');
 		var y = $.unserialize(x);
 		y = $.base64Decode(y.u);
 		y = eval("(" + y + ")");
+		$('#u_entrar_topo').hide();
+		$('#login').addClass('logged').html('Olá ' + truncate(y.u.email, 22) + ' <a href="#">Sair</a>');
 	}
 
 	$('#microurl').submit(function() {
@@ -207,7 +219,7 @@ $(function() {
 					alert(data.errors[i].defaultMessage);
 				};
 			}else {
-				alert('logou!');
+				window.location.reload();
 			};
 		});
 		
