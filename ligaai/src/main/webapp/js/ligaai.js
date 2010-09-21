@@ -147,7 +147,7 @@ $(function() {
 	});
 	
 	$('#ligaai').submit(function() {
-		if(usuarioLiga != null){
+		if($.cookie('u') != null){
 			var url = '/ligaai/criar?'
 				+ 'message=' + encodeUrl($('#message').val())
 				+ '&contact=' + encodeUrl($('#contact').val())
@@ -189,7 +189,7 @@ $(function() {
 		return false;
 	});
 	
-	$('#u_entrar').submit(function() {
+	$('#u_entrar, #u_entrar_topo').submit(function() {
 		var el = this;
 		var url = '/u/entrar?'
 			+ 'email=' + encodeUrl($(this).find('#email').val())
@@ -201,28 +201,9 @@ $(function() {
 					$(el).parent().find('.message').html(data.errors[i].defaultMessage).fadeIn();
 				};
 			}else {
-				$('#subscribe').dialog('close');
-			};
-		});
-		return false;
-	});
-	
-	$('#u_entrar_topo').submit(function() {
-		var el = this;
-		var url = '/u/entrar?'
-			+ 'email=' + encodeUrl($(this).find('#email').val())
-			+ '&password=' + encodeUrl($(this).find('#password').val());
-		
-		$.getJSON(url, function(data) {
-			if(data.errors){
-				for(i = 0; i < data.errors.length; i++) {
-					alert(data.errors[i].defaultMessage);
-				};
-			}else {
 				window.location.reload();
 			};
 		});
-		
 		return false;
 	});
 	
