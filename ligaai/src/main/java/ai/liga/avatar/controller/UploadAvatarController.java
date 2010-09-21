@@ -36,8 +36,9 @@ public class UploadAvatarController {
 
 			}
 
-			imageService.saveImage(file);
+			imageService.saveImage(file, 1222);
 			mav.addObject("msg", "Legal agora você tem um avatar no Ligaai");
+			mav.addObject("idUser", 1222);
 
 			return mav;
 		} else {
@@ -52,17 +53,5 @@ public class UploadAvatarController {
 	public ModelAndView mountViewUp() {
 		return new ModelAndView("avatar");
 	}
-
-//	private void saveImage(BufferedImage image) {
-//		// TODO gravar em algum lugar do disco isto dak
-//		/** var/www/html/ligaai/img-avatar */
-//		try {
-//			ImageIO.write(image, "jpg", new File("/teste.jpg"));
-//		} catch (IOException e) {
-//			//TODO Alterar aqui com as informacoes do usuario
-//			logger.error("Erro ao gravar a imagem do user: "+1234, e);
-//		}
-//
-//	}
 
 }

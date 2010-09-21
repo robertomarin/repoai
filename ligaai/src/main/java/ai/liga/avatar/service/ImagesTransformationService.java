@@ -55,12 +55,12 @@ public class ImagesTransformationService {
 	}
 	
 	public boolean saveImageResized(int resizeX, int resizeY,
-			MultipartFile mpf){
-		return saveImage(makResize(resizeX, resizeY, mpf));
+			MultipartFile mpf, final int idUser){
+		return saveImage(makResize(resizeX, resizeY, mpf), idUser);
 		
 	}
 	
-	public boolean saveImage(MultipartFile mpf) {
+	public boolean saveImage(MultipartFile mpf, final int idUser) {
 		BufferedImage bi;
 		try {
 			bi = ImageIO.read(mpf.getInputStream());
@@ -68,12 +68,12 @@ public class ImagesTransformationService {
 			logger.error("Erro ao ler a imagem a partir do inputStream", e);
 			return false;
 		}
-		return saveImage(bi);
+		return saveImage(bi, idUser);
 	}
 	
-	private boolean saveImage(BufferedImage image) {
+	private boolean saveImage(final BufferedImage image, final int idUser) {
 		try {
-			ImageIO.write(image, "jpg", new File("/Users/alexandrenavarro/teste/teste.jpg"));
+			ImageIO.write(image, "jpg", new File("/Users/alexandrenavarro/teste/"+idUser+".jpg"));
 		} catch (IOException e) {
 			logger.error("Erro ao gravar a imagem", e);
 			return false;
