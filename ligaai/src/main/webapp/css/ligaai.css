@@ -37,6 +37,7 @@ header ul#login input.fill{
 	font-weight: bold;
 	color: #646464;
 }
+header ul#login.logged{font-size: 12px;}
 footer{
 	background: #ff71e3;
 	color: #fff;
