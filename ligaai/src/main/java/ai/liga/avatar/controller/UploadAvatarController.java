@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import ai.liga.avatar.service.ImagesTransformationService;
 
@@ -47,6 +48,12 @@ public class UploadAvatarController {
 
 			return mav;
 		}
+	}
+	
+
+	@RequestMapping(value = "/uploadAvatar.html", method = RequestMethod.GET)
+	public ModelAndView uploadAvatar(){
+		return new ModelAndView(new RedirectView("/uploadView.html"));
 	}
 
 	@RequestMapping("/uploadView.html")
