@@ -69,14 +69,9 @@ $(function() {
 		var x = $.cookie('u').replace(/"/g, '');
 		var y = $.unserialize(x);
 		y = $.base64Decode(y.u);
-		alert(y);
 		y = eval("(" + y + ")");
-		alert(y.u.email);
 	}
 
-	var cookie = $.cookie('u');
-	var usuario = $.unserialize(cookie);
-	console.log(usuario.u)
 	$('#microurl').submit(function() {
 		if($.trim($('#url').val()) != ''){
 			$('#microurlmicro').removeClass('copiedSuccessfully');
@@ -281,5 +276,11 @@ $(function() {
 	 $('#forgotPass').click(function(){
 		$('#u_criar, #u_entrar').hide();
 		$('#resetForm').fadeIn();		
+	 });
+	 
+	 $('#lightboxRegister').live('click', function(){
+		 $('#subscribe').dialog('open');
+		 $('#u_entrar, #resetForm').hide();
+		 $('#u_criar').show();
 	 });
 });
