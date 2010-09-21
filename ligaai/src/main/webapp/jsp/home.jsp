@@ -27,6 +27,7 @@
 						<li><label for="email">E-mail</label> <input type="text" id="email" class="fill" /></li>
 						<li><label for="password">Senha</label> <input type="password" id="password" class="fill" /> <input type="submit" value="Entrar" /></li>
  					</form>
+ 					<li>Nao tem uma conta? <a href="#" id="lightboxRegister">registre-se agora.</a></li>
 				</ul>
 			</header>
 			<div class="containerShadow">
@@ -217,14 +218,14 @@
 					</ul>
 				</form>
 				<form id="u_entrar" class="hide">
-					<strong class="ligaStyle">registra<span class="baseColor">.</span>ai</strong>
+					<strong class="ligaStyle">loga<span class="baseColor">.</span>ai</strong>
 					<p>Esqueceu sua senha? <span id="forgotPass" class="formAction baseColor">Recupere agora!</span></p>
 					<ul>
 						<li><label>E-mail</label></li>
 						<li><input id="email" type="text" /></li>
 						<li><label>Senha</label></li>
 						<li><input id="password" type="password" /></li>
-						<li><input type="submit" value="registra.ai" /></li>
+						<li><input type="submit" value="loga.ai" /></li>
 					</ul>
 				</form>
 				<form id="resetForm" class="hide">
