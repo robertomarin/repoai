@@ -8,7 +8,7 @@ body{color: #3b3b3b; font-family: Helvetica, Arial; font-size: 12px;}
 .hide{display: none;}
 header{position: relative;}
 header#logo{height: 220px; padding-top: 10px;}
-header ul#login{
+header ul#loginTop{
 	background: url(/img/transparentBg.png);
 	border: 1px solid transparent;
 	border-radius: 0 0 8px 8px; 
@@ -20,11 +20,13 @@ header ul#login{
 	top: 0;
 	right: 0;
 	width: 195px;
-	padding: 10px;
+	padding: 5px 10px;
 }
-header ul#login li{clear: both; margin: 5px 0; width: 100%; float: left;}
-header ul#login label{display: block; float: left; width: 40px;}
-header ul#login input.fill{
+header ul#loginTop h3{font-size: 18px; margin-bottom: 10px;}
+header ul#loginTop h3.welcome{margin-bottom: 0;}
+header ul#loginTop li{clear: both; margin: 5px 0; width: 100%; float: left;}
+header ul#loginTop label{display: block; float: left; width: 40px;}
+header ul#loginTop input.fill{
 	border: 0;
 	border-radius: 0; 
 	-moz-border-radius: 0;
@@ -37,7 +39,7 @@ header ul#login input.fill{
 	font-weight: bold;
 	color: #646464;
 }
-header ul#login.logged{font-size: 12px;}
+header ul#loginTop.logged{font-size: 12px;}
 footer{
 	background: #ff71e3;
 	color: #fff;
@@ -68,12 +70,10 @@ input[type=submit]{
 }
 .container{width: 635px; margin: 10px auto;}
 .containerShadow{
-	/*border-left: 1px solid #ccc;
-	border-right: 1px solid #ccc;
-	border-image: url(/img/sombra_container.png);*/
 	background: url(/img/sombra_container.png) -1px 0;
 	float: left;
 	padding: 0 3px;
+	width: 100%;
 }
 
 /**Message**/
@@ -84,7 +84,7 @@ input[type=submit]{
 	margin: 10px auto;
 	padding: 5px;
 }
-
+#content{position: relative;}
 #content article{
 	background: url(/img/separador.png) repeat-x bottom;
 	float: left;
@@ -142,7 +142,7 @@ input[type=submit]{
 }
 
 /***User list***/
-#userList{background: #fff; float: left;}
+#userList{background: #fff; float: left; width: 100%;}
 #content .users{line-height: 20px;}
 #content .users:last-child{border: 0;}
 #content .users div{float: left;}
@@ -233,7 +233,7 @@ input[type=submit]{
 #subscribe .content #terms{
 	border: 1px solid #ccc;
 	padding: 5px;
-	height: 100px;
+	height: 80px;
 	overflow: auto;
 	margin: 5px 0;
 	border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;
@@ -250,3 +250,37 @@ input[type=submit]{
 /*.ui-widget-overlay{position: absolute; top: 0; left: 0; width: 100%; height: 100%; }*/
 /*.ui-widget-overlay{background: #000; opacity: .5;filter:Alpha(Opacity=50); }*/
 /*.ui-widget-shadow{margin: -8px 0 0 -8px; padding: 8px; background: #aaaaaa; opacity: .3;filter:Alpha(Opacity=30); -moz-border-radius: 8px; -webkit-border-radius: 8px; }*/
+
+/***CROP***/
+#previewContainer{
+	height:100px;
+	left:165px;
+	overflow:hidden;
+	position:absolute;
+	top:68px;
+	width:100px;
+}
+.jcrop-holder {text-align: left;}
+.jcrop-vline, .jcrop-hline{
+	font-size: 0;
+	position: absolute;
+	background: white url('Jcrop.gif') top left repeat;
+}
+.jcrop-vline{height: 100%; width: 1px !important; }
+.jcrop-hline{width: 100%; height: 1px !important; }
+.jcrop-handle{
+	font-size: 1px;
+	width: 7px !important;
+	height: 7px !important;
+	border: 1px #eee solid;
+	background-color: #333;
+	*width: 9px;
+	*height: 9px;
+}
+.jcrop-tracker { width: 100%; height: 100%; }
+.custom .jcrop-handle{
+	border-color: black;
+	background-color: #C7BB00;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
