@@ -8,6 +8,8 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" href="/css/jquery.Jcrop.css" type="text/css" />
+        <link rel="stylesheet" href="/css/demos.css" type="text/css" />
 		<title>Upload a file please</title>
 	</head>
 	<body>
@@ -18,11 +20,13 @@
 		</form>
 		<br/>
 		<c:if test="${idUser != null}">
-			<div  id="avatar"> 
+		    <div id="outer">
+            <div class="jcExample">
+			<div  id="article"> 
 				<table>
                 <tr>
                 <td>
-                <img src="/ligaai/photos/${idUser}.jpg" id="jcrop_target" />
+                <img src="/ligaai/photos/${idUser}.jpg" id="cropbox" />
                 </td>
                 <td>
                 <div style="width:100px;height:100px;overflow:hidden;">
@@ -34,6 +38,8 @@
                 </table>
 				
 			</div> 
+			</div>
+			</div>
 		</c:if>
 		<c:if test="${msg != null}">
 			<c:out value="${msg}" escapeXml="false"/>
@@ -43,16 +49,27 @@
 	<script type="text/javascript" src="/js/jquery.jsonp-2.1.2.min.js"></script>
 	<script type="text/javascript" src="/js/jquery.Jcrop.min.js"></script>
 	<script type="text/javascript" src="/js/ligaai.js"></script>
-	<script language="Javascript">
+	<script language="Javascript"><!--
 // Remember to invoke within jQuery(window).load(...)
 // If you don't, Jcrop may not initialize properly
-$(function(){
+//$(function(){
 
-	$('#jcrop_target').Jcrop({
-		onChange: showPreview,
-		onSelect: showPreview,
-		aspectRatio: 1
-	});
+	//$('#jcrop_target').Jcrop({
+	//	onChange: showPreview,
+	//	onSelect: showPreview,
+	//	aspectRatio: 1
+	//});
+	
+	 jQuery(window).load(function(){
+
+         jQuery('#cropbox').Jcrop({
+                 onChange: showPreview,
+                 onSelect: showPreview,
+                 aspectRatio: 1
+         });
+
+ //});
+
 
 });
 
@@ -74,6 +91,6 @@ function showPreview(coords)
 	}
 };
 
-</script>
+--></script>
 	
 </html>
