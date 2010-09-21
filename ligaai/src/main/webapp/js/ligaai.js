@@ -64,6 +64,22 @@ if(encodeURIComponent) {
 	encodeUrl = encodeURIComponent;
 }
 
+function showPreview(coords)
+{
+	if (parseInt(coords.w) > 0)
+	{
+		var rx = 100 / coords.w;
+		var ry = 100 / coords.h;
+
+		$('#preview').css({
+			width: Math.round(rx * 500) + 'px',
+			height: Math.round(ry * 370) + 'px',
+			marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+			marginTop: '-' + Math.round(ry * coords.y) + 'px'
+		});
+	}
+};
+
 function truncate(string, length, tail) {
 	if (typeof tail == 'undefined')
 		tail = '...';
@@ -81,7 +97,7 @@ $(function() {
 		y = $.base64Decode(y.u);
 		y = eval("(" + y + ")");
 		$('#u_entrar_topo').hide();
-		$('#login').addClass('logged').html('Olá ' + truncate(y.u.email, 22) + ' <a href="#">Sair</a>');
+		$('#loginTop').addClass('logged').html('<h3 class="welcome">Bem vindo<span class="baseColor">.</span>ai</h3><br />' + truncate(y.u.name, 22) + ' <a href="#">Sair</a>');
 	}
 
 	$('#microurl').submit(function() {
@@ -182,11 +198,29 @@ $(function() {
 					$(el).parent().find('.message').html(data.errors[i].defaultMessage).fadeIn();
 				};
 			}else {
-				$('#subscribe').dialog('close');
+				$('#u_criar').hide();
+				$('#uploadAvatar').fadeIn();
 			}
 		});
-		
 		return false;
+	});
+	
+	/**
+	 * Jcrop
+	 */
+	$('#cropbox').Jcrop({
+		onChange: showPreview,
+		onSelect: showPreview,
+		minSize: [100, 100],
+		aspectRatio: 1
+	});
+	
+	$('.jcrop-holder').live('hover', function(){
+		$('#previewContainer').fadeIn();
+	});
+	
+	$('.jcrop-holder').live('mouseleave', function(){
+		if($(this).find('div').eq(0).is(':hidden')) $('#previewContainer').fadeOut();
 	});
 	
 	$('#u_entrar, #u_entrar_topo').submit(function() {
@@ -199,6 +233,7 @@ $(function() {
 			if(data.errors){
 				for(i = 0; i < data.errors.length; i++) {
 					$(el).parent().find('.message').html(data.errors[i].defaultMessage).fadeIn();
+					alert(data.errors[i].defaultMessage);
 				};
 			}else {
 				window.location.reload();
@@ -258,20 +293,24 @@ $(function() {
 	});
 
 	 
-	 $('#login').click(function(){
+	 $('#login').click(function(e){
+		e.preventDefault();
 		$('#u_criar').hide();
 		$('#u_entrar').fadeIn();		
 	 });
-	 $('#register').click(function(){
+	 $('#register').click(function(e){
+		e.preventDefault();
 		$('#u_entrar').hide();
 		$('#u_criar').fadeIn();
 	 });
-	 $('#forgotPass').click(function(){
+	 $('#forgotPass').click(function(e){
+		e.preventDefault();
 		$('#u_criar, #u_entrar').hide();
 		$('#resetForm').fadeIn();		
 	 });
 	 
-	 $('#lightboxRegister').live('click', function(){
+	 $('#lightboxRegister').live('click', function(e){
+		 e.preventDefault();
 		 $('#subscribe').dialog('open');
 		 $('#u_entrar, #resetForm').hide();
 		 $('#u_criar').show();
