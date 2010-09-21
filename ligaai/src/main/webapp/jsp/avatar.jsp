@@ -1,96 +1,66 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+    
+<!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet" href="/css/jquery.Jcrop.css" type="text/css" />
-        <link rel="stylesheet" href="/css/demos.css" type="text/css" />
-		<title>Upload a file please</title>
+		<title>Liga.ai</title>
+		<meta charset="UTF-8"/>
+		<meta name="title" content="Liga ai" />
+		<meta name="description" content="Liga ai" />
+		<meta name="keywords" content="Liga ai" /> 
+		<link type="image/x-icon" href="/img/favicon.ico" rel="shortcut icon" />
+		<!--css-->
+		<link rel="stylesheet" href="/css/ligaai.css" />
+		<!--[if lt IE 9]>
+			<script src="/js/html5.js"></script>
+		<![endif]-->
 	</head>
-	<body>
-		<h1>Selecione sua foto</h1>
-		<form method="post" action="/uploadAvatar.html" enctype="multipart/form-data">
-			<input type="file" name="file"/> 
-			<input type="submit" name="Upload"/>
-		</form>
-		<br/>
-		<c:if test="${idUser != null}">
-		    <div id="outer">
-            <div class="jcExample">
-			<div  id="article"> 
-				<table>
-                <tr>
-                <td>
-                <img src="/ligaai/photos/${idUser}.jpg" id="cropbox" />
-                </td>
-                <td>
-                <div style="width:100px;height:100px;overflow:hidden;">
-                        <img src="/ligaai/photos/${idUser}.jpg" id="preview" />
-                </div>
-
-                </td>
-                </tr>
-                </table>
-				
-			</div> 
+	<body class="morningBackground">
+		<div class="wrapper">
+		    <jsp:include page="header.jsp" />
+			<div class="containerShadow">
+				<div id="userList">
+					<section id="content">
+						<c:if test="${idUser != null}">
+							<div id="article"> 
+				                <img src="/ligaai/photos/${idUser}.jpg" id="cropbox" />
+				                <div id="previewContainer" class="hide">
+			                        <img src="/ligaai/photos/${idUser}.jpg" id="preview" />
+				                </div>
+							</div>
+							<input type="submit" value="Enviar avatar" />
+						</c:if>
+						<c:if test="${msg != null}">
+							<c:out value="${msg}" escapeXml="false"/>
+						</c:if>
+					</section>
+					
+					<!-- AD -->
+					<section id="ad">
+						<script type="text/javascript"><!--
+							google_ad_client = "pub-9040087244579201";
+							/* 160x600 */
+							google_ad_slot = "8363583236";
+							google_ad_width = 160;
+							google_ad_height = 600;
+							//-->
+							</script>
+							<script type="text/javascript"
+							src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+						</script>
+					</section>
+					<!-- AD end-->
+				</div>
 			</div>
-			</div>
-		</c:if>
-		<c:if test="${msg != null}">
-			<c:out value="${msg}" escapeXml="false"/>
-		</c:if>
+		</div>
+		<jsp:include page="footer.jsp" />
+		<!-- LIGHTBOX -->
+		<jsp:include page="lightbox.jsp" />
+		<!--JAVASCRIPT-->
+		<jsp:include page="javascripts.jsp" />
 	</body>
-	<script type="text/javascript" src="/js/jquery-1.4.2.min.js"></script>
-	<script type="text/javascript" src="/js/jquery.jsonp-2.1.2.min.js"></script>
-	<script type="text/javascript" src="/js/jquery.Jcrop.min.js"></script>
-	<script type="text/javascript" src="/js/ligaai.js"></script>
-	<script language="Javascript"><!--
-// Remember to invoke within jQuery(window).load(...)
-// If you don't, Jcrop may not initialize properly
-//$(function(){
-
-	//$('#jcrop_target').Jcrop({
-	//	onChange: showPreview,
-	//	onSelect: showPreview,
-	//	aspectRatio: 1
-	//});
-	
-	 jQuery(window).load(function(){
-
-         jQuery('#cropbox').Jcrop({
-                 onChange: showPreview,
-                 onSelect: showPreview,
-                 aspectRatio: 1
-         });
-
- //});
-
-
-});
-
-// Our simple event handler, called from onChange and onSelect
-// event handlers, as per the Jcrop invocation above
-function showPreview(coords)
-{
-	if (parseInt(coords.w) > 0)
-	{
-		var rx = 100 / coords.w;
-		var ry = 100 / coords.h;
-
-		$('#preview').css({
-			width: Math.round(rx * 500) + 'px',
-			height: Math.round(ry * 370) + 'px',
-			marginLeft: '-' + Math.round(rx * coords.x) + 'px',
-			marginTop: '-' + Math.round(ry * coords.y) + 'px'
-		});
-	}
-};
-
---></script>
-	
 </html>
