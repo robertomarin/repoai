@@ -40,7 +40,7 @@ public class User {
 	@Null
 	@XStreamOmitField
 	private Calendar created;
-	
+
 	@Column(nullable = false, length = 30)
 	@Size(min = 2, max = 30, message = "O nome deve ter de 2 a 30 caracteres")
 	private String name;
