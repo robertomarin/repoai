@@ -34,11 +34,7 @@ public class CookiesInterceptor implements HandlerInterceptor {
 		try {
 			user = cookieComponent.getUserFromCookie(Cookies.getCookie(request.getCookies(), Constants.USER));
 		} catch (InvalidUserException e) {
-			Cookie ck = new Cookie(Constants.USER, "");
-			ck.setDomain(".liga.ai");
-			ck.setMaxAge(0);
-			ck.setPath("/");
-			response.addCookie(ck);
+			response.addCookie(cookieComponent.createExpiredCookie(Constants.USER));
 			return false;
 		}
 		if (user != null) {

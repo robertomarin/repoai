@@ -1,6 +1,8 @@
 package ai.liga.user.controller;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import net.sf.json.spring.web.servlet.view.JsonView;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import ai.liga.cookie.CookieComponent;
 import ai.liga.user.model.User;
 import ai.liga.user.service.UserService;
 import ai.liga.util.$;
@@ -24,22 +27,25 @@ import ai.liga.util.Constants;
 public class UserController {
 
 	private final UserService userService;
+	
+	private final CookieComponent cookieComponent;
+
+	@Autowired
+	public UserController(UserService userService, CookieComponent cookieComponent) {
+		this.userService = userService;
+		this.cookieComponent = cookieComponent;
+	}
 
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
 		binder.setMessageCodesResolver(new DefaultMessageCodesResolver());
 	}
 
-	@Autowired
-	public UserController(UserService userService) {
-		this.userService = userService;
-	}
 
 	@RequestMapping("/u/registrar")
 	public String registrar(HttpServletRequest request) {
 		$.getUserFromRequest(request);
 		User user = (User) request.getAttribute(Constants.USER);
-		System.out.println(user);
 		return "/u/registrar";
 	}
 
@@ -58,6 +64,14 @@ public class UserController {
 
 		$.setUserOnRequest(request, user);
 		return mav.addObject(Constants.USER, user).addObject("ok", "true");
+	}
+	
+	@RequestMapping("/u/sair")
+	public String sair(HttpServletRequest request, HttpServletResponse response) {
+		$.setUserOnRequest(request, null);
+		response.addCookie(cookieComponent.createExpiredCookie(Constants.USER));
+		
+		return "redirect:/";
 	}
 
 	@RequestMapping("/u/criar")

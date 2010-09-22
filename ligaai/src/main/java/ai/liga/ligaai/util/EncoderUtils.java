@@ -2,12 +2,17 @@ package ai.liga.ligaai.util;
 
 import static ai.liga.util.Constants.ENCODE;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.log4j.Logger;
+
+import com.thoughtworks.xstream.core.util.Base64Encoder;
+
+import sun.misc.BASE64Decoder;
 
 public class EncoderUtils {
 
@@ -17,16 +22,32 @@ public class EncoderUtils {
 		if (decodedString == null) {
 			return null;
 		}
+		System.out.println(decodedString);
 
-		return Base64.encodeBase64URLSafeString(decodedString.trim().getBytes());
+		String encodeBase64URLSafeString = Base64.encodeBase64String(decodedString.getBytes());
+		String x = encodeBase64URLSafeString.replaceAll("[^=&\\w]", "");
+		
+		System.out.println("igual" + x);
+		x = encodeUrl(x);
+		System.out.println(x);
+		return x;
 	}
-
+	public static void main(String[] args) {
+		System.out.println("eyJ1Ijp7ImlkIjoyNywiZW1haWwiOiJqdWwuZHNhbnRvc0BnbWFpbC5jb20iLCJwYXNzd29yZCI6MTIzNDU2fX0=\n\n\b\r%dfeifj@(*$*@(%)%(*0=23923(@*)*@($*".replaceAll("[^=&\\w]*", ""));
+	}
+	
 	public static String decodeBase64(String base64String) {
 		if (base64String == null) {
 			return null;
 		}
 
-		return new String(Base64.decodeBase64(base64String));
+		try {
+			return new String(Base64.decodeBase64(base64String.getBytes()), "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public static String encodeUrl(String string) {

@@ -29,15 +29,15 @@ public class CookieComponent {
 		}
 		Cookie ck = null;
 		try {
-			String jsonB64 = EncoderUtils.encodeBase64(xstream.toXML(user));
-			String value = Constants.USER + "=" + jsonB64;
-			value += "&" + Constants.HASH + "=" + DigestUtils.md5Hex(jsonB64);
+			String json = xstream.toJSON(user);
+			String value = EncoderUtils.encodeBase64(json) + "|" + DigestUtils.md5Hex(json);
+
+			System.out.println("|" + value + "|");
 
 			ck = new Cookie(Constants.USER, value);
 			ck.setDomain(".liga.ai");
 			ck.setMaxAge(60 * 60 * 24 * 365 * 5);
 			ck.setPath("/");
-
 		} catch (Exception e) {
 			logger.error("Erro ao criar cookie do usuario", e);
 		}
@@ -67,5 +67,14 @@ public class CookieComponent {
 		} catch (Exception e) {
 			return null;
 		}
+	}
+	
+	public Cookie createExpiredCookie(String cookieName) {
+		Cookie ck = new Cookie(cookieName, "");
+		ck.setDomain(".liga.ai");
+		ck.setMaxAge(0);
+		ck.setPath("/");
+		return ck;
+		
 	}
 }
