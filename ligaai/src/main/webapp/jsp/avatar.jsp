@@ -32,7 +32,13 @@
 			                        <img src="/ligaai/photos/${idUser}.jpg" id="preview" />
 				                </div>
 							</div>
-							<input type="submit" value="Enviar avatar" />
+							<form action="/cropAvatar.html" id="formCrop" onsubmit="return checkCoords();">
+								<input type="hidden" name="x" id="x" />
+								<input type="hidden" name="y" id="y" />
+								<input type="hidden" name="w" id="w" />
+								<input type="hidden" name="h" id="h" />
+								<input type="submit" value="Enviar avatar" />
+							</form>
 						</c:if>
 						<c:if test="${msg != null}">
 							<c:out value="${msg}" escapeXml="false"/>

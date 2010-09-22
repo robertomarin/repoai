@@ -16,6 +16,10 @@ import ai.liga.image.ImageTransform;
 @Service
 public class ImagesTransformationService {
 
+	private static final String PATH_IMAGE = "/Users/alexandrenavarro/teste/img/";
+
+	private static final String PATH_IMAGE_PREVIEW = "/Users/alexandrenavarro/teste/";
+
 	private static Logger logger = Logger
 			.getLogger(ImagesTransformationService.class);
 
@@ -73,7 +77,7 @@ public class ImagesTransformationService {
 	
 	private boolean saveImage(final BufferedImage image, final int idUser) {
 		try {
-			ImageIO.write(image, "jpg", new File("/Users/alexandrenavarro/teste/"+idUser+".jpg"));
+			ImageIO.write(image, "jpg", new File(PATH_IMAGE_PREVIEW+idUser+".jpg"));
 		} catch (IOException e) {
 			logger.error("Erro ao gravar a imagem", e);
 			return false;
@@ -81,6 +85,41 @@ public class ImagesTransformationService {
 		
 		return true;
 
+	}
+	
+	public boolean saveImage(int idUser, int x, int y, int w, int h){
+		BufferedImage bi;
+		try {
+		bi = ImageIO.read(new File(PATH_IMAGE_PREVIEW+idUser+".jpg"));
+		} catch (IOException e) {
+			logger.error("Erro ao ler a imagem", e);
+			return false;
+		}
+		
+		bi = transform.makeSquareCrop(bi, x, y, h, w);
+		
+		if(bi!=null){
+			try {
+				ImageIO.write(bi, "jpg", new File(PATH_IMAGE+idUser+".jpg"));
+			} catch (IOException e) {
+				logger.error("Erro ao gravar a imagem", e);
+				return false;
+			}
+			
+			File file = new File(PATH_IMAGE_PREVIEW+idUser+".jpg");
+			if(file != null){
+				if(!file.delete()){
+					logger.error("Erro ao deletar o preview do avatar");
+				}
+					
+			}
+			
+			return true;
+		}
+		
+		
+		
+		return false;
 	}
 
 }

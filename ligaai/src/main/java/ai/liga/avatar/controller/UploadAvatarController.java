@@ -17,21 +17,18 @@ public class UploadAvatarController {
 
 	@Autowired
 	private ImagesTransformationService imageService;
-	
-	private static Logger logger = Logger
-	.getLogger(UploadAvatarController.class);
+
+	private static Logger logger = Logger.getLogger(UploadAvatarController.class);
 
 	@RequestMapping(value = "/uploadAvatar.html", method = RequestMethod.POST)
-	public ModelAndView handleFormUpload(
-			@RequestParam("file") MultipartFile file) {
+	public ModelAndView handleFormUpload(@RequestParam("file") MultipartFile file) {
 
 		ModelAndView mav = new ModelAndView("avatar");
 
 		if (!file.isEmpty()) {
 			String type = file.getContentType();
 			if (!type.matches(".*(/gif)|.*(/jpg)|.*(/png)|.*(/jpeg)")) {
-				mav.addObject(
-						"msg",
+				mav.addObject("msg",
 						"Opa não entendemos o formato do arquivo enviado, lembrando que os formatos suportados são: gif, jpg e png.");
 				return mav;
 
@@ -42,17 +39,30 @@ public class UploadAvatarController {
 			mav.addObject("idUser", 1222);
 
 			return mav;
-		} else {
-			mav.addObject("msg",
-					"Ops não conseguimos receber o arquivo, tente novamente.");
+		}
 
+		mav.addObject("msg", "Ops não conseguimos receber o arquivo, tente novamente.");
+		return mav;
+
+	}
+
+	@RequestMapping(value = "/cropAvatar.html", method = RequestMethod.GET)
+	public ModelAndView cropAvatar(@RequestParam("x") int x, @RequestParam("y") int y, @RequestParam("w") int w,
+			@RequestParam("h") int h) {
+		ModelAndView mav = new ModelAndView("avatar");
+
+		if (imageService.saveImage(1222, x, y, w, h)) {
+			mav.addObject("msg", "Legal agora você tem um avatar no Ligaai");
 			return mav;
 		}
+
+		mav.addObject("msg", "Ops não conseguimos receber o arquivo, tente novamente.");
+
+		return mav;
 	}
-	
 
 	@RequestMapping(value = "/uploadAvatar.html", method = RequestMethod.GET)
-	public ModelAndView uploadAvatar(){
+	public ModelAndView uploadAvatar() {
 		return new ModelAndView(new RedirectView("/uploadView.html"));
 	}
 

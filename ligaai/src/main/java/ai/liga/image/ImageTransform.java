@@ -29,6 +29,15 @@ public class ImageTransform {
 		return image;
 	}
 
+	public BufferedImage makeSquareCrop(BufferedImage image, int x, int y, int h, int w) {
+
+		if (image == null) {
+			return null;
+		}
+
+		return image.getSubimage(x, y, w, h);
+	}
+
 	public BufferedImage makeResize(BufferedImage image, int width, int height) {
 		if (image == null) {
 			return null;
@@ -39,8 +48,7 @@ public class ImageTransform {
 
 		dimg = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 		Graphics2D g = dimg.createGraphics();
-		g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
-				RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+		g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
 
 		g.drawImage(image, 0, 0, width, height, 0, 0, w, h, null);
 		g.dispose();

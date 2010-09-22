@@ -85,15 +85,20 @@ function showPreview(coords)
 	}
 };
 
-function truncate(string, length, tail) {
-	if (typeof tail == 'undefined')
-		tail = '...';
-	
-	if (string && string.length <= length)
-		return string;
-		
-	return string.substr(0, length) + tail;
-}
+function updateCoords(c)
+{
+	jQuery('#x').val(c.x);
+	jQuery('#y').val(c.y);
+	jQuery('#w').val(c.w);
+	jQuery('#h').val(c.h);
+};
+
+function checkCoords()
+{
+	if (parseInt(jQuery('#w').val())>0) return true;
+	alert('Please select a crop region then press submit.');
+	return false;
+};
 
 $(function() {
 	if($.cookie('u') != null){
@@ -106,7 +111,7 @@ $(function() {
 		    if(user) user = user.u;
 
 			$('#u_entrar_topo').hide();
-			$('#loginTop').addClass('logged').html('<h3 class="welcome">Bem vindo<span class="baseColor">.</span>ai</h3><br />' + truncate(user.name, 22) + ' <a href="/u/sair">Sair</a>');
+			$('#loginTop').addClass('logged').html('<h3 class="welcome">Bem vindo<span class="baseColor">.</span>ai</h3><br />' + user.name + ' <a href="/u/sair">Sair</a>');
 		}
 	}
 
@@ -220,7 +225,7 @@ $(function() {
 	 */
 	$('#cropbox').Jcrop({
 		onChange: showPreview,
-		onSelect: showPreview,
+		onSelect: updateCoords,
 		minSize: [100, 100],
 		aspectRatio: 1
 	});
