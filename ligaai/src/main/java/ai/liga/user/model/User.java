@@ -45,14 +45,6 @@ public class User {
 	@Size(min = 2, max = 30, message = "O nome deve ter de 2 a 30 caracteres")
 	private String name;
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public User() {
 	}
 
@@ -90,6 +82,14 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }
