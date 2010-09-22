@@ -53,8 +53,13 @@
  * http://www.opensource.org/licenses/mit-license.php
  * http://www.gnu.org/licenses/gpl.html
  **/
-
 $.cookie=function(a,b,c){if(typeof b!='undefined'){c=c||{};if(b===null){b='';c.expires=-1}var d='';if(c.expires&&(typeof c.expires=='number'||c.expires.toUTCString)){var e;if(typeof c.expires=='number'){e=new Date();e.setTime(e.getTime()+(c.expires*24*60*60*1000))}else{e=c.expires}d='; expires='+e.toUTCString()}var f=c.path?'; path='+(c.path):'';var g=c.domain?'; domain='+(c.domain):'';var h=c.secure?'; secure':'';document.cookie=[a,'=',b,d,f,g,h].join('')}else{var j=null;if(document.cookie&&document.cookie!=''){var k=document.cookie.split(';');for(var i=0;i<k.length;i++){var l=jQuery.trim(k[i]);if(l.substring(0,a.length+1)==(a+'=')){j=l.substring(a.length+1);break}}}return j}};
+
+/**
+ * URLEncode plugin
+ * http://plugins.jquery.com/project/URLEncode
+ */
+$.extend({URLEncode:function(c){var o='';var x=0;c=c.toString();var r=/(^[a-zA-Z0-9_.]*)/;while(x<c.length){var m=r.exec(c.substr(x));if(m!=null && m.length>1 && m[1]!=''){o+=m[1];x+=m[1].length;}else{if(c[x]==' ')o+='+';else{var d=c.charCodeAt(x);var h=d.toString(16); o+='%'+(h.length<2?'0':'')+h.toUpperCase();}x++;}}return o;},URLDecode:function(s){var o=s;var binVal,t;var r=/(%[^%]{2})/;while((m=r.exec(o))!=null && m.length>1 && m[1]!=''){b=parseInt(m[1].substr(1),16);t=String.fromCharCode(b);o=o.replace(m[1],t);}return o;}});
 
 $.unserialize=function(s){if(typeof s!='string') return false;params=s.split('&');ret={};for (param in params){p=params[param].split('=');if (p.length==1) p[1]='';ret[unescape(p[0])]=unescape(p[1]);}return ret;}
 
@@ -85,19 +90,24 @@ function truncate(string, length, tail) {
 		tail = '...';
 	
 	if (string && string.length <= length)
-		return string
+		return string;
 		
 	return string.substr(0, length) + tail;
 }
 
 $(function() {
 	if($.cookie('u') != null){
-		var x = $.cookie('u').replace(/"/g, '');
-		var y = $.unserialize(x);
-		y = $.base64Decode(y.u);
-		y = eval("(" + y + ")");
-		$('#u_entrar_topo').hide();
-		$('#loginTop').addClass('logged').html('<h3 class="welcome">Bem vindo<span class="baseColor">.</span>ai</h3><br />' + truncate(y.u.name, 22) + ' <a href="#">Sair</a>');
+		var cookie = $.cookie('u');
+		var user;
+		if(cookie && cookie.split('|').length > 0) {
+		    var user = cookie.split('|')[0];
+		    var d = $.base64Decode($.URLDecode(user));
+		    user = eval('(' + d + ')');
+		    if(user) user = user.u;
+
+			$('#u_entrar_topo').hide();
+			$('#loginTop').addClass('logged').html('<h3 class="welcome">Bem vindo<span class="baseColor">.</span>ai</h3><br />' + truncate(user.name, 22) + ' <a href="/u/sair">Sair</a>');
+		}
 	}
 
 	$('#microurl').submit(function() {
