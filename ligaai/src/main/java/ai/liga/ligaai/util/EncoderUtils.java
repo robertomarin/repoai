@@ -25,12 +25,7 @@ public class EncoderUtils {
 		System.out.println(decodedString);
 
 		String encodeBase64URLSafeString = Base64.encodeBase64String(decodedString.getBytes());
-		String x = encodeBase64URLSafeString.replaceAll("[^=&\\w]", "");
-		
-		System.out.println("igual" + x);
-		x = encodeUrl(x);
-		System.out.println(x);
-		return x;
+		return encodeBase64URLSafeString.replaceAll("[^=&\\w]", "");
 	}
 	public static void main(String[] args) {
 		System.out.println("eyJ1Ijp7ImlkIjoyNywiZW1haWwiOiJqdWwuZHNhbnRvc0BnbWFpbC5jb20iLCJwYXNzd29yZCI6MTIzNDU2fX0=\n\n\b\r%dfeifj@(*$*@(%)%(*0=23923(@*)*@($*".replaceAll("[^=&\\w]*", ""));

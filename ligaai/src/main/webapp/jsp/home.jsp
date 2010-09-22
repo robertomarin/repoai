@@ -57,9 +57,10 @@
 							<h1 class="ligaStyle">Me Liga<span class="baseColor">.</span>ai</h1>
 						</header>
 						<section>
-							<form id="ligaai">
+							<form id="ligaai" action="/ligaai/novo">
+								<input type="hidden" id="position" value="0" />
 								<div id="cloneable" class="hide">
-									<select class="contactType" name="contactType">
+									<select class="contactType" name="">
 										<option value="PHONE" selected>Telefone</option>
 										<option value="SKYPE">Skype</option>
 										<option value="GTALK">Google Talk</option>
@@ -69,10 +70,10 @@
 										<option value="ORKUT">Orkut</option>
 										<option value="EMAIl">E-mail</option>
 									</select>
-									<input type="text" name="contact" id="contact" class="phone contactInfo" />
+									<input type="text" name="" class="phone contactInfo" />
 								</div>
 								<div class="contactContainer">
-									<select class="contactType" name="contactType">
+									<select class="contactType" name="contacts[0].type">
 										<option value="PHONE" selected>Telefone</option>
 										<option value="SKYPE" class="skype">Skype</option>
 										<option value="GTALK">Google Talk</option>
@@ -82,13 +83,12 @@
 										<option value="ORKUT">Orkut</option>
 										<option value="EMAIl">E-mail</option>
 									</select>
-									<input type="text" name="contact" id="contact" class="phone contactInfo" />
+									<input type="text" name="contacts[0].content" class="phone contactInfo" />
 								</div>
 								
-								<textarea id="message">Me liga.ai ;-)</textarea>
+								<textarea name="message" id="message">Me liga.ai ;-)</textarea>
 								<p><input type="checkbox" checked="checked" /> Li e concordo com os <a href="#" title="Veja os termos de uso do liga.ai">termos de uso</a></p>						
 								<input type="submit" value="envia.ai" class="sendButton" />
-								<input type="hidden" id="email" value="jul.dsantos@gmail.com" />
 							</form>
 						</section>
 					</div>
@@ -105,8 +105,11 @@
 								<div class="userInfo">
 									<header>
 										<hgroup>
-										<h1>Jo Soares</h1>
-										<h2><c:out value="${ligaai.contacts[0].content}" escapeXml="false"/></h2>
+										<h1><c:out value="${ligaai.user.name}" escapeXml="false"/></h1>
+										<c:forEach items="${ligaai.contacts}" var="contact" varStatus="j">
+											<h2><c:out value="${contact.type}" escapeXml="false"/></h2>
+											<h2><c:out value="${contact.content}" escapeXml="false"/></h2>
+										</c:forEach>
 										<h3><c:out value="${ligaai.message}" escapeXml="false"/></h3>
 										</hgroup>
 									</header>

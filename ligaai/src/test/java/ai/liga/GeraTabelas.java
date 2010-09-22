@@ -15,7 +15,7 @@ public class GeraTabelas {
 	public void geraTabelas() {
 		AnnotationConfiguration ac = new AnnotationConfiguration();
 		ac.configure();
-		new SchemaUpdate(ac).execute(true, true);
+		// new SchemaUpdate(ac).execute(true, true);
 		// new SchemaExport(ac).create(true, true);
 	}
 }

@@ -29,8 +29,8 @@ public class CookieComponent {
 		}
 		Cookie ck = null;
 		try {
-			String json = xstream.toJSON(user);
-			String value = EncoderUtils.encodeBase64(json) + "|" + DigestUtils.md5Hex(json);
+			String jsonB64 = EncoderUtils.encodeBase64(xstream.toJSON(user));
+			String value = EncoderUtils.encodeUrl(jsonB64) + "|" + DigestUtils.md5Hex(jsonB64);
 
 			System.out.println("|" + value + "|");
 
@@ -45,14 +45,23 @@ public class CookieComponent {
 		return ck;
 	}
 
+	
 	public User getUserFromCookie(Cookie userCookie) throws InvalidUserException {
 
 		if (userCookie == null || GenericValidator.isBlankOrNull(userCookie.getValue())) {
 			return null;
 		}
 
-		String jsonB64 = Cookies.getItemValue(userCookie, Constants.USER);
-		String hash = Cookies.getItemValue(userCookie, Constants.HASH);
+		String decoded = EncoderUtils.decodeUrl(userCookie.getValue());
+		
+		String[] split = decoded.split("[|]");
+		if(GenericValidator.isBlankOrNull(decoded) || split.length != 2) {
+			return null;
+		}
+		
+		
+		String jsonB64 = split[0];
+		String hash = split[1];
 
 		if (GenericValidator.isBlankOrNull(jsonB64) || GenericValidator.isBlankOrNull(hash)) {
 			return null;

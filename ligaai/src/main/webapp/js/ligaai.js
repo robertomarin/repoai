@@ -179,13 +179,12 @@ $(function() {
 	
 	$('#ligaai').submit(function() {
 		if($.cookie('u') != null){
-			var url = '/ligaai/criar?'
-				+ 'message=' + encodeUrl($('#message').val())
-				+ '&contact=' + encodeUrl($('#contact').val())
-				+ '&email=' + encodeUrl($('#email').val())
-				+ '&contactType=' + encodeUrl($('.contactType').val());
+			var values = {};
+			$.each($(this).serializeArray(), function(i, field) {
+			    values[field.name] = field.value;
+			});
 			
-			$.getJSON(url, function(data) {
+			$.getJSON($(this).attr('action'), values, function(data) {
 				if(data.ok) {
 					//var microurl = document.location.protocol + '//' + document.location.hostname + '/' + data.microurl.micro;
 					$('#content article:first').prepend('<article><div class="userPic">foto</div><div class="userInfo"><header><hgroup><h1>Nome do rebento</h1><h2>' + $('#contact').val() + '</h2></hgroup></header></div></article>');
@@ -268,9 +267,13 @@ $(function() {
 	 /*!
 	  * Input clone
 	 */
-
 	 $('.contactInfo').focus(function(){
-		$('#cloneable').clone(true).removeAttr("id").fadeIn(350).insertAfter($(this).parent());
+		var x = $('#cloneable').clone(true).removeAttr("id");
+		var position = $('#position').val();
+		$('#position').val(++position);
+		x.find('select').attr('name', 'contacts[' + position + '].type');
+		x.find('input').attr('name', 'contacts[' + position + '].content');
+		x.fadeIn(350).insertAfter($(this).parent());
 		$(this).unbind('focus');
 	 });
 	 

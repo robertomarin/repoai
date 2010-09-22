@@ -1,25 +1,19 @@
 package ai.liga.ligaai.controller;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import net.sf.json.spring.web.servlet.view.JsonView;
 
-import org.apache.commons.validator.GenericValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import ai.liga.ligaai.model.Contact;
-import ai.liga.ligaai.model.ContactType;
 import ai.liga.ligaai.model.LigaAi;
 import ai.liga.ligaai.service.LigaAiService;
 import ai.liga.ligaai.util.LigaAiUtils;
-import ai.liga.user.model.User;
+import ai.liga.util.$;
 
 @Controller
 public class LigaAiController {
@@ -39,51 +33,13 @@ public class LigaAiController {
 		return "ligaai";
 	}
 
-	@RequestMapping("/ligaai/criar2")
+	@RequestMapping("/ligaai/novo")
 	public ModelAndView post(@Valid LigaAi ligaAi, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView(new JsonView());
-		System.out.println(ligaAi.getMessage());
-		System.out.println(ligaAi.getUser().getEmail());
-		
-		if (ligaAi.getContacts() != null) {
-			System.out.println(ligaAi.getContacts().get(0).getContent());
-			System.out.println(ligaAi.getContacts().get(0).getType());
-		}
-
-		return mav;
-	}
-
-	@RequestMapping("/ligaai/criar")
-	public ModelAndView post(@RequestParam(required = false) String message,
-			@RequestParam(required = false) String contact, @RequestParam(required = false) String contactType,
-			String email, HttpServletRequest request) {
-		ModelAndView mav = new ModelAndView(new JsonView());
-
-		if (GenericValidator.isBlankOrNull(message)) {
-			return mav.addObject("msg", "Mensagem não pode vir em branco.");
-		}
-
-		if (GenericValidator.isBlankOrNull(contactType)) {
-			return mav.addObject("msg", "Tipo de contato deve ser preenchido.");
-		}
-
-		if (GenericValidator.isBlankOrNull(contact)) {
-			return mav.addObject("msg", "Contato deve ser preenchido.");
-		}
-
-		if (!GenericValidator.isEmail(email)) {
-			return mav.addObject("msg", "Email inválido.");
-		}
-
-		LigaAi ligaAi = new LigaAi();
-		ligaAi.setMessage(message);
-		ligaAi.setTags(ligaAiUtils.extractTags(message));
-		ligaAi.setRemoteAddress(request.getRemoteAddr());
-		ligaAi.setContacts(new ArrayList<Contact>());
-		ligaAi.getContacts().add(new Contact(contact, ContactType.valueOf(contactType)));
-		ligaAi.setUser(new User(email));
-
+		ligaAi.setUser($.getUserFromRequest(request));
+		ligaAi.setTags(ligaAiUtils.extractTags(ligaAi.getMessage()));
 		ligaAi = ligaAiService.merge(ligaAi);
 		return mav.addObject("ligaai", ligaAi).addObject("ok", "true");
 	}
+
 }
