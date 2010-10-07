@@ -68,7 +68,7 @@
 										<option value="TWITTER">Twitter</option>
 										<option value="FACEBOOK">Facebook</option>
 										<option value="ORKUT">Orkut</option>
-										<option value="EMAIl">E-mail</option>
+										<option value="EMAIL">E-mail</option>
 									</select>
 									<input type="text" name="" class="phone contactInfo" />
 								</div>
@@ -81,13 +81,14 @@
 										<option value="TWITTER">Twitter</option>
 										<option value="FACEBOOK">Facebook</option>
 										<option value="ORKUT">Orkut</option>
-										<option value="EMAIl">E-mail</option>
+										<option value="EMAIL">E-mail</option>
 									</select>
-									<input type="text" name="contacts[0].content" class="phone contactInfo" />
+									<input type="text" id="firstContact" name="contacts[0].content" class="phone contactInfo" />
+									<a href="#" id="addMoreContact" title="Adicione mais contatos">+</a>
 								</div>
 								
 								<textarea name="message" id="message">Me liga.ai ;-)</textarea>
-								<p><input type="checkbox" checked="checked" /> Li e concordo com os <a href="#" title="Veja os termos de uso do liga.ai">termos de uso</a></p>						
+								<p><input type="checkbox" checked="checked" id="agree" /> <label for="agree">Li e concordo com os <a href="#" title="Veja os termos de uso do liga.ai">termos de uso</a></label></p>						
 								<input type="submit" value="envia.ai" class="sendButton" />
 							</form>
 						</section>

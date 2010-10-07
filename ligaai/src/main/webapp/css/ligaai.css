@@ -99,8 +99,8 @@ input[type=submit]{
 /***Liga***/
 #liga{background: #fff url(/img/separador.png) repeat-x bottom; padding: 10px 0;;}
 #liga .ligaStyle{margin-bottom: 10px;}
-#liga .contactContainer{margin: 2px 0;}
-#liga #message, .contactType, #liga .contactInfo{font-size: 22px; width: 438px; font-family: Arial;}
+#liga .contactContainer{margin: 2px 0; position: relative;}
+#liga #message, .contactType, #liga .contactInfo{font-size: 21px; width: 438px; font-family: Arial;}
 #liga #message{
 	color: #ccc;
 	font-family: Arial;
@@ -113,6 +113,25 @@ input[type=submit]{
 #liga #message.typeMessage{color: #000; font-style: normal;}
 #liga .contactType{width: 155px;}
 #liga .sendButton{font-size: 25px; padding: 5px 13px; margin: 10px 0 0;}
+#liga #addMoreContact{
+	background: url(/img/backgrounds.png) repeat-x 0 -3px; 
+	border: 1px solid #e9e9e9;
+	color: #fff;
+	cursor: pointer;
+	padding: 6px 9px;
+	font-weight: bold;
+	position: absolute;
+	top: 4px; 
+	right: -20px;
+	text-decoration: none;
+	border-radius: 15px; -moz-border-radius: 15px; -webkit-border-radius: 15px;
+}
+#liga .example{
+	color: #ccc;
+	font-family: Arial;
+	font-style: italic;
+	font-size: 20px;
+}
 
 /***Shorten url***/
 #shortenUrl{background: #fff url(/img/separador.png) repeat-x bottom; border-top: 18px solid #ff00cc; padding: 10px 0;}

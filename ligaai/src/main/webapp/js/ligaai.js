@@ -178,22 +178,26 @@ $(function() {
 	});
 	
 	$('#ligaai').submit(function() {
-		if($.cookie('u') != null){
-			var values = {};
-			$.each($(this).serializeArray(), function(i, field) {
-			    values[field.name] = field.value;
-			});
-			
-			$.getJSON($(this).attr('action'), values, function(data) {
-				if(data.ok) {
-					//var microurl = document.location.protocol + '//' + document.location.hostname + '/' + data.microurl.micro;
-					$('#content article:first').prepend('<article><div class="userPic">foto</div><div class="userInfo"><header><hgroup><h1>Nome do rebento</h1><h2>' + $('#contact').val() + '</h2></hgroup></header></div></article>');
-				} else {
-					alert('bug?');
-				}
-			});
-		} else{
-			$('#subscribe').dialog('open');
+		if($('#agree').is(':checked')){
+			if($.cookie('u') != null){
+				var values = {};
+				$.each($(this).serializeArray(), function(i, field) {
+				    values[field.name] = field.value;
+				});
+				
+				$.getJSON($(this).attr('action'), values, function(data) {
+					if(data.ok) {
+						//var microurl = document.location.protocol + '//' + document.location.hostname + '/' + data.microurl.micro;
+						$('#content article:first').prepend('<article><div class="userPic">foto</div><div class="userInfo"><header><hgroup><h1>Nome do rebento</h1><h2>' + $('#contact').val() + '</h2></hgroup></header></div></article>');
+					} else {
+						alert('bug?');
+					}
+				});
+			} else{
+				$('#subscribe').dialog('open');
+			}
+		}else {
+			alert('voce deve concordar com os termos de uso');
 		}
 		
 		return false;
@@ -257,42 +261,46 @@ $(function() {
 	});
 	
 	 /*!
-	  * About
-	 */
-	 
-	 $('#aboutText').click(function(){
-		$('#aboutContent').slideToggle('slow');
-	 });
-	 
-	 /*!
 	  * Input clone
 	 */
-	 $('.contactInfo').focus(function(){
+	 $('#addMoreContact').click(function(e){
 		var x = $('#cloneable').clone(true).removeAttr("id");
 		var position = $('#position').val();
 		$('#position').val(++position);
 		x.find('select').attr('name', 'contacts[' + position + '].type');
-		x.find('input').attr('name', 'contacts[' + position + '].content');
-		x.fadeIn(350).insertAfter($(this).parent());
-		$(this).unbind('focus');
+		x.find('input').attr('name', 'contacts[' + position + '].content').mask('(99) 9999-9999');
+		x.fadeIn(350).insertBefore($('#message'));
+		e.preventDefault();
 	 });
 	 
 	 /*!
 	  * Input masking
 	 */
-	 //$('.phone').mask('(99) 9999-9999');
-	 
-	 $('.contactType').each(function(){
-		 $(this).change(function(){
-			 if($(this).val() == 'PHONE') {
-				 $(this).parent().find('.contactInfo').mask('(99) 9999-9999'); 
-			  } else{
-				 $(this).parent().find('.contactInfo').unmask(); 
-			  };
-		 });
+	 $('#firstContact').mask('(99) 9999-9999');
+	 	 
+	 $('.contactType').live('change', function(){
+		var $slt = $(this);
+		var input = $slt.next();
+		
+		($slt.val() != 'PHONE') ? input.removeClass('phone').unmask() : input.addClass('phone').mask('(99) 9999-9999');
+
+		if ($slt.val() == 'TWITTER') input.addClass('example').val('ex: @seutwitter');
+		if ($slt.val() == 'SKYPE') input.addClass('example').val('ex: nome_usuario');
+		if ($slt.val() == 'EMAIL') input.addClass('example').val('ex: usuario@provedor.com');
+		if ($slt.val() == 'GTALK') input.addClass('example').val('ex: usuario@gmail.com');
+		if ($slt.val() == 'ORKUT') input.addClass('example').val('ex: http://www.orkut.com.br/Main#Profile?uid=000000000000000');
+		if ($slt.val() == 'MSN') input.addClass('example').val('ex: email@hotmail.com');
+		if ($slt.val() == 'FACEBOOK') input.addClass('example').val('ex: http://www.facebook.com/profile.php?id=000000000');
+	
+		input.click(function(){
+			if(input.val().indexOf('ex: ') != -1) input.val('');
+		});
 	 });
 	 
-	 /**Subscribe dialog**/
+	 
+	 /*!
+	  * Subscribe dialog
+	 */
 	 $('#subscribe').dialog({
 		bgiframe: true,
 		autoOpen: false,
