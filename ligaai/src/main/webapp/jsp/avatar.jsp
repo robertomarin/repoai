@@ -25,6 +25,11 @@
 			<div class="containerShadow">
 				<div id="userList">
 					<section id="content">
+						<p>Selecione seu avatar para o Liga<span class="baseColor">.</span>ai</p>
+						<form method="post" action="/uploadAvatar.html" enctype="multipart/form-data">
+							<input type="file" name="file"/> 
+							<input type="submit" name="Upload"/>
+						</form>
 						<c:if test="${idUser != null}">
 							<div id="article"> 
 				                <img src="/ligaai/photos/${idUser}.jpg" id="cropbox" />
