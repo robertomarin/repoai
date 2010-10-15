@@ -45,6 +45,8 @@ public class User {
 	@Size(min = 2, max = 30, message = "O nome deve ter de 2 a 30 caracteres")
 	private String name;
 
+	private boolean avatar;
+
 	public User() {
 	}
 
@@ -90,6 +92,14 @@ public class User {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public void setAvatar(boolean avatar) {
+		this.avatar = avatar;
+	}
+
+	public boolean isAvatar() {
+		return avatar;
 	}
 
 }
