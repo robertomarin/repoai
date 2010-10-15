@@ -95,6 +95,7 @@ input[type=submit]{
 .userPic{float: left; margin-right: 10px;}
 .baseColor{color: #ff00cc;}
 .ligaStyle{font-size: 32px;}
+h1.ligaStyle{color: #000;}
 
 /***Liga***/
 #liga{background: #fff url(/img/separador.png) repeat-x bottom; padding: 10px 0;;}
