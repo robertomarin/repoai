@@ -59,12 +59,12 @@ public class ImagesTransformationService {
 	}
 	
 	public boolean saveImageResized(int resizeX, int resizeY,
-			MultipartFile mpf, final int idUser){
+			MultipartFile mpf, final Long idUser){
 		return saveImage(makResize(resizeX, resizeY, mpf), idUser);
 		
 	}
 	
-	public boolean saveImage(MultipartFile mpf, final int idUser) {
+	public boolean saveImage(MultipartFile mpf, final Long idUser) {
 		BufferedImage bi;
 		try {
 			bi = ImageIO.read(mpf.getInputStream());
@@ -75,7 +75,7 @@ public class ImagesTransformationService {
 		return saveImage(bi, idUser);
 	}
 	
-	private boolean saveImage(final BufferedImage image, final int idUser) {
+	private boolean saveImage(final BufferedImage image, final Long idUser) {
 		try {
 			ImageIO.write(image, "jpg", new File(PATH_IMAGE_PREVIEW+idUser+".jpg"));
 		} catch (IOException e) {
@@ -87,7 +87,7 @@ public class ImagesTransformationService {
 
 	}
 	
-	public boolean saveImage(int idUser, int x, int y, int w, int h){
+	public boolean saveImage(Long idUser, int x, int y, int w, int h){
 		BufferedImage bi;
 		try {
 		bi = ImageIO.read(new File(PATH_IMAGE_PREVIEW+idUser+".jpg"));
@@ -106,13 +106,13 @@ public class ImagesTransformationService {
 				return false;
 			}
 			
-			File file = new File(PATH_IMAGE_PREVIEW+idUser+".jpg");
-			if(file != null){
-				if(!file.delete()){
-					logger.error("Erro ao deletar o preview do avatar");
-				}
-					
-			}
+//			File file = new File(PATH_IMAGE_PREVIEW+idUser+".jpg");
+//			if(file != null){
+//				if(!file.delete()){
+//					logger.error("Erro ao deletar o preview do avatar");
+//				}
+//					
+//			}
 			
 			return true;
 		}
