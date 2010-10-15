@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <header id="logo">
-	<h1 class="ligaStyle">Liga<span class="baseColor">.</span>ai</h1>
+	<a href="/"><h1 class="ligaStyle">Liga<span class="baseColor">.</span>ai</h1></a>
 	<ul id="loginTop">
 		<form id="u_entrar_topo">
 		<li><h3>Loga<span class="baseColor">.</span>ai</h3>
