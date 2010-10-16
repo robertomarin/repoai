@@ -193,10 +193,10 @@ $(function() {
 						alert('bug?');
 					}
 				});
-			} else{
+			} else {
 				$('#subscribe').dialog('open');
 			}
-		}else {
+		} else {
 			alert('voce deve concordar com os termos de uso');
 		}
 		
@@ -277,7 +277,6 @@ $(function() {
 	  * Input masking
 	 */
 	 $('#firstContact').mask('(99) 9999-9999');
-	 	 
 	 $('.contactType').live('change', function(){
 		var $slt = $(this);
 		var input = $slt.next();
