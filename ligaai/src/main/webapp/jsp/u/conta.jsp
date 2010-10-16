@@ -21,7 +21,7 @@
 	</head>
 	<body class="morningBackground">
 		<div class="wrapper">
-		    <jsp:include page="header.jsp" />
+		    <jsp:include page="../header.jsp" />
 			<div class="containerShadow">
 				<div id="userList">
 					<section id="content">
@@ -68,10 +68,10 @@
 				</div>
 			</div>
 		</div>
-		<jsp:include page="footer.jsp" />
+		<jsp:include page="../footer.jsp" />
 		<!-- LIGHTBOX -->
-		<jsp:include page="lightbox.jsp" />
+		<jsp:include page="../lightbox.jsp" />
 		<!--JAVASCRIPT-->
-		<jsp:include page="javascripts.jsp" />
+		<jsp:include page="../javascripts.jsp" />
 	</body>
 </html>
