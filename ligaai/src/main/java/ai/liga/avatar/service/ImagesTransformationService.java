@@ -16,18 +16,16 @@ import ai.liga.image.ImageTransform;
 @Service
 public class ImagesTransformationService {
 
-	private static final String PATH_IMAGE = "/var/www/html/ligaai/avatar";
+	private static final String PATH_IMAGE = "/var/www/html/ligaai/avatar/";
 
-	private static final String PATH_IMAGE_PREVIEW = "/var/www/html/ligaai/avatar/preview";
+	private static final String PATH_IMAGE_PREVIEW = PATH_IMAGE + "original/";
 
-	private static Logger logger = Logger
-			.getLogger(ImagesTransformationService.class);
+	private static Logger logger = Logger.getLogger(ImagesTransformationService.class);
 
 	@Autowired
 	private ImageTransform transform;
 
-	public BufferedImage makeTransfomations(int resizeX, int resizeY,
-			MultipartFile mpf) {
+	public BufferedImage makeTransfomations(int resizeX, int resizeY, MultipartFile mpf) {
 
 		BufferedImage bi;
 		try {
@@ -37,13 +35,11 @@ public class ImagesTransformationService {
 			return null;
 		}
 
-		return transform.makeResize(transform.makeSquareCrop(bi), resizeX,
-				resizeY);
+		return transform.makeResize(transform.makeSquareCrop(bi), resizeX, resizeY);
 
 	}
-	
-	private BufferedImage makResize(int resizeX, int resizeY,
-			MultipartFile mpf) {
+
+	private BufferedImage makResize(int resizeX, int resizeY, MultipartFile mpf) {
 
 		BufferedImage bi;
 		try {
@@ -53,17 +49,15 @@ public class ImagesTransformationService {
 			return null;
 		}
 
-		return transform.makeResize(bi, resizeX,
-				resizeY);
+		return transform.makeResize(bi, resizeX, resizeY);
 
 	}
-	
-	public boolean saveImageResized(int resizeX, int resizeY,
-			MultipartFile mpf, final Long idUser){
+
+	public boolean saveImageResized(int resizeX, int resizeY, MultipartFile mpf, final Long idUser) {
 		return saveImage(makResize(resizeX, resizeY, mpf), idUser);
-		
+
 	}
-	
+
 	public boolean saveImage(MultipartFile mpf, final Long idUser) {
 		BufferedImage bi;
 		try {
@@ -74,51 +68,41 @@ public class ImagesTransformationService {
 		}
 		return saveImage(bi, idUser);
 	}
-	
+
 	private boolean saveImage(final BufferedImage image, final Long idUser) {
 		try {
-			ImageIO.write(image, "jpg", new File(PATH_IMAGE_PREVIEW+idUser+".jpg"));
+			ImageIO.write(image, "jpg", new File(PATH_IMAGE_PREVIEW + idUser + ".jpg"));
 		} catch (IOException e) {
 			logger.error("Erro ao gravar a imagem", e);
 			return false;
 		}
-		
+
 		return true;
 
 	}
-	
-	public boolean saveImage(Long idUser, int x, int y, int w, int h){
+
+	public boolean saveImage(Long idUser, int x, int y, int w, int h) {
 		BufferedImage bi;
 		try {
-		bi = ImageIO.read(new File(PATH_IMAGE_PREVIEW+idUser+".jpg"));
+			bi = ImageIO.read(new File(PATH_IMAGE_PREVIEW + idUser + ".jpg"));
 		} catch (IOException e) {
 			logger.error("Erro ao ler a imagem", e);
 			return false;
 		}
-		
+
 		bi = transform.makeSquareCrop(bi, x, y, h, w);
-		
-		if(bi!=null){
+
+		if (bi != null) {
 			try {
-				ImageIO.write(bi, "jpg", new File(PATH_IMAGE+idUser+".jpg"));
-			} catch (IOException e) {
+				ImageIO.write(bi, "jpg", new File(PATH_IMAGE + idUser + ".jpg"));
+			} catch (Exception e) {
 				logger.error("Erro ao gravar a imagem", e);
 				return false;
 			}
-			
-//			File file = new File(PATH_IMAGE_PREVIEW+idUser+".jpg");
-//			if(file != null){
-//				if(!file.delete()){
-//					logger.error("Erro ao deletar o preview do avatar");
-//				}
-//					
-//			}
-			
+
 			return true;
 		}
-		
-		
-		
+
 		return false;
 	}
 

@@ -41,7 +41,7 @@ public class UploadAvatarController {
 			return new ModelAndView(new RedirectView("/"));
 		}
 
-		ModelAndView mav = new ModelAndView("avatar");
+		ModelAndView mav = new ModelAndView("/u/conta");
 
 		if (!file.isEmpty()) {
 			String type = file.getContentType();
@@ -75,7 +75,7 @@ public class UploadAvatarController {
 			return new ModelAndView(new RedirectView("/"));
 		}
 
-		ModelAndView mav = new ModelAndView("avatar");
+		ModelAndView mav = new ModelAndView("/u/conta");
 
 		if (imageService.saveImage(user.getId(), x, y, w, h)) {
 			mav.addObject("msg", "Legal agora você tem um avatar no Ligaai");
@@ -88,11 +88,5 @@ public class UploadAvatarController {
 
 		return mav;
 	}
-
-	@RequestMapping(value = "/uploadAvatar.html", method = RequestMethod.GET)
-	public ModelAndView uploadAvatar() {
-		return new ModelAndView(new RedirectView("/uploadView.html"));
-	}
-
 
 }

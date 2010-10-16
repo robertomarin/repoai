@@ -30,11 +30,12 @@
 							<input type="file" name="file"/> 
 							<input type="submit" name="Upload"/>
 						</form>
-						<c:if test="${idUser != null}">
+						<c:out value="${user.id}"></c:out>
+						<c:if test="${user.id != null}">
 							<div id="article"> 
-				                <img src="/ligaai/avatar/${idUser}.jpg" id="cropbox" />
-				                <div id="previewContainer" class="hide">
-			                        <img src="/ligaai/avatar/preview/${idUser}.jpg" id="preview" />
+				                <img src="/ligaai/avatar/${user.id}.jpg" id="cropbox" />
+				                <div id="previewContainer" class="">
+			                        <img src="/ligaai/avatar/original/${user.id}.jpg" id="preview" />
 				                </div>
 							</div>
 							<form action="/cropAvatar.html" id="formCrop" onsubmit="return checkCoords();">
