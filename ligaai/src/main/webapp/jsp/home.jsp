@@ -107,24 +107,14 @@
 									<header>
 										<hgroup>
 										<h1><c:out value="${ligaai.user.name}" escapeXml="false"/></h1>
-										<c:forEach items="${ligaai.contacts}" var="contact" varStatus="j">
-											<h2><c:out value="${contact.type}" escapeXml="false"/></h2>
-											<h2><c:out value="${contact.content}" escapeXml="false"/></h2>
-										</c:forEach>
+										<ul>
+											<c:forEach items="${ligaai.contacts}" var="contact" varStatus="j">
+												<li><a href="#" class="${fn:toLowerCase(contact.type)}">${contact.content}</a></li>
+											</c:forEach>
+										</ul>
 										<h3><c:out value="${ligaai.message}" escapeXml="false"/></h3>
 										</hgroup>
 									</header>
-									<section>
-										<ul class="socialNetwork">
-											<li class="fullLine"><strong>Meus Perfis</strong></li>
-											<li><a href="#" class="twitter"></a></li>
-											<li><a href="#" class="facebook"></a></li>
-											<li><a href="#" class="orkut"></a></li>
-											<li class="msn fullLine">odaliska.semdestino@hotmail.com</li>
-											<li class="skype fullLine">jurona</li>
-											<li class="gTalk fullLine">gatom@gmail.com</li>
-										</ul>
-									</section>
 								</div>
 								<div class="rating">
 									<span class="like"></span>

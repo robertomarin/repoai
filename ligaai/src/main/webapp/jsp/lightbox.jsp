@@ -47,21 +47,5 @@
 				<li><input type="submit" value="envia.ai" /></li>
 			</ul>
 		</form>
-		<div id="uploadAvatar" class="hide">
-			<p>Selecione seu avatar para o Liga<span class="baseColor">.</span>ai</p>
-			<form method="post" action="/uploadAvatar.html" enctype="multipart/form-data">
-				<input type="file" name="file"/> 
-				<input type="submit" name="Upload"/>
-			</form>
-			<c:if test="${idUser != null}">
-				<div id="avatar"> 
-	                <img src="/ligaai/photos/${idUser}.jpg" id="jcrop_target" />
-                       <img src="/ligaai/photos/${idUser}.jpg" id="preview" />
-				</div> 
-			</c:if>
-			<c:if test="${msg != null}">
-				<c:out value="${msg}" escapeXml="false"/>
-			</c:if>
-		</div>
 	</div>
 </div>

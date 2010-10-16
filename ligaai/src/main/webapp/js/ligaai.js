@@ -185,21 +185,28 @@ $(function() {
 				    values[field.name] = field.value;
 				});
 				
-				$.getJSON($(this).attr('action'), values, function(data) {
-					if(data.ok) {
-						//var microurl = document.location.protocol + '//' + document.location.hostname + '/' + data.microurl.micro;
-						$('#content article:first').prepend('<article><div class="userPic">foto</div><div class="userInfo"><header><hgroup><h1>Nome do rebento</h1><h2>' + $('#contact').val() + '</h2></hgroup></header></div></article>');
-					} else {
-						alert('bug?');
-					}
-				});
-			} else {
+				if($.trim($('#firstContact').val()) != ''){
+					var contactList = '';
+					$('.contactInfo').not('#cloneable .contactInfo').each(function(){
+						contactList += '<li><a href="#" class="'+ $(this).prev().val().toLowerCase() +'">' + $(this).val() + '</a></li>';
+					});
+					$.getJSON($(this).attr('action'), values, function(data) {
+						if(data.ok) {
+							//var microurl = document.location.protocol + '//' + document.location.hostname + '/' + data.microurl.micro;
+							$('#content').prepend('<article class="users"><div class="userPic">foto</div><div class="userInfo"><header><hgroup><h1>' + user.name + '</h1><ul>' + contactList + '</ul><h3>' + $('#message').val() + '</h3></hgroup></header></div></article>');
+						} else {
+							alert('bug?');
+						}
+					});
+				} else{
+					alert('Por favor, preencha pelo menos um contato')
+				};
+			} else{
 				$('#subscribe').dialog('open');
 			}
-		} else {
-			alert('voce deve concordar com os termos de uso');
+		}else {
+			alert('Você deve concordar com os termos de uso');
 		}
-		
 		return false;
 	});
 	
@@ -216,8 +223,7 @@ $(function() {
 					$(el).parent().find('.message').html(data.errors[i].defaultMessage).fadeIn();
 				};
 			}else {
-				$('#u_criar').hide();
-				$('#uploadAvatar').fadeIn();
+				window.location.reload();
 			}
 		});
 		return false;
@@ -277,9 +283,15 @@ $(function() {
 	  * Input masking
 	 */
 	 $('#firstContact').mask('(99) 9999-9999');
+	 	 
 	 $('.contactType').live('change', function(){
 		var $slt = $(this);
 		var input = $slt.next();
+		var matchIds = function(){
+			input.blur(function(){
+				$(this).val($(this).val().match('id=(.*[0-9])')[1]);
+			});
+		};
 		
 		($slt.val() != 'PHONE') ? input.removeClass('phone').unmask() : input.addClass('phone').mask('(99) 9999-9999');
 
@@ -287,12 +299,18 @@ $(function() {
 		if ($slt.val() == 'SKYPE') input.addClass('example').val('ex: nome_usuario');
 		if ($slt.val() == 'EMAIL') input.addClass('example').val('ex: usuario@provedor.com');
 		if ($slt.val() == 'GTALK') input.addClass('example').val('ex: usuario@gmail.com');
-		if ($slt.val() == 'ORKUT') input.addClass('example').val('ex: http://www.orkut.com.br/Main#Profile?uid=000000000000000');
+		if ($slt.val() == 'ORKUT') {
+			input.addClass('example').val('ex: http://www.orkut.com.br/Main#Profile?uid=000000000000000');
+			matchIds();
+		};
 		if ($slt.val() == 'MSN') input.addClass('example').val('ex: email@hotmail.com');
-		if ($slt.val() == 'FACEBOOK') input.addClass('example').val('ex: http://www.facebook.com/profile.php?id=000000000');
+		if ($slt.val() == 'FACEBOOK') {
+			input.addClass('example').val('ex: http://www.facebook.com/profile.php?id=000000000');
+			matchIds();
+		};
 	
 		input.click(function(){
-			if(input.val().indexOf('ex: ') != -1) input.val('');
+			if(input.val().indexOf('ex: ') != -1) input.val('').removeClass('example');
 		});
 	 });
 	 
