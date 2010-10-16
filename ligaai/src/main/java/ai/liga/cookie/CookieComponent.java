@@ -32,8 +32,6 @@ public class CookieComponent {
 			String jsonB64 = EncoderUtils.encodeBase64(xstream.toJSON(user));
 			String value = EncoderUtils.encodeUrl(jsonB64) + "|" + DigestUtils.md5Hex(jsonB64);
 
-			System.out.println("|" + value + "|");
-
 			ck = new Cookie(Constants.USER, value);
 			ck.setDomain(".liga.ai");
 			ck.setMaxAge(60 * 60 * 24 * 365 * 5);
