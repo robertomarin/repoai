@@ -33,6 +33,7 @@ public class User {
 	@Column(length = 32)
 	@Size(min = 6, max = 20, message = "Senha deve ter entre 6 e 20 caracteres")
 	@NotNull(message = "Senha deve ser preenchida")
+	@XStreamOmitField()
 	private String password;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -45,7 +46,8 @@ public class User {
 	@Size(min = 2, max = 30, message = "O nome deve ter de 2 a 30 caracteres")
 	private String name;
 
-	private Boolean avatar;
+	@Column(columnDefinition = "bit default 0")
+	private boolean avatar;
 
 	public User() {
 	}
