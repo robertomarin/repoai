@@ -16,7 +16,7 @@ import ai.liga.image.ImageTransform;
 @Service
 public class ImagesTransformationService {
 
-	private static final String PATH_IMAGE = "/var/www/html/ligaai/avatar/";
+	private static final String PATH_IMAGE = "/var/www/html/ligaai/ligaai/avatar/";
 
 	private static final String PATH_IMAGE_PREVIEW = PATH_IMAGE + "original/";
 
