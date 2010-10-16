@@ -169,7 +169,7 @@ h1.ligaStyle{color: #000;}
 #content .users div.userPic{width: 10%;}
 #content .users .userInfo{width: 60%;}
 #content .users .rating{float: right; width: auto;}
-#content .users h1{font-size: 30px; letter-spacing: -1.5px;}
+#content .users h1{font-size: 30px; letter-spacing: -1.5px; margin-bottom: 5px;}
 #content .users h2{color: #ff00cc; font-size: 20px;}
 #content .users h3{font-weight: normal; font-size: 17px; font-style: italic;}
 #content .userInfo ul{margin: 20px 0;}
