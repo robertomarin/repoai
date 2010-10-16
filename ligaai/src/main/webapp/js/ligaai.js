@@ -111,7 +111,7 @@ $(function() {
 		    if(user) user = user.u;
 
 			$('#u_entrar_topo').hide();
-			$('#loginTop').addClass('logged').html('<h3 class="welcome">Bem vindo<span class="baseColor">.</span>ai</h3><br />' + user.name + ' <br /> <a href="/conta.html">Minha Conta</a> | <a href="/u/sair">Sair</a>');
+			$('#loginTop').addClass('logged').html('<h3 class="welcome">Bem vindo<span class="baseColor">.</span>ai</h3><br />' + user.name + ' <br /> <a href="/u/conta.html">Minha Conta</a> | <a href="/u/sair">Sair</a>');
 		}
 	}
 
@@ -193,7 +193,7 @@ $(function() {
 					$.getJSON($(this).attr('action'), values, function(data) {
 						if(data.ok) {
 							//var microurl = document.location.protocol + '//' + document.location.hostname + '/' + data.microurl.micro;
-							$('#content').prepend('<article class="users"><div class="userPic">foto</div><div class="userInfo"><header><hgroup><h1>' + user.name + '</h1><h3>' + $('#message').val() + '</h3><ul>' + contactList + '</ul></hgroup></header></div></article>');
+							$('#content').prepend('<article class="users"><div class="userPic"><img src="/ligaai/avatar/' + user.id + '.jpg" /></div><div class="userInfo"><header><hgroup><h1>' + user.name + '</h1><h3>' + $('#message').val() + '</h3><ul>' + contactList + '</ul></hgroup></header></div></article>');
 						} else {
 							alert('bug?');
 						}
