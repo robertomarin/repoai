@@ -94,16 +94,5 @@ public class UploadAvatarController {
 		return new ModelAndView(new RedirectView("/uploadView.html"));
 	}
 
-	@RequestMapping("/uploadView.html")
-	public ModelAndView mountViewUpload(final HttpServletRequest request) {
-
-		User user = $.getUserFromRequest(request);
-
-		if (user == null) {
-			return new ModelAndView(new RedirectView("/"));
-		}
-
-		return new ModelAndView("avatar").addObject("user", user);
-	}
 
 }

@@ -1,6 +1,5 @@
 package ai.liga.user.controller;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import ai.liga.cookie.CookieComponent;
 import ai.liga.user.model.User;
@@ -41,6 +41,18 @@ public class UserController {
 		binder.setMessageCodesResolver(new DefaultMessageCodesResolver());
 	}
 
+	@RequestMapping("/u/conta")
+	public ModelAndView mountViewUpload(final HttpServletRequest request) {
+
+		User user = $.getUserFromRequest(request);
+
+		if (user == null) {
+			return new ModelAndView(new RedirectView("/"));
+		}
+
+		return new ModelAndView("/u/conta").addObject("user", user);
+	}
+	
 
 	@RequestMapping("/u/registrar")
 	public String registrar(HttpServletRequest request) {
