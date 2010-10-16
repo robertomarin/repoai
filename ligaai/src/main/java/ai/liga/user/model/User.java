@@ -45,7 +45,7 @@ public class User {
 	@Size(min = 2, max = 30, message = "O nome deve ter de 2 a 30 caracteres")
 	private String name;
 
-	private boolean avatar;
+	private Boolean avatar;
 
 	public User() {
 	}

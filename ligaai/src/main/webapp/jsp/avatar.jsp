@@ -32,9 +32,9 @@
 						</form>
 						<c:if test="${idUser != null}">
 							<div id="article"> 
-				                <img src="/ligaai/photos/${idUser}.jpg" id="cropbox" />
+				                <img src="/ligaai/avatar/${idUser}.jpg" id="cropbox" />
 				                <div id="previewContainer" class="hide">
-			                        <img src="/ligaai/photos/${idUser}.jpg" id="preview" />
+			                        <img src="/ligaai/avatar/preview/${idUser}.jpg" id="preview" />
 				                </div>
 							</div>
 							<form action="/cropAvatar.html" id="formCrop" onsubmit="return checkCoords();">

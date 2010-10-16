@@ -16,9 +16,9 @@ import ai.liga.image.ImageTransform;
 @Service
 public class ImagesTransformationService {
 
-	private static final String PATH_IMAGE = "/Users/alexandrenavarro/teste/img/";
+	private static final String PATH_IMAGE = "/var/www/html/ligaai/avatar";
 
-	private static final String PATH_IMAGE_PREVIEW = "/Users/alexandrenavarro/teste/";
+	private static final String PATH_IMAGE_PREVIEW = "/var/www/html/ligaai/avatar/preview";
 
 	private static Logger logger = Logger
 			.getLogger(ImagesTransformationService.class);

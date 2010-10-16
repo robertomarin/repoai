@@ -14,19 +14,27 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import ai.liga.avatar.service.ImagesTransformationService;
 import ai.liga.user.model.User;
+import ai.liga.user.service.UserService;
 import ai.liga.util.$;
 
 @Controller
 public class UploadAvatarController {
 
+	private final ImagesTransformationService imageService;
+
+	private final UserService usuarioService;
+
 	@Autowired
-	private ImagesTransformationService imageService;
+	public UploadAvatarController(final ImagesTransformationService imageService, final UserService usuarioService) {
+		this.imageService = imageService;
+		this.usuarioService = usuarioService;
+	}
 
 	private static Logger logger = Logger.getLogger(UploadAvatarController.class);
 
 	@RequestMapping(value = "/uploadAvatar.html", method = RequestMethod.POST)
-	public ModelAndView handleFormUpload(@RequestParam("file") MultipartFile file,  final HttpServletRequest request) {
-		
+	public ModelAndView handleFormUpload(@RequestParam("file") MultipartFile file, final HttpServletRequest request) {
+
 		User user = $.getUserFromRequest(request);
 
 		if (user == null) {
@@ -45,6 +53,7 @@ public class UploadAvatarController {
 			}
 
 			imageService.saveImage(file, user.getId());
+
 			mav.addObject("msg", "Legal agora você tem um avatar no Ligaai");
 			mav.addObject("user", user);
 
@@ -70,6 +79,8 @@ public class UploadAvatarController {
 
 		if (imageService.saveImage(user.getId(), x, y, w, h)) {
 			mav.addObject("msg", "Legal agora você tem um avatar no Ligaai");
+			user.setAvatar(true);
+			usuarioService.save(user);
 			return mav;
 		}
 
