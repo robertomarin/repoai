@@ -31,10 +31,12 @@
 							<input type="submit" name="Upload"/>
 						</form>
 						<c:out value="${user.id}"></c:out>
+						<c:out value="${user.name}"></c:out>
+						<c:out value="${user.email}"></c:out>
 						<c:if test="${user.id != null}">
-							<div id="article"> 
-				                <img src="/ligaai/avatar/${user.id}.jpg" id="cropbox" />
-				                <div id="previewContainer" class="">
+							<div id=align="center"> 
+				                <img src="/ligaai/avatar/original/${user.id}.jpg" id="cropbox" width="520" />
+				                <div id="previewContainer" class="hide">
 			                        <img src="/ligaai/avatar/original/${user.id}.jpg" id="preview" />
 				                </div>
 							</div>

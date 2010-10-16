@@ -57,7 +57,7 @@
 							<h1 class="ligaStyle">Me Liga<span class="baseColor">.</span>ai</h1>
 						</header>
 						<section>
-							<form id="ligaai" action="/ligaai/novo">
+							<form id="ligaai" action="/l/novo">
 								<input type="hidden" id="position" value="0" />
 								<div id="cloneable" class="hide">
 									<select class="contactType" name="">
@@ -101,7 +101,7 @@
 						<c:forEach items="${ligaais}" var="ligaai" varStatus="i">
 							<article class="users">
 								<div class="userPic">
-									<img src="" class="userPic" alt="Me liga ai!" />
+									<img src="/ligaai/avatar/${ligaai.user.id}.jpg" class="userPic" alt="Me liga ai!" />
 								</div>
 								<div class="userInfo">
 									<header>

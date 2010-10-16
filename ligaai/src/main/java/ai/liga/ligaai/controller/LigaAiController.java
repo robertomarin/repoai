@@ -33,7 +33,7 @@ public class LigaAiController {
 		return "ligaai";
 	}
 
-	@RequestMapping("/ligaai/novo")
+	@RequestMapping("/l/novo")
 	public ModelAndView post(@Valid LigaAi ligaAi, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView(new JsonView());
 		ligaAi.setUser($.getUserFromRequest(request));
