@@ -107,12 +107,12 @@
 									<header>
 										<hgroup>
 										<h1><c:out value="${ligaai.user.name}" escapeXml="false"/></h1>
+										<h3><c:out value="${ligaai.message}" escapeXml="false"/></h3>
 										<ul>
 											<c:forEach items="${ligaai.contacts}" var="contact" varStatus="j">
 												<li><a href="#" class="${fn:toLowerCase(contact.type)}">${contact.content}</a></li>
 											</c:forEach>
 										</ul>
-										<h3><c:out value="${ligaai.message}" escapeXml="false"/></h3>
 										</hgroup>
 									</header>
 								</div>
