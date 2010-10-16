@@ -92,7 +92,7 @@ input[type=submit]{
 	padding: 15px 0;
 }
 #content article:last-child{background: none;}
-.userPic{float: left; margin-right: 10px;}
+.userPic{float: left; margin-right: 10px; width: 80px; height: 80px;}
 .baseColor{color: #ff00cc;}
 .ligaStyle{font-size: 32px;}
 h1.ligaStyle{color: #000;}
@@ -166,7 +166,7 @@ h1.ligaStyle{color: #000;}
 #content .users{line-height: 20px;}
 #content .users:last-child{border: 0;}
 #content .users div{float: left;}
-#content .users div.userPic{width: 10%;}
+#content .users div.userPic{width: 13%;}
 #content .users .userInfo{width: 60%;}
 #content .users .rating{float: right; width: auto;}
 #content .users h1{font-size: 30px; letter-spacing: -1.5px; margin-bottom: 5px;}
@@ -198,7 +198,7 @@ h1.ligaStyle{color: #000;}
 #content .users .rating span:hover{background-position: 0 -396px;}
 #content .users .rating span.dislike:hover{background-position: 0 -435px;}
 /*advertisiment*/
-#content .middleAd{width: 465px; margin: 5px auto;}
+#content .middleAd{width: 465px; margin: 15px auto;}
 
 /***About***/
 #about{
