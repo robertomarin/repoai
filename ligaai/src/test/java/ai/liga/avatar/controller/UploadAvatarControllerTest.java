@@ -29,7 +29,7 @@ public class UploadAvatarControllerTest {
 		MockMultipartFile mockMultipartFile = new MockMultipartFile("test",
 				"test", "rrr/txt", is);
 
-		ModelAndView upload = fileUpload.handleFormUpload(mockMultipartFile);
+		ModelAndView upload = fileUpload.handleFormUpload(mockMultipartFile, null);
 		Map<String, Object> model = upload.getModel();
 		String expected ="Opa não entendemos o formato do arquivo enviado, lembrando que os formatos suportados são: gif, jpg e png.";
 		Assert.assertEquals(expected , model.get("msg"));
@@ -44,7 +44,7 @@ public class UploadAvatarControllerTest {
 		MockMultipartFile mockMultipartFile = new MockMultipartFile("mario",
 				"mario.png", "rrr/png", is);
 
-		ModelAndView upload = fileUpload.handleFormUpload(mockMultipartFile);
+		ModelAndView upload = fileUpload.handleFormUpload(mockMultipartFile, null);
 		Map<String, Object> model = upload.getModel();
 		System.out.println(model.get("msg"));
 
