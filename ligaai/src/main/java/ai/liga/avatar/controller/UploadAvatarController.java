@@ -19,6 +19,8 @@ import ai.liga.util.$;
 
 @Controller
 public class UploadAvatarController {
+	
+	private static final int MAX_FILE_SIZE = 10240000;
 
 	private final ImagesTransformationService imageService;
 
@@ -36,12 +38,17 @@ public class UploadAvatarController {
 	public ModelAndView handleFormUpload(@RequestParam("file") MultipartFile file, final HttpServletRequest request) {
 
 		User user = $.getUserFromRequest(request);
-
+		
 		if (user == null) {
 			return new ModelAndView(new RedirectView("/"));
 		}
 
 		ModelAndView mav = new ModelAndView("/u/conta");
+		
+		if (file.getSize() > MAX_FILE_SIZE) {
+			mav.addObject("msg", "Tamanho máxio permitido é de 10 megas");
+			return mav;
+		}
 
 		if (!file.isEmpty()) {
 			String type = file.getContentType();
@@ -51,10 +58,8 @@ public class UploadAvatarController {
 				return mav;
 
 			}
-
-			imageService.saveImage(file, user.getId());
-
-			mav.addObject("msg", "Legal agora você tem um avatar no Ligaai");
+			
+			mav.addObject("result", imageService.saveImage(file, user.getId()));
 			mav.addObject("user", user);
 
 			return mav;
@@ -77,7 +82,7 @@ public class UploadAvatarController {
 
 		ModelAndView mav = new ModelAndView("/u/conta");
 
-		if (imageService.saveImage(user.getId(), x, y, w, h)) {
+		if (imageService.cropAndResizeImage(user.getId(), x, y, w, h)) {
 			mav.addObject("msg", "Legal agora você tem um avatar no Ligaai");
 			user.setAvatar(true);
 			usuarioService.save(user);

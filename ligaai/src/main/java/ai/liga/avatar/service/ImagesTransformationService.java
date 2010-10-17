@@ -81,7 +81,7 @@ public class ImagesTransformationService {
 
 	}
 
-	public boolean saveImage(Long idUser, int x, int y, int w, int h) {
+	public boolean cropAndResizeImage(Long idUser, int x, int y, int w, int h) {
 		BufferedImage bi;
 		try {
 			bi = ImageIO.read(new File(PATH_IMAGE_PREVIEW + idUser + ".jpg"));
