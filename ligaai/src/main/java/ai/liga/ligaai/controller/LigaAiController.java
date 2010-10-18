@@ -37,7 +37,8 @@ public class LigaAiController {
 	public ModelAndView post(@Valid LigaAi ligaAi, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView(new JsonView());
 		ligaAi.setUser($.getUserFromRequest(request));
-		ligaAi.setTags(ligaAiUtils.extractTags(ligaAi.getMessage()));
+		ligaAi.setRemoteAddress(request.getRemoteAddr());
+		ligaAiUtils.fillTags(ligaAi);
 		ligaAi = ligaAiService.merge(ligaAi);
 		return mav.addObject("ligaai", ligaAi).addObject("ok", "true");
 	}
