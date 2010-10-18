@@ -6,13 +6,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <html lang="pt-BR">
-	<head>
-		<title>Liga.ai</title>
-		<meta charset="UTF-8"/>
-		<meta name="title" content="Liga ai" />
-		<meta name="description" content="Liga ai" />
-		<meta name="keywords" content="Liga ai" /> 
-	</head>
 	<body class="morningBackground">
 		<div class="wrapper">
 		    <jsp:include page="header.jsp" />
