@@ -1,4 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<link type="image/x-icon" href="/img/favicon.ico" rel="shortcut icon" />
+<!--css-->
+<link rel="stylesheet" href="/css/ligaai.css" />
+<!--[if lt IE 9]>
+	<script src="/js/html5.js"></script>
+<![endif]-->
+<script language="javascript" type="text/javascript" src="/js/ligaai.js"></script>
 
 <header id="logo">
 	<a href="/"><h1 class="ligaStyle">Liga<span class="baseColor">.</span>ai</h1></a>
