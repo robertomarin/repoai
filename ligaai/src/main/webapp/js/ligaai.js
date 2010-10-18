@@ -292,7 +292,7 @@ $(function() {
 		var input = $slt.next();
 		var matchIds = function(){
 			input.blur(function(){
-				$(this).val($(this).val().match('id=(.*[0-9])')[1]);
+				$(this).val($(this).val().match(/\d+/));
 			});
 		};
 		
