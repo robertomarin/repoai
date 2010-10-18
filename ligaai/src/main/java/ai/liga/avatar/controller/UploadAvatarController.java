@@ -19,17 +19,17 @@ import ai.liga.util.$;
 
 @Controller
 public class UploadAvatarController {
-	
+
 	private static final int MAX_FILE_SIZE = 10240000;
 
 	private final ImagesTransformationService imageService;
 
-	private final UserService usuarioService;
+	private final UserService userService;
 
 	@Autowired
-	public UploadAvatarController(final ImagesTransformationService imageService, final UserService usuarioService) {
+	public UploadAvatarController(final ImagesTransformationService imageService, final UserService userService) {
 		this.imageService = imageService;
-		this.usuarioService = usuarioService;
+		this.userService = userService;
 	}
 
 	private static Logger logger = Logger.getLogger(UploadAvatarController.class);
@@ -38,13 +38,13 @@ public class UploadAvatarController {
 	public ModelAndView handleFormUpload(@RequestParam("file") MultipartFile file, final HttpServletRequest request) {
 
 		User user = $.getUserFromRequest(request);
-		
+
 		if (user == null) {
 			return new ModelAndView(new RedirectView("/"));
 		}
 
 		ModelAndView mav = new ModelAndView("/u/conta");
-		
+
 		if (file.getSize() > MAX_FILE_SIZE) {
 			mav.addObject("msg", "Tamanho máxio permitido é de 10 megas");
 			return mav;
@@ -58,7 +58,7 @@ public class UploadAvatarController {
 				return mav;
 
 			}
-			
+
 			mav.addObject("result", imageService.saveImage(file, user.getId()));
 			mav.addObject("user", user);
 
@@ -84,13 +84,12 @@ public class UploadAvatarController {
 
 		if (imageService.cropAndResizeImage(user.getId(), x, y, w, h)) {
 			mav.addObject("msg", "Legal agora você tem um avatar no Ligaai");
-			user.setAvatar(true);
-			usuarioService.save(user);
-			return mav;
+
+			userService.giveAvatar(user);
+			return mav.addObject("ok", true);
 		}
 
 		mav.addObject("msg", "Ops não conseguimos receber o arquivo, tente novamente.");
-
 		return mav;
 	}
 
