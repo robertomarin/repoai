@@ -2,7 +2,6 @@
 
 <script language="javascript" type="text/javascript" src="/js/maskinput.js"></script>
 <script language="javascript" type="text/javascript" src="/js/ZeroClipboard.js"></script>
-<script language="javascript" type="text/javascript" src="/js/jquery-ui-1.8.2.custom.min.js"></script>
 <script language="javascript" type="text/javascript" src="/js/jquery.Jcrop.min.js"></script>
 <!--GA-->
 <script type="text/javascript">
