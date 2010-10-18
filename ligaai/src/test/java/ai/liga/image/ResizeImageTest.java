@@ -1,69 +1,52 @@
 package ai.liga.image;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 
 import javax.imageio.ImageIO;
 
-
-import org.junit.Assert;
 import org.junit.experimental.theories.DataPoint;
 import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 
-import ai.liga.image.ImageTransform;
-
 @RunWith(Theories.class)
 public class ResizeImageTest {
 
 	@DataPoint
-	public static InputStream CARRO = new CropImageTest().getClass()
-			.getResourceAsStream("car.jpg");
-	@DataPoint
-	public static InputStream CASA = new CropImageTest().getClass()
-			.getResourceAsStream("house.jpg");
-
-	@DataPoint
-	public static InputStream CASA_RETRATO = new CropImageTest().getClass()
-			.getResourceAsStream("house_portrait.jpg");
-
-	@DataPoint
-	public static InputStream DOG_JPG = new CropImageTest().getClass()
-			.getResourceAsStream("dog_jpg.jpg");
-
-	@DataPoint
-	public static InputStream DOG = new CropImageTest().getClass()
-			.getResourceAsStream("dog.gif");
-
-	@DataPoint
-	public static InputStream SUPER_MARIO = new CropImageTest().getClass()
-			.getResourceAsStream("supermario.png");
-	@DataPoint
-	public static InputStream MARIO = new CropImageTest().getClass()
-			.getResourceAsStream("mario.png");
+	public static InputStream FLOWERS = new ResizeImageTest().getClass().getResourceAsStream("flowers.jpg");
 
 	@Theory
 	public void testaResizeImage(InputStream file) throws IOException {
 
 		BufferedImage image = ImageIO.read(file);
-		image = new ImageTransform().makeResize(image, 200, 200);
+		image = resizeImage(image, 200);
 
-		Assert.assertTrue(image.getWidth() == image.getHeight());
-		//
-		// String nameFile = "file" + new Date().getTime() + ".jpg";
-		// File fileOut = new File(nameFile);
-		// OutputStream tmp = new FileOutputStream(fileOut);
-		//
-		// ImageIO.write(image, "jpg", fileOut);
-		// tmp.close();
+		String nameFile = "flowers.jpg";
+		File fileOut = new File(nameFile);
+		OutputStream tmp = new FileOutputStream(fileOut);
 
-		// URL url = this.getClass().getResource("carro.jpg");
-		//
-		// System.out.println("url: " + url + "type: "
-		// + new MimetypesFileTypeMap().getContentType(url.getPath()));
+		ImageIO.write(image, "jpg", fileOut);
+		tmp.close();
 
+		// Assert.assertTrue(image.getWidth() == image.getHeight());
+	}
+
+	public BufferedImage resizeImage(final BufferedImage image, final int target) {
+
+		double percentage = 0;
+		if (image.getWidth() > image.getHeight()) {
+			percentage = (double)target / image.getWidth();
+		} else {
+			percentage = (double)target / image.getHeight();
+		}
+
+		return new ImageTransform()
+				.makeResize(image, (int)(image.getWidth() * percentage), (int)(image.getHeight() * percentage));
 	}
 
 }

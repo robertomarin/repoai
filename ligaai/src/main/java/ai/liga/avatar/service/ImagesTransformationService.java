@@ -62,6 +62,9 @@ public class ImagesTransformationService {
 		BufferedImage bi;
 		try {
 			bi = ImageIO.read(mpf.getInputStream());
+			if (bi.getWidth() > 800) {
+				bi = resizeProportional(bi, 800);
+			}
 		} catch (IOException e) {
 			logger.error("Erro ao ler a imagem a partir do inputStream", e);
 			return false;
@@ -104,6 +107,19 @@ public class ImagesTransformationService {
 		}
 
 		return false;
+	}
+
+	public BufferedImage resizeProportional(final BufferedImage image, final int target) {
+
+		double percentage = 0;
+		if (image.getWidth() > image.getHeight()) {
+			percentage = (double) target / image.getWidth();
+		} else {
+			percentage = (double) target / image.getHeight();
+		}
+
+		return transform.makeResize(image, (int) (image.getWidth() * percentage),
+				(int) (image.getHeight() * percentage));
 	}
 
 }
