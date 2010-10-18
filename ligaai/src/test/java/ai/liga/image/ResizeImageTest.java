@@ -19,14 +19,17 @@ public class ResizeImageTest {
 
 	@DataPoint
 	public static InputStream FLOWERS = new ResizeImageTest().getClass().getResourceAsStream("flowers.jpg");
+	
+	@DataPoint
+	public static InputStream DF = new ResizeImageTest().getClass().getResourceAsStream("DSC01698.JPG");
 
 	@Theory
 	public void testaResizeImage(InputStream file) throws IOException {
 
 		BufferedImage image = ImageIO.read(file);
-		image = resizeImage(image, 200);
+		image = resizeImage(image, 800);
 
-		String nameFile = "flowers.jpg";
+		String nameFile = file.toString()+".jpg";
 		File fileOut = new File(nameFile);
 		OutputStream tmp = new FileOutputStream(fileOut);
 
