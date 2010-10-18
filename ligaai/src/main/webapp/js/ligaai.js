@@ -69,22 +69,6 @@ if(encodeURIComponent) {
 	encodeUrl = encodeURIComponent;
 }
 
-function showPreview(coords)
-{
-	if (parseInt(coords.w) > 0)
-	{
-		var rx = 100 / coords.w;
-		var ry = 100 / coords.h;
-
-		$('#preview').css({
-			width: Math.round(rx * 500) + 'px',
-			height: Math.round(ry * 370) + 'px',
-			marginLeft: '-' + Math.round(rx * coords.x) + 'px',
-			marginTop: '-' + Math.round(ry * coords.y) + 'px'
-		});
-	}
-};
-
 function updateCoords(c)
 {
 	jQuery('#x').val(c.x);
@@ -96,11 +80,48 @@ function updateCoords(c)
 function checkCoords()
 {
 	if (parseInt(jQuery('#w').val())>0) return true;
-	alert('Please select a crop region then press submit.');
+	alert('Selecione a area para cortar e depois envie o avatar.');
 	return false;
 };
 
+function showPreview(coords)
+{
+	if (parseInt(coords.w) > 0)
+	{
+		var rx = 100 / coords.w;
+		var ry = 100 / coords.h;
+
+		$('#preview').css({
+			width: Math.round(rx * $('#cropbox').attr('width')) + 'px',
+			height: Math.round(ry * $('#cropbox').attr('height')) + 'px',
+			marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+			marginTop: '-' + Math.round(ry * coords.y) + 'px'
+		});
+	}
+};
+
 $(function() {
+	
+	/**
+	 * Jcrop
+	 */
+	$('#cropbox').Jcrop({
+		onChange: showPreview,
+		onSelect: updateCoords,
+		minSize: [100, 100],
+		boxWidth: 300, 
+		boxHeight: 300,
+		aspectRatio: 1
+	});
+	
+	$('.jcrop-holder').live('hover', function(){
+		$('#previewContainer').fadeIn();
+	});
+	
+	$('.jcrop-holder').live('mouseleave', function(){
+		if($(this).find('div').eq(0).is(':hidden')) $('#previewContainer').fadeOut();
+	});
+	
 	if($.cookie('u') != null){
 		var cookie = $.cookie('u');
 		var user;
@@ -227,24 +248,6 @@ $(function() {
 			}
 		});
 		return false;
-	});
-	
-	/**
-	 * Jcrop
-	 */
-	$('#cropbox').Jcrop({
-		onChange: showPreview,
-		onSelect: updateCoords,
-		minSize: [100, 100],
-		aspectRatio: 1
-	});
-	
-	$('.jcrop-holder').live('hover', function(){
-		$('#previewContainer').fadeIn();
-	});
-	
-	$('.jcrop-holder').live('mouseleave', function(){
-		if($(this).find('div').eq(0).is(':hidden')) $('#previewContainer').fadeOut();
 	});
 	
 	$('#u_entrar, #u_entrar_topo').submit(function() {

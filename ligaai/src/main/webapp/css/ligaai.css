@@ -276,10 +276,10 @@ h1.ligaStyle{color: #000;}
 /***CROP***/
 #previewContainer{
 	height:100px;
-	left:165px;
+	left:240px;
 	overflow:hidden;
 	position:absolute;
-	top:68px;
+	top:63px;
 	width:100px;
 }
 .jcrop-holder {text-align: left;}

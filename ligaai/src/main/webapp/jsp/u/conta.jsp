@@ -25,17 +25,11 @@
 			<div class="containerShadow">
 				<div id="userList">
 					<section id="content">
-						<p>Selecione seu avatar para o Liga<span class="baseColor">.</span>ai</p>
-						<form method="post" action="/uploadAvatar.html" enctype="multipart/form-data">
-							<input type="file" name="file"/> 
-							<input type="submit" name="Upload"/>
-						</form>
-						<c:out value="${user.id}"></c:out>
-						<c:out value="${user.name}"></c:out>
+						<h1><c:out value="${user.name}"></c:out></h1>
 						<c:out value="${user.email}"></c:out>
 						<c:if test="${result}">
 							<div id=align="center"> 
-				                <img src="/ligaai/avatar/original/${user.id}.jpg" id="cropbox" width="520" />
+				                <img src="/ligaai/avatar/original/${user.id}.jpg" id="cropbox" />
 				                <div id="previewContainer" class="hide">
 			                        <img src="/ligaai/avatar/original/${user.id}.jpg" id="preview" />
 				                </div>
@@ -47,6 +41,12 @@
 								<input type="hidden" name="h" id="h" />
 								<input type="submit" value="Enviar avatar" />
 							</form>
+							<div id="avatarUpload">
+								<form method="post" action="/uploadAvatar.html" enctype="multipart/form-data">
+									<input type="file" name="file"/> 
+									<input type="submit" name="Upload"/>
+								</form>
+							</div>
 						</c:if>
 						<c:if test="${msg != null}">
 							<c:out value="${msg}" escapeXml="false"/>
