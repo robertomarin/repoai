@@ -12,12 +12,6 @@
 		<meta name="title" content="Liga ai" />
 		<meta name="description" content="Liga ai" />
 		<meta name="keywords" content="Liga ai" /> 
-		<link type="image/x-icon" href="/img/favicon.ico" rel="shortcut icon" />
-		<!--css-->
-		<link rel="stylesheet" href="/css/ligaai.css" />
-		<!--[if lt IE 9]>
-			<script src="/js/html5.js"></script>
-		<![endif]-->
 	</head>
 	<body class="morningBackground">
 		<div class="wrapper">
@@ -101,7 +95,7 @@
 						<c:forEach items="${ligaais}" var="ligaai" varStatus="i">
 							<article class="users">
 								<div class="userPic">
-									<img src="/ligaai/avatar/${ligaai.user.id}.jpg" class="userPic" alt="Me liga ai!" />
+									<img src="/ligaai/avatar/${ligaai.user.id}.jpg" class="userPic lazyImage" alt="Me liga ai!" onerror="javascript:showUnavailableImage(this, '80x80')"/>
 								</div>
 								<div class="userInfo">
 									<header>
