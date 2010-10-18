@@ -30,11 +30,11 @@ public class User {
 	@Size(min = 3, max = 30, message = "E-mail deve ter de 3 a 30 caracteres")
 	private String email;
 
-	@Column(length = 32)
+	@Column(length = 32, nullable = false)
 	@Size(min = 6, max = 20, message = "Senha deve ter entre 6 e 20 caracteres")
 	@NotNull(message = "Senha deve ser preenchida")
-	@XStreamOmitField()
-	private String password;
+	@XStreamOmitField
+	private String password;	
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(updatable = false)

@@ -27,7 +27,7 @@
 					<section id="content">
 						<h1><c:out value="${user.name}"></c:out></h1>
 						<c:out value="${user.email}"></c:out>
-						<c:if test="${result}">
+						<c:if test="${result or !empty param.monkey}">
 							<div id=align="center"> 
 				                <img src="/ligaai/avatar/original/${user.id}.jpg" id="cropbox" />
 				                <div id="previewContainer" class="hide">
@@ -41,13 +41,13 @@
 								<input type="hidden" name="h" id="h" />
 								<input type="submit" value="Enviar avatar" />
 							</form>
-							<div id="avatarUpload">
-								<form method="post" action="/uploadAvatar.html" enctype="multipart/form-data">
-									<input type="file" name="file"/> 
-									<input type="submit" name="Upload"/>
-								</form>
-							</div>
 						</c:if>
+						<div id="avatarUpload">
+							<form method="post" action="/uploadAvatar.html" enctype="multipart/form-data">
+								<input type="file" name="file"/> 
+								<input type="submit" name="Upload"/>
+							</form>
+						</div>
 						<c:if test="${msg != null}">
 							<c:out value="${msg}" escapeXml="false"/>
 						</c:if>

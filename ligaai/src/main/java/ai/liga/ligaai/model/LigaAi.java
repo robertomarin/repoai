@@ -32,7 +32,7 @@ public class LigaAi {
 	private Long id;
 
 	@Null(message = "Usuário não deveria vir preenchido.")
-	@ManyToOne(cascade = CascadeType.MERGE)
+	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
 
