@@ -26,6 +26,7 @@ header ul#loginTop{
 }
 header ul#loginTop h3{font-size: 18px; margin-bottom: 10px;}
 header ul#loginTop h3.welcome{margin-bottom: 0;}
+header ul#loginTop h3.welcome span{font-size: 12px;}
 header ul#loginTop li{clear: both; margin: 5px 0; width: 100%; float: left;}
 header ul#loginTop label{display: block; float: left; width: 40px;}
 header ul#loginTop input.fill{
