@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ tag body-content="empty" pageEncoding="UTF-8"%>
 <div id="subscribe">
 	<div class="content">
 		<div class="message hide"></div>

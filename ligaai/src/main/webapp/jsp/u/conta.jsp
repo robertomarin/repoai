@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="my" tagdir="/WEB-INF/tags" %> 
 
 <html>
 	<head>
@@ -21,11 +22,11 @@
 	</head>
 	<body class="morningBackground">
 		<div class="wrapper">
-		    <jsp:include page="../header.jsp" />
+		    <my:header/>
 			<div class="containerShadow">
 				<div id="userList">
 					<section id="content">
-						<c:if test="${!result and empty param.monkey}">
+						<c:if test="${empty param.monkey and msg == null}">
 							<div class="unit avatar">
 								<img src="/ligaai/avatar/original/${user.id}.jpg" />
 							</div>
@@ -37,9 +38,9 @@
 									<li><a href="#" id="changeAvatar">Trocar avatar</a></li>
 								</ul>
 							</div>
-							<c:if test="${msg != null}">
-								<p class="unit"><c:out value="${msg}" escapeXml="false"/></p>
-							</c:if>
+						</c:if>
+						<c:if test="${msg != null}">
+							<p class="unit"><c:out value="${msg}" escapeXml="false"/></p>
 						</c:if>
 						<div id="avatarUpload" class="hide unit">
 							<form method="post" action="/uploadAvatar.html" enctype="multipart/form-data">
@@ -65,27 +66,15 @@
 					</section>
 					
 					<!-- AD -->
-					<section id="ad">
-						<script type="text/javascript"><!--
-							google_ad_client = "pub-9040087244579201";
-							/* 160x600 */
-							google_ad_slot = "8363583236";
-							google_ad_width = 160;
-							google_ad_height = 600;
-							//-->
-							</script>
-							<script type="text/javascript"
-							src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-						</script>
-					</section>
+					<my:side-ad />
 					<!-- AD end-->
 				</div>
 			</div>
 		</div>
-		<jsp:include page="../footer.jsp" />
+		<my:footer/>
 		<!-- LIGHTBOX -->
-		<jsp:include page="../lightbox.jsp" />
+		<my:lightbox/>
 		<!--JAVASCRIPT-->
-		<jsp:include page="../javascripts.jsp" />
+		<script language="javascript" type="text/javascript" src="/js/jquery.Jcrop.min.js"></script>
 	</body>
 </html>
