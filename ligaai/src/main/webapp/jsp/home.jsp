@@ -1,3 +1,4 @@
+<%@page import="ai.liga.ligaai.model.Contact"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     
 <!DOCTYPE html>
@@ -100,8 +101,14 @@
 										<h3><c:out value="${ligaai.message}" escapeXml="false"/></h3>
 										<ul>
 											<c:forEach items="${ligaai.contacts}" var="contact" varStatus="j">
-												<c:out value="${fai:getUrlContact(contact)}"></c:out>
-												<li><a href="#" class="${fn:toLowerCase(contact.type)}">${contact.content}</a></li>
+											<li>
+											<c:if test="${fai:isLinkable(contact.type) }">
+												<a href="${fai:getUrlContact(contact)}" class="${fn:toLowerCase(contact.type)}">${contact.content}</a>
+											</c:if>
+											<c:if test="${not fai:isLinkable(contact.type) }">
+												${contact.content}
+											</c:if>
+											</li>
 											</c:forEach>
 										</ul>
 										</hgroup>

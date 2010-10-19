@@ -5,17 +5,22 @@ import ai.liga.ligaai.model.ContactType;
 
 public class Functions {
 
-	public String getUrlContact(Contact contact) {
+	public static String getUrlContact(Contact contact) {
 		StringBuilder url = new StringBuilder();
 		if (contact != null) {
 			ContactType type = contact.getType();
-			if(ContactType.SKYPE.equals(type)) {
-				url.append("skype:").append(contact.getContent());
+			if (type != null) {
+				url.append(type.buildUrl(contact.getContent()));
 			}
-			
-
 		}
-		
+
 		return url.toString();
+	}
+
+	public static boolean isLinkable(ContactType type) {
+		if (type != null) {
+			return type.isLinkable();
+		}
+		return false;
 	}
 }

@@ -1,20 +1,28 @@
 <taglib xmlns="http://java.sun.com/xml/ns/j2ee"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
-	version="2.0">
-
-	<description>JSTL 1.1 functions library</description>
-	<display-name>JSTL functions</display-name>
-	<tlib-version>1.1</tlib-version>
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+    version="2.0">
+    
+	<description>FunctionsAi - Funções pra ajudar no JSP</description>
+	<display-name>FunctionsAi</display-name>
 	<short-name>fai</short-name>
+	<tlib-version>1.1</tlib-version>
 	<uri>http://liga.ai/jstl/functions</uri>
 
 	<function>
-		<description> Tests if an input string contains the specified substring. </description>
+		<description> Pega a url referente ao Contact. </description>
 		<name>getUrlContact</name>
 		<function-class>ai.liga.jstl.Functions</function-class>
 		<function-signature>java.lang.String getUrlContact(ai.liga.ligaai.model.Contact)</function-signature>
-		<example> &lt;c:out value="${fai:getUrlLigaAi(contact)}"</example>
+		<example> &lt;c:out value="${fai:getUrlLigaAi(contact)}"&gt;</example>
+	</function>
+	
+	<function>
+		<description> Verifica se esse ContactType deve retornar uma url. </description>
+		<name>isLinkable</name>
+		<function-class>ai.liga.jstl.Functions</function-class>
+		<function-signature>boolean isLinkable(ai.liga.ligaai.model.ContactType)</function-signature>
+		<example> &lt;c:if test="${fai:isLinkable(contact.type)}"&gt;</example>
 	</function>
 
 </taglib>

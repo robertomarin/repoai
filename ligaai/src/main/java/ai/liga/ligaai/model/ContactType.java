@@ -8,8 +8,8 @@ public enum ContactType {
 	GTALK("mailto:"),
 	MSN("msnim:add?contact="),
 	TWITTER("http://www.twitter.com/"),
-	FACEBOOK("skype:"),
-	ORKUT("skype:"),
+	FACEBOOK("http://www.facebook.com/profile.php?id="),
+	ORKUT("http://www.orkut.com.br/Main#Profile?uid="),
 	EMAIL("mailto:"),
 	SITE("http://");
 
