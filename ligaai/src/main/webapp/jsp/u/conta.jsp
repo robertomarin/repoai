@@ -31,9 +31,15 @@
 								<img src="/ligaai/avatar/original/${user.id}.jpg" />
 							</div>
 							<div class="unit userInfo account">
-								<h1 class="userName"><c:out value="${user.name}"></c:out></h1>
-								<p><c:out value="${user.email}"></c:out></p>
+								<div class="unit userNameContainer">
+									<h1 id="user" class="userName"><c:out value="${user.name}"></c:out></h1>
+									<a href="#" id="editName">Editar</a>
+								</div>
+								<form id="changeNameForm" class="hide">
+									<input type="text" id="newName" /><input type="submit" id="changeNameButton" value="Mudar Nome" />
+								</form>
 								<ul class="unit">
+									<li><c:out value="${user.email}"></c:out></li>
 									<li><a href="?monkey=x">Recortar avatar atual</a></li>
 									<li><a href="#" id="changeAvatar">Trocar avatar</a></li>
 									<li>
