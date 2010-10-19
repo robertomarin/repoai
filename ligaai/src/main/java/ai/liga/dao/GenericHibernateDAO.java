@@ -20,7 +20,7 @@ public class GenericHibernateDAO<T> {
 	}
 
 	@SuppressWarnings("unchecked")
-	public T load(final int id) {
+	public T load(final Long id) {
 		Session currentSession = sf.getCurrentSession();
 		T t = (T) currentSession.load(persistentClass, id);
 		return t;

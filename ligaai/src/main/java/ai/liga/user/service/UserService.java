@@ -28,9 +28,19 @@ public class UserService {
 		user = userDao.merge(user);
 		return user;
 	}
+	
+	public User merge(User user) {
+		return userDao.merge(user);
+	}
 
 	public User login(User user) {
 		return userDao.login(user);
+	}
+
+	public boolean giveAvatar(User user) {
+		user = userDao.load(user.getId());
+		user.setAvatar(true);
+		return user != null;
 	}
 
 }

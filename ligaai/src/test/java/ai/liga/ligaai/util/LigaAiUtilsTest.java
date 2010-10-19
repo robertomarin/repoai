@@ -1,7 +1,5 @@
 package ai.liga.ligaai.util;
 
-import java.util.Set;
-
 import junit.framework.Assert;
 
 import org.junit.Test;
@@ -10,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import ai.liga.ligaai.model.LigaAi;
 import ai.liga.ligaai.model.Tag;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -23,11 +22,13 @@ public class LigaAiUtilsTest {
 
 	@Test
 	public void extractTagsFrom() {
-		Set<Tag> tags = ligaAiUtils.extractTags(message);
+		LigaAi ligaAi = new LigaAi();
+		ligaAi.setMessage(message);
+		ligaAiUtils.fillTags(ligaAi);
 
-		Assert.assertTrue(tags.contains(new Tag("mensagem")));
-		Assert.assertTrue(tags.contains(new Tag("tudo")));
-		Assert.assertTrue(tags.contains(new Tag("caseinsensitive")));
+		Assert.assertTrue(ligaAi.getTags().contains(new Tag("mensagem")));
+		Assert.assertTrue(ligaAi.getTags().contains(new Tag("tudo")));
+		Assert.assertTrue(ligaAi.getTags().contains(new Tag("caseinsensitive")));
 	}
 
 }

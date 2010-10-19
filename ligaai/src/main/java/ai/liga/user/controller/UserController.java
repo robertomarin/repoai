@@ -97,7 +97,6 @@ public class UserController {
 			result.addError(new FieldError("user", "email", "E-mail já cadastrado."));
 			return mav.addObject("errors", result.getFieldErrors());
 		}
-
 		user = userService.save(user);
 		$.setUserOnRequest(request, user);
 		return mav.addObject(Constants.USER, user).addObject("ok", "true");

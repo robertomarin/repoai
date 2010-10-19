@@ -71,7 +71,7 @@ public class MicrourlService {
 		path = path.replace("/", "");
 		Microurl microurl = cache.get(path);
 		if (microurl == null) {
-			int id = BaseConverter.fromBase62(path);
+			long id = BaseConverter.fromBase62(path);
 			if (id > 0) {
 				microurl = microurlDao.load(id);
 				put(microurl);
