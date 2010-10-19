@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="myFunctionTest" uri="http://liga.ai/jsp/functions"%>
+<%@ taglib prefix="fai" uri="http://liga.ai/jstl/functions"%>
 
 
 <html lang="pt-BR">
@@ -100,6 +100,7 @@
 										<h3><c:out value="${ligaai.message}" escapeXml="false"/></h3>
 										<ul>
 											<c:forEach items="${ligaai.contacts}" var="contact" varStatus="j">
+												<c:out value="${fai:getUrlContact(contact)}"></c:out>
 												<li><a href="#" class="${fn:toLowerCase(contact.type)}">${contact.content}</a></li>
 											</c:forEach>
 										</ul>

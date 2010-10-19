@@ -11,10 +11,10 @@
 
 	<function>
 		<description> Tests if an input string contains the specified substring. </description>
-		<name>contains</name>
+		<name>getUrlContact</name>
 		<function-class>ai.liga.jstl.Functions</function-class>
-		<function-signature>boolean getUrlLigaAi()</function-signature>
-		<example> &lt;c:if test="${fn:contains(name, searchString)}"</example>
+		<function-signature>java.lang.String getUrlContact(ai.liga.ligaai.model.Contact)</function-signature>
+		<example> &lt;c:out value="${fai:getUrlLigaAi(contact)}"</example>
 	</function>
 
 </taglib>

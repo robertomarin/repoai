@@ -5,7 +5,7 @@ import ai.liga.ligaai.model.ContactType;
 
 public class Functions {
 
-	public String getUrlLigaAi(Contact contact) {
+	public String getUrlContact(Contact contact) {
 		StringBuilder url = new StringBuilder();
 		if (contact != null) {
 			ContactType type = contact.getType();
