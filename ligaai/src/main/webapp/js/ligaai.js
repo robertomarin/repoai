@@ -475,6 +475,11 @@ $(function() {
 					$(el).parent().find('.message').html(data.errors[i].defaultMessage).fadeIn();
 				};
 			}else{
+				if($('#needsubscribe').val()){
+					alert('macaco');
+					$('#ligaai').submit();
+					$('#needsubscribe').val('false');
+				}
 				window.location.reload();
 			}
 		});

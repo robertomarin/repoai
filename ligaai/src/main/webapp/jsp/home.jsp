@@ -46,6 +46,7 @@
 						<section>
 							<form id="ligaai" action="/l/novo">
 								<input type="hidden" id="position" value="0" />
+								<input type="hidden" id="needsubscribe" />
 								<div id="cloneable" class="hide">
 									<select class="contactType" name="">
 										<option value="PHONE" selected>Telefone</option>
