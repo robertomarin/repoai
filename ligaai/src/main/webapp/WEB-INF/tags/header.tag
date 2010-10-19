@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ tag body-content="empty" pageEncoding="UTF-8"%>
 <head>
 	<title>Liga.ai</title>
 	<meta charset="UTF-8"/>
@@ -12,7 +12,6 @@
 	<![endif]-->
 	<script language="javascript" type="text/javascript" src="/js/ligaai.js"></script>
 </head>
-
 <header id="logo">
 	<a href="/"><h1 class="ligaStyle">Liga<span class="baseColor">.</span>ai</h1></a>
 	<ul id="loginTop">

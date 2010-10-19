@@ -6,12 +6,12 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fai" uri="http://liga.ai/jstl/functions"%>
-
+<%@ taglib prefix="my" tagdir="/WEB-INF/tags" %> 
 
 <html lang="pt-BR">
 	<body class="morningBackground">
 		<div class="wrapper">
-		    <jsp:include page="header.jsp" />
+		    <my:header/>
 			<div class="containerShadow">
 				<!--Shorten url-->
 				<article id="shortenUrl">
@@ -139,22 +139,8 @@
 						</c:forEach>
 						<!--end user list-->
 					</section>
+					<my:side-ad />
 					
-					<!-- AD Lateral -->
-					<section id="ad">
-						<script type="text/javascript"><!--
-							google_ad_client = "pub-9040087244579201";
-							/* 160x600 */
-							google_ad_slot = "8363583236";
-							google_ad_width = 160;
-							google_ad_height = 600;
-							//-->
-						</script>
-						<script type="text/javascript"
-							src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-						</script>
-					</section>
-					<!-- AD end-->
 				</div>
 			</div>
 		</div>
