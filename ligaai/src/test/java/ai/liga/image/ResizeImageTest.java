@@ -19,7 +19,7 @@ public class ResizeImageTest {
 
 	@DataPoint
 	public static InputStream FLOWERS = new ResizeImageTest().getClass().getResourceAsStream("flowers.jpg");
-	
+
 	@DataPoint
 	public static InputStream DF = new ResizeImageTest().getClass().getResourceAsStream("DSC01698.JPG");
 
@@ -29,7 +29,7 @@ public class ResizeImageTest {
 		BufferedImage image = ImageIO.read(file);
 		image = resizeImage(image, 800);
 
-		String nameFile = file.toString()+".jpg";
+		String nameFile = file.toString() + ".jpg";
 		File fileOut = new File(nameFile);
 		OutputStream tmp = new FileOutputStream(fileOut);
 
@@ -43,13 +43,13 @@ public class ResizeImageTest {
 
 		double percentage = 0;
 		if (image.getWidth() > image.getHeight()) {
-			percentage = (double)target / image.getWidth();
+			percentage = (double) target / image.getWidth();
 		} else {
-			percentage = (double)target / image.getHeight();
+			percentage = (double) target / image.getHeight();
 		}
 
-		return new ImageTransform()
-				.makeResize(image, (int)(image.getWidth() * percentage), (int)(image.getHeight() * percentage));
+		return new ImageTransform().makeResize(image, (int) (image.getWidth() * percentage),
+				(int) (image.getHeight() * percentage));
 	}
 
 }

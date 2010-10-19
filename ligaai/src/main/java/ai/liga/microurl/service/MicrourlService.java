@@ -77,7 +77,10 @@ public class MicrourlService {
 				put(microurl);
 			}
 		}
-		return microurl.hit();
+		if(microurl != null)  {
+			return microurl.hit();
+		}
+		return null;
 	}
 
 }

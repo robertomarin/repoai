@@ -8,6 +8,7 @@ import org.hibernate.FetchMode;
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
 
 import ai.liga.dao.GenericHibernateDAO;
 import ai.liga.ligaai.model.LigaAi;
@@ -30,6 +31,7 @@ public class LigaAiDao extends GenericHibernateDAO<LigaAi> {
 
 	public List<LigaAi> loadAll() {
 		Criteria c = super.getCriteria(true);
+		c.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 		c.setFetchMode("ligaai", FetchMode.JOIN);
 		c.addOrder(Order.desc("created"));
 

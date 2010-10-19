@@ -4,6 +4,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="myFunctionTest" uri="http://liga.ai/jsp/functions"%>
+
 
 <html lang="pt-BR">
 	<body class="morningBackground">
@@ -94,7 +96,7 @@
 								<div class="userInfo">
 									<header>
 										<hgroup>
-										<h1><c:out value="${ligaai.user.name}" escapeXml="false"/></h1>
+										<h1><a name="${ligaai.id}" href="#${ligaai.id}"><c:out value="${ligaai.user.name}" escapeXml="false"/></a></h1>
 										<h3><c:out value="${ligaai.message}" escapeXml="false"/></h3>
 										<ul>
 											<c:forEach items="${ligaai.contacts}" var="contact" varStatus="j">
@@ -110,7 +112,7 @@
 								</div>
 							</article>
 							<!-- Middle AD -->
-							<c:if test="${i.count eq 4}">
+							<c:if test="${i.count eq 2}">
 								<section class="middleAd">
 									<script type="text/javascript"><!--
 										google_ad_client = "pub-9040087244579201";
@@ -130,7 +132,7 @@
 						<!--end user list-->
 					</section>
 					
-					<!-- AD -->
+					<!-- AD Lateral -->
 					<section id="ad">
 						<script type="text/javascript"><!--
 							google_ad_client = "pub-9040087244579201";

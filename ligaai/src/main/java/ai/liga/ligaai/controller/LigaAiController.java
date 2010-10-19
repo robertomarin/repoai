@@ -28,7 +28,7 @@ public class LigaAiController {
 		this.ligaAiUtils = ligaAiUtils;
 	}
 
-	@RequestMapping("/ligaai.html")
+	@RequestMapping("/l/")
 	public String view() {
 		return "ligaai";
 	}

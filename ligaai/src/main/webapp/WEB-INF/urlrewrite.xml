@@ -10,7 +10,7 @@
 		<to>/uploadView.html</to>
 	</rule>
 	<rule match-type="regex">
-		<from>^/([0-9a-zA-Z]+)$</from>
-		<to>/expand/$1</to>
+		<from>/announce</from>
+		<to>/404.html</to>
 	</rule>
 </urlrewrite>

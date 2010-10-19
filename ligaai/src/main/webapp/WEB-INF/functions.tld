@@ -1,0 +1,20 @@
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+	version="2.0">
+
+	<description>JSTL 1.1 functions library</description>
+	<display-name>JSTL functions</display-name>
+	<tlib-version>1.1</tlib-version>
+	<short-name>fai</short-name>
+	<uri>http://liga.ai/jstl/functions</uri>
+
+	<function>
+		<description> Tests if an input string contains the specified substring. </description>
+		<name>contains</name>
+		<function-class>ai.liga.jstl.Functions</function-class>
+		<function-signature>boolean getUrlLigaAi()</function-signature>
+		<example> &lt;c:if test="${fn:contains(name, searchString)}"</example>
+	</function>
+
+</taglib>
