@@ -806,4 +806,34 @@ $(function() {
 		 $('#avatarUpload').slideToggle();
 		 e.preventDefault();
 	 })
+	 
+	 /**
+	  * Mudar senha
+	  */
+	 
+	 $('#changePassword').click(function(e){
+		 $('#changePasswordForm').fadeIn();
+		 e.preventDefault();
+	 });
+	 
+	 $('#changePasswordForm').submit(function(){
+		 $(this).fadeOut();
+		 return false;
+	 });
+	 
+	 /**
+	  * Trocar nome
+	  */
+	 
+	 $('#editName').click(function(){
+		 $('#editName, #user').hide();
+		 $('#changeNameForm').fadeIn();
+	 });
+	 
+	 $('#changeNameForm').submit(function(){
+		 $(this).hide();
+		 $('#editName').show();
+		 $('#user').html($('#newName').val()).fadeIn();
+		 return false;
+	 })
 });
