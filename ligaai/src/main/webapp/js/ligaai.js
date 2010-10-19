@@ -444,8 +444,8 @@ $(function() {
 						if(data.ok) {
 							var urlAvatar;
 							(user.avatar) ? urlAvatar = '/ligaai/avatar/' + user.id + '.jpg' : urlAvatar = 'img/80x80_indisponivel.png';
-							//var microurl = document.location.protocol + '//' + document.location.hostname + '/' + data.microurl.micro;
 							$('#content').prepend('<article class="users"><div class="userPic"><img src="' + urlAvatar + '" class="userPic" /></div><div class="userInfo"><header><hgroup><h1>' + user.name + '</h1><h3>' + $('#message').val() + '</h3><ul>' + contactList + '</ul></hgroup></header></div></article>');
+							//var microurl = document.location.protocol + '//' + document.location.hostname + '/' + data.microurl.micro;
 						}else{
 							alert('bug?');
 						}
