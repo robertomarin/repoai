@@ -1232,7 +1232,7 @@ $(function(){
 	$('#cropbox').Jcrop({
 		onChange: showPreview,
 		onSelect: updateCoords,
-		minSize: [100, 100],
+		minSize: [300, 300],
 		boxWidth: 300, 
 		boxHeight: 300,
 		aspectRatio: 1
