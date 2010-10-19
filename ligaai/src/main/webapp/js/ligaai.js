@@ -361,7 +361,7 @@ $(function() {
 		    if(user) user = user.u;
 
 			$('#u_entrar_topo').hide();
-			$('#loginTop').addClass('logged').html('<h3 class="welcome">Bem vindo<span class="baseColor">.</span>ai</h3><br />' + user.name + ' <br /> <a href="/u/conta">Minha Conta</a> | <a href="/u/sair">Sair</a>');
+			$('#loginTop').addClass('logged').html('<h3 class="welcome">Bem vindo<span class="baseColor">.</span>ai, <span>' + user.name + '</span></h3><br /> <a href="/u/conta">Minha Conta</a> | <a href="/u/sair">Sair</a>');
 		}
 	}
 
