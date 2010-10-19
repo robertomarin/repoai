@@ -320,10 +320,13 @@ h1.ligaStyle{color: #000;}
 }
 
 /**Conta**/
-h1.userName{font-size: 36px; letter-spacing: -1.3px;}
+h1.userName{font-size: 36px; letter-spacing: -1.3px; margin-bottom: 23px;}
 .avatar, .avatar img{width: 300px;}
 .userInfo{padding-left: 20px;}
+#content .account ul{clear: both;}
 #content .account ul li{background: none; padding-left: 0;}
 #avatar{clear: both;}
 #avatarUpload{width: 300px; margin-left: 20px;}
-.uploadAvatarbutton{margin-top: 10px;}
+.uploadAvatarbutton, #changePasswordForm{margin-top: 10px;}
+.userNameContainer{position: relative;}
+#editName{position: absolute; top: 35px; right: 0;}
