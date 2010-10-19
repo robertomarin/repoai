@@ -438,14 +438,14 @@ $(function() {
 				if($.trim($('#firstContact').val()) != ''){
 					var contactList = '';
 					$('.contactInfo').not('#cloneable .contactInfo').each(function(){
-						contactList += '<li><a href="#" class="'+ $(this).prev().val().toLowerCase() +'">' + $(this).val() + '</a></li>';
+						contactList += '<li class="'+ $(this).prev().val().toLowerCase() +'">' + $(this).val() + '</a></li>';
 					});
 					$.getJSON($(this).attr('action'), values, function(data) {
 						if(data.ok) {
-							var urlImage;
-							(user.avatar) ? urlImage = '/ligaai/avatar/' + user.id + '.jpg' : urlImage = 'img/80x80_indisponivel.png';
+							var urlAvatar;
+							(user.avatar) ? urlAvatar = '/ligaai/avatar/' + user.id + '.jpg' : urlAvatar = 'img/80x80_indisponivel.png';
 							//var microurl = document.location.protocol + '//' + document.location.hostname + '/' + data.microurl.micro;
-							$('#content').prepend('<article class="users"><div class="userPic"><img src="' + urlImage + '" class="userPic" /></div><div class="userInfo"><header><hgroup><h1>' + user.name + '</h1><h3>' + $('#message').val() + '</h3><ul>' + contactList + '</ul></hgroup></header></div></article>');
+							$('#content').prepend('<article class="users"><div class="userPic"><img src="' + urlAvatar + '" class="userPic" /></div><div class="userInfo"><header><hgroup><h1>' + user.name + '</h1><h3>' + $('#message').val() + '</h3><ul>' + contactList + '</ul></hgroup></header></div></article>');
 						}else{
 							alert('bug?');
 						}
