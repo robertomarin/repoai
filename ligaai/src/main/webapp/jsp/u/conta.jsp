@@ -25,8 +25,28 @@
 			<div class="containerShadow">
 				<div id="userList">
 					<section id="content">
-						<h1><c:out value="${user.name}"></c:out></h1>
-						<c:out value="${user.email}"></c:out>
+						<c:if test="${!result and empty param.monkey}">
+							<div class="unit avatar">
+								<img src="/ligaai/avatar/original/${user.id}.jpg" />
+							</div>
+							<div class="unit userInfo account">
+								<h1 class="userName"><c:out value="${user.name}"></c:out></h1>
+								<p><c:out value="${user.email}"></c:out></p>
+								<ul class="unit">
+									<li><a href="?monkey=x">Recortar avatar atual</a></li>
+									<li><a href="#" id="changeAvatar">Trocar avatar</a></li>
+								</ul>
+							</div>
+							<c:if test="${msg != null}">
+								<p class="unit"><c:out value="${msg}" escapeXml="false"/></p>
+							</c:if>
+						</c:if>
+						<div id="avatarUpload" class="hide unit">
+							<form method="post" action="/uploadAvatar.html" enctype="multipart/form-data">
+								<input type="file" name="file"/> 
+								<input type="submit" name="Upload" class="uploadAvatarbutton"/>
+							</form>
+						</div>
 						<c:if test="${result or !empty param.monkey}">
 							<div id=align="center"> 
 				                <img src="/ligaai/avatar/original/${user.id}.jpg" id="cropbox" />
@@ -41,15 +61,6 @@
 								<input type="hidden" name="h" id="h" />
 								<input type="submit" value="Enviar avatar" />
 							</form>
-						</c:if>
-						<div id="avatarUpload">
-							<form method="post" action="/uploadAvatar.html" enctype="multipart/form-data">
-								<input type="file" name="file"/> 
-								<input type="submit" name="Upload"/>
-							</form>
-						</div>
-						<c:if test="${msg != null}">
-							<c:out value="${msg}" escapeXml="false"/>
 						</c:if>
 					</section>
 					

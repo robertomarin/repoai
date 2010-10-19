@@ -597,4 +597,13 @@ $(function() {
 		 $('#u_entrar, #resetForm').hide();
 		 $('#u_criar').show();
 	 });
+	 
+	 /**
+	  * Trocar avatar
+	  */
+	 
+	 $('#changeAvatar').click(function(e){
+		 $('#avatarUpload').slideToggle();
+		 e.preventDefault();
+	 })
 });

@@ -6,6 +6,8 @@ body{color: #3b3b3b; font-family: Helvetica, Arial; font-size: 12px;}
 .morningBackground{background: url(/img/bg_1.jpg) no-repeat top center;}
 .wrapper{margin: 0 auto; width: 835px;}
 .hide{display: none;}
+.unit{float: left;}
+
 header{position: relative;}
 header#logo{height: 220px; padding-top: 10px;}
 header ul#loginTop{
@@ -169,21 +171,30 @@ h1.ligaStyle{color: #000;}
 #content .users div.userPic{width: 13%;}
 #content .users .userInfo{width: 60%;}
 #content .users .rating{float: right; width: auto;}
-#content .users h1{font-size: 30px; letter-spacing: -1.5px; margin-bottom: 5px;}
+#content .users h1 a{
+	font-size: 30px;
+	letter-spacing: -1.5px;
+	margin-bottom: 5px;
+	color: #000;
+	text-decoration: none;
+}
+#content .users h1 a:hover{text-decoration: underline;}
 #content .users h2{color: #ff00cc; font-size: 20px;}
 #content .users h3{font-weight: normal; font-size: 17px; font-style: italic;}
 #content .userInfo ul{margin: 20px 0;}
 #content .userInfo li{margin-bottom: 3px;}
-#content .userInfo a{background: url(/img/buttons.png) no-repeat; display: block; padding: 3px 0 2px 35px; color: #999; text-decoration: none;}
 #content .userInfo a:hover{text-decoration: underline;}
-#content .userInfo a.twitter{background-position: 0 -112px;}
-#content .userInfo a.facebook{background-position: 0 -194px;}
-#content .userInfo a.orkut{background-position: 0 -154px;}
-#content .userInfo a.gtalk{background-position: 0 -279px;}
-#content .userInfo a.skype{background-position: 0 -238px;}
-#content .userInfo a.phone{background-position: 0 -468px;}
-#content .userInfo a.msn{background-position: 0 -40px;}
-#content .userInfo a.email{background-position: 0 -72px;}
+#content .userInfo li{background: url(/img/buttons.png) no-repeat; padding: 3px 0 2px 35px;}
+#content .userInfo li a{color: #999; text-decoration: none;}
+#content .userInfo li a:hover{color: #000; text-decoration: underline;}
+#content .userInfo li.twitter{background-position: 0 -112px;}
+#content .userInfo li.facebook{background-position: 0 -194px;}
+#content .userInfo li.orkut{background-position: 0 -154px;}
+#content .userInfo li.gtalk{background-position: 0 -279px;}
+#content .userInfo li.skype{background-position: 0 -238px;}
+#content .userInfo li.phone{background-position: 0 -468px;}
+#content .userInfo li.msn{background-position: 0 -40px;}
+#content .userInfo li.email{background-position: 0 -72px;}
 #content .users .rating{background: #eee; padding: 5px;}
 #content .users .rating span{
 	background: url(/img/buttons.png) 0 -318px no-repeat;
@@ -276,10 +287,10 @@ h1.ligaStyle{color: #000;}
 /***CROP***/
 #previewContainer{
 	height:100px;
-	left:240px;
+	left:210px;
 	overflow:hidden;
 	position:absolute;
-	top:63px;
+	top:15px;
 	width:100px;
 }
 .jcrop-holder {text-align: left;}
@@ -306,3 +317,12 @@ h1.ligaStyle{color: #000;}
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 }
+
+/**Conta**/
+h1.userName{font-size: 36px; letter-spacing: -1.3px;}
+.avatar, .avatar img{width: 300px;}
+.userInfo{padding-left: 20px;}
+#content .account ul li{background: none; padding-left: 0;}
+#avatar{clear: both;}
+#avatarUpload{width: 300px; margin-left: 20px;}
+.uploadAvatarbutton{margin-top: 10px;}

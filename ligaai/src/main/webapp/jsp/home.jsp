@@ -101,23 +101,23 @@
 										<h3><c:out value="${ligaai.message}" escapeXml="false"/></h3>
 										<ul>
 											<c:forEach items="${ligaai.contacts}" var="contact" varStatus="j">
-											<li>
-											<c:if test="${fai:isLinkable(contact.type) }">
-												<a href="${fai:getUrlContact(contact)}" class="${fn:toLowerCase(contact.type)}">${contact.content}</a>
-											</c:if>
-											<c:if test="${not fai:isLinkable(contact.type) }">
-												${contact.content}
-											</c:if>
+											<li class="${fn:toLowerCase(contact.type)}">
+												<c:if test="${fai:isLinkable(contact.type)}">
+													<a href="${fai:getUrlContact(contact)}">${contact.content}</a>
+												</c:if>
+												<c:if test="${not fai:isLinkable(contact.type) }">
+													${contact.content}
+												</c:if>
 											</li>
 											</c:forEach>
 										</ul>
 										</hgroup>
 									</header>
 								</div>
-								<div class="rating">
-									<span class="like"></span>
-									<span class="dislike"></span>
-								</div>
+<!--								<div class="rating">-->
+<!--									<span class="like"></span>-->
+<!--									<span class="dislike"></span>-->
+<!--								</div>-->
 							</article>
 							<!-- Middle AD -->
 							<c:if test="${i.count eq 2}">
