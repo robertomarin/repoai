@@ -36,6 +36,12 @@
 								<ul class="unit">
 									<li><a href="?monkey=x">Recortar avatar atual</a></li>
 									<li><a href="#" id="changeAvatar">Trocar avatar</a></li>
+									<li>
+										<a href="#" id="changePassword">Mudar senha</a>
+										<form id="changePasswordForm" class="hide">
+											<input type="text" id="newPassword" /> <input type="submit" value="Mudar Senha" />
+										</form>
+									</li>
 								</ul>
 							</div>
 						</c:if>
