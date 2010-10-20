@@ -1,5 +1,7 @@
 package ai.liga.avatar.controller;
 
+import java.util.regex.Pattern;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
@@ -20,6 +22,8 @@ import ai.liga.util.$;
 @Controller
 public class UploadAvatarController {
 
+	Pattern regex = Pattern.compile(".*(gif|/p?jpe?g|/png)", Pattern.CASE_INSENSITIVE);
+	
 	private static final int MAX_FILE_SIZE = 10240000;
 
 	private final ImagesTransformationService imageService;
@@ -52,11 +56,10 @@ public class UploadAvatarController {
 
 		if (!file.isEmpty()) {
 			String type = file.getContentType();
-			if (!type.matches(".*(/gif)|.*(/jpg)|.*(/png)|.*(/jpeg)")) {
+			if (!regex.matcher(type).matches()) {
 				mav.addObject("msg",
 						"Opa não entendemos o formato do arquivo enviado, lembrando que os formatos suportados são: gif, jpg e png.");
 				return mav;
-
 			}
 
 			mav.addObject("result", imageService.saveImage(file, user.getId()));
