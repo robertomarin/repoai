@@ -13,6 +13,7 @@ import org.springframework.validation.DefaultMessageCodesResolver;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
@@ -27,7 +28,7 @@ import ai.liga.util.Constants;
 public class UserController {
 
 	private final UserService userService;
-	
+
 	private final CookieComponent cookieComponent;
 
 	@Autowired
@@ -36,15 +37,21 @@ public class UserController {
 		this.cookieComponent = cookieComponent;
 	}
 
-	@InitBinder
-	protected void initBinder(WebDataBinder binder) {
-		binder.setMessageCodesResolver(new DefaultMessageCodesResolver());
+	@RequestMapping("/u/conta")
+	public void conta(final HttpServletRequest request, final HttpServletResponse response) {
+		User user = $.getUserFromRequest(request);
+		if (user == null) {
+			response.setStatus(HttpServletResponse.SC_MOVED_TEMPORARILY);
+			response.setHeader("Location", response.encodeRedirectURL("/"));
+		} else {
+			response.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
+			response.setHeader("Location", response.encodeRedirectURL("/u/conta/" + user.getId()));
+		}
 	}
 
-	@RequestMapping("/u/conta")
-	public ModelAndView mountViewUpload(final HttpServletRequest request) {
-
-		User user = $.getUserFromRequest(request);
+	@RequestMapping("/u/conta/{id}")
+	public ModelAndView conta(@PathVariable long id, final HttpServletRequest request) {
+		User user = userService.load(id);
 
 		if (user == null) {
 			return new ModelAndView(new RedirectView("/"));
@@ -52,7 +59,6 @@ public class UserController {
 
 		return new ModelAndView("/u/conta").addObject("user", user);
 	}
-	
 
 	@RequestMapping("/u/registrar")
 	public String registrar(HttpServletRequest request) {
@@ -77,12 +83,12 @@ public class UserController {
 		$.setUserOnRequest(request, user);
 		return mav.addObject(Constants.USER, user).addObject("ok", "true");
 	}
-	
+
 	@RequestMapping("/u/sair")
 	public String sair(HttpServletRequest request, HttpServletResponse response) {
 		$.setUserOnRequest(request, null);
 		response.addCookie(cookieComponent.createExpiredCookie(Constants.USER));
-		
+
 		return "redirect:/";
 	}
 

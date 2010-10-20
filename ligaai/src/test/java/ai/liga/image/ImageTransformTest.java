@@ -45,7 +45,7 @@ public class ImageTransformTest {
 	public void testaResizeImage(InputStream file) throws IOException {
 
 		BufferedImage image = ImageIO.read(file);
-		image = new ImageTransform().makeResize(image, 200, 200);
+		image = new ImageTransform().resize(image, 200, 200);
 
 		Assert.assertTrue(image.getWidth() == image.getHeight());
 		//

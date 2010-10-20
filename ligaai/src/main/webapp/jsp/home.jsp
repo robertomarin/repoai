@@ -6,7 +6,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fai" uri="http://liga.ai/jstl/functions"%>
-<%@ taglib prefix="my" tagdir="/WEB-INF/tags" %> 
+<%@ taglib prefix="my" tagdir="/WEB-INF/tags" %>
 
 <html lang="pt-BR">
 	<body class="morningBackground">
@@ -92,7 +92,7 @@
 						<c:forEach items="${ligaais}" var="ligaai" varStatus="i">
 							<article class="users">
 								<div class="userPic">
-									<img src="/ligaai/avatar/${ligaai.user.id}.jpg" class="userPic lazyImage" alt="Me liga ai!" onerror="javascript:showUnavailableImage(this, '80x80')"/>
+									<a href="/u/conta/${ligaai.user.id}"><img src="/ligaai/avatar/${ligaai.user.id}_80.jpg" class="userPic lazyImage" alt="Me liga ai!" onerror="javascript:showUnavailableImage(this, '80x80')"/></a>
 								</div>
 								<div class="userInfo">
 									<header>

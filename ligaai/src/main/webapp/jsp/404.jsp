@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="my" tagdir="/WEB-INF/tags" %>
 
 <html>
 	<head>
@@ -21,7 +22,7 @@
 	</head>
 	<body class="morningBackground">
 		<div class="wrapper">
-		    <jsp:include page="header.jsp" />
+		    <my:header/>
 			<div class="containerShadow">
 				<div id="userList">
 					<section id="content">
@@ -48,10 +49,7 @@
 				</div>
 			</div>
 		</div>
-		<jsp:include page="footer.jsp" />
-		<!-- LIGHTBOX -->
-		<jsp:include page="lightbox.jsp" />
-		<!--JAVASCRIPT-->
-		<jsp:include page="javascripts.jsp" />
+		<my:footer/>
+		<my:lightbox/>
 	</body>
 </html>

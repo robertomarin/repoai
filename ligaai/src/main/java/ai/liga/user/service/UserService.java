@@ -22,6 +22,10 @@ public class UserService {
 	public boolean exists(User user) {
 		return userDao.findByEmail(user) != null;
 	}
+	
+	public User load(Long id) {
+		return userDao.load(id);
+	}
 
 	public User save(User user) {
 		user.setCreated(Calendar.getInstance());

@@ -4,6 +4,8 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 
+import javax.media.jai.ImageJAI;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -29,16 +31,20 @@ public class ImageTransform {
 		return image;
 	}
 
-	public BufferedImage makeSquareCrop(BufferedImage image, int x, int y, int h, int w) {
+	public BufferedImage crop(BufferedImage image, int x, int y, int h, int w) {
 
 		if (image == null) {
 			return null;
 		}
-
+		if(x < 0 || y < 0 || h < 0) {
+			return image;
+		}
+		
+		
 		return image.getSubimage(x, y, w, h);
 	}
 
-	public BufferedImage makeResize(BufferedImage image, int width, int height) {
+	public BufferedImage resize(BufferedImage image, int width, int height) {
 		if (image == null) {
 			return null;
 		}
@@ -54,7 +60,5 @@ public class ImageTransform {
 		g.dispose();
 
 		return dimg;
-
 	}
-
 }

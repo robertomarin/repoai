@@ -35,11 +35,11 @@ public class ImagesTransformationService {
 			return null;
 		}
 
-		return transform.makeResize(transform.makeSquareCrop(bi), resizeX, resizeY);
+		return transform.resize(transform.makeSquareCrop(bi), resizeX, resizeY);
 
 	}
 
-	private BufferedImage makResize(int resizeX, int resizeY, MultipartFile mpf) {
+	private BufferedImage resize(MultipartFile mpf, int x, int y) {
 
 		BufferedImage bi;
 		try {
@@ -49,12 +49,12 @@ public class ImagesTransformationService {
 			return null;
 		}
 
-		return transform.makeResize(bi, resizeX, resizeY);
+		return transform.resize(bi, x, y);
 
 	}
 
 	public boolean saveImageResized(int resizeX, int resizeY, MultipartFile mpf, final Long idUser) {
-		return saveImage(makResize(resizeX, resizeY, mpf), idUser);
+		return saveImage(resize(mpf, resizeX, resizeY), idUser);
 
 	}
 
@@ -88,16 +88,22 @@ public class ImagesTransformationService {
 		BufferedImage bi;
 		try {
 			bi = ImageIO.read(new File(PATH_IMAGE_PREVIEW + idUser + ".jpg"));
-		} catch (IOException e) {
+		} catch (Exception e) {
 			logger.error("Erro ao ler a imagem", e);
 			return false;
 		}
 
-		bi = transform.makeSquareCrop(bi, x, y, h, w);
+		bi = transform.crop(bi, x, y, h, w);
 
 		if (bi != null) {
 			try {
-				ImageIO.write(bi, "jpg", new File(PATH_IMAGE + idUser + ".jpg"));
+				BufferedImage bi300 = transform.resize(bi, 300, 300);
+				ImageIO.write(bi300, "jpg", new File(PATH_IMAGE + idUser + "_300.jpg"));
+				BufferedImage bi80 = transform.resize(bi, 80, 80);
+				ImageIO.write(bi80, "jpg", new File(PATH_IMAGE + idUser + "_80.jpg"));
+				bi300 = null;
+				bi80 = null;
+				bi = null;
 			} catch (Exception e) {
 				logger.error("Erro ao gravar a imagem", e);
 				return false;
@@ -118,8 +124,7 @@ public class ImagesTransformationService {
 			percentage = (double) target / image.getHeight();
 		}
 
-		return transform.makeResize(image, (int) (image.getWidth() * percentage),
-				(int) (image.getHeight() * percentage));
+		return transform.resize(image, (int) (image.getWidth() * percentage), (int) (image.getHeight() * percentage));
 	}
 
 }

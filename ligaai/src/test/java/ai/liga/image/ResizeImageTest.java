@@ -48,7 +48,7 @@ public class ResizeImageTest {
 			percentage = (double) target / image.getHeight();
 		}
 
-		return new ImageTransform().makeResize(image, (int) (image.getWidth() * percentage),
+		return new ImageTransform().resize(image, (int) (image.getWidth() * percentage),
 				(int) (image.getHeight() * percentage));
 	}
 
