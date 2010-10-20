@@ -18,7 +18,7 @@ public class Microurl {
 
 	@Id
 	@GeneratedValue
-	private int id;
+	private Long id;
 
 	@Column(length = 10240, updatable = false)
 	private String url;
@@ -41,11 +41,11 @@ public class Microurl {
 				.substring(0, 100) : remoteAddress;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
