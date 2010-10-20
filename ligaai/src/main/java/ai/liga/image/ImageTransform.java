@@ -4,8 +4,6 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 
-import javax.media.jai.ImageJAI;
-
 import org.springframework.stereotype.Component;
 
 @Component

@@ -114,10 +114,9 @@
 										</hgroup>
 									</header>
 								</div>
-<!--								<div class="rating">-->
-<!--									<span class="like"></span>-->
-<!--									<span class="dislike"></span>-->
-<!--								</div>-->
+								<div class="rating">
+									<span class="like" id="${ligaai.id}"></span>
+								</div>
 							</article>
 							<!-- Middle AD -->
 							<c:if test="${i.count eq 2}">

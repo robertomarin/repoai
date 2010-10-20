@@ -14,7 +14,7 @@ import ai.liga.microurl.service.MicrourlService;
 
 @Controller
 public class ExpandMicrourlController {
-	
+
 	private static final Logger logger = Logger.getLogger(ExpandMicrourlController.class);
 
 	private final MicrourlService microurlService;

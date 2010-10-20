@@ -7,12 +7,14 @@ import net.sf.json.spring.web.servlet.view.JsonView;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ai.liga.ligaai.model.LigaAi;
 import ai.liga.ligaai.service.LigaAiService;
 import ai.liga.ligaai.util.LigaAiUtils;
+import ai.liga.user.model.User;
 import ai.liga.util.$;
 
 @Controller
@@ -34,13 +36,20 @@ public class LigaAiController {
 	}
 
 	@RequestMapping("/l/novo")
-	public ModelAndView post(@Valid LigaAi ligaAi, HttpServletRequest request) {
+	public ModelAndView criar(@Valid LigaAi ligaAi, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView(new JsonView());
 		ligaAi.setUser($.getUserFromRequest(request));
 		ligaAi.setRemoteAddress(request.getRemoteAddr());
 		ligaAiUtils.fillTags(ligaAi);
 		ligaAi = ligaAiService.merge(ligaAi);
 		return mav.addObject("ligaai", ligaAi).addObject("ok", "true");
+	}
+
+	@RequestMapping("/l/topo/{id}")
+	public ModelAndView topo(@PathVariable Long id, HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView(new JsonView());
+		User user = $.getUserFromRequest(request);
+		return mav.addObject("ok", user != null && ligaAiService.topo(id));
 	}
 
 }

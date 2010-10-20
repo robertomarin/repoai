@@ -627,6 +627,18 @@ $(function() {
 		};
 	});
 	
+	$('.like').click(function(e){
+		var t = $(this);
+		$.getJSON('/l/topo/' + t.attr('id'), function(data){
+			if(data.ok) {
+				t.fadeOut(1000);
+			} else {
+				//TODO: deixar bonitinho!
+				alert('Não conseguimos computar seu voto! :(');
+			}
+		});
+	});
+	
 	$('#ligaai').submit(function() {
 		if($('#agree').is(':checked')){
 			if($.cookie('u') != null){
@@ -753,7 +765,6 @@ $(function() {
 		});
 	 });
 	 
-	 
 	 /*!
 	  * Subscribe dialog
 	 */
@@ -773,8 +784,8 @@ $(function() {
 			$('#u_criar').fadeIn();
 		}
 	});
-
 	 
+
 	 $('#login').click(function(e){
 		e.preventDefault();
 		$('#u_criar').hide();

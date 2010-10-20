@@ -24,6 +24,10 @@ import org.apache.commons.validator.GenericValidator;
 
 import ai.liga.user.model.User;
 
+/**
+ * @author Beto
+ * 
+ */
 @Entity
 public class LigaAi {
 
@@ -33,7 +37,7 @@ public class LigaAi {
 
 	@Null(message = "Usuário não deveria vir preenchido.")
 	@ManyToOne
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name = "user_id", updatable = false)
 	private User user;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -46,8 +50,13 @@ public class LigaAi {
 
 	@Null(message = "Created não deveria vir preenchido.")
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(updatable = false)
+	@Column(updatable = false, nullable = false)
 	private Calendar created;
+
+	@Null(message = "Top não deveria vir preenchido.")
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(nullable = false)
+	private Calendar top;
 
 	@Column(name = "remoteaddress", length = 100, updatable = false)
 	private String remoteAddress;
@@ -132,6 +141,14 @@ public class LigaAi {
 
 	public void setTags(Set<Tag> tags) {
 		this.tags = tags;
+	}
+
+	public Calendar getTop() {
+		return top;
+	}
+
+	public void setTop(Calendar top) {
+		this.top = top;
 	}
 
 }

@@ -2,17 +2,12 @@ package ai.liga.ligaai.util;
 
 import static ai.liga.util.Constants.ENCODE;
 
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.log4j.Logger;
-
-import com.thoughtworks.xstream.core.util.Base64Encoder;
-
-import sun.misc.BASE64Decoder;
 
 public class EncoderUtils {
 

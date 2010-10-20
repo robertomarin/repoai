@@ -1,5 +1,6 @@
 package ai.liga.ligaai.service;
 
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,21 @@ public class LigaAiService {
 	public List<LigaAi> getTop() {
 
 		return ligaAiDao.loadAll();
+	}
+
+	public LigaAi load(Long id) {
+		return ligaAiDao.load(id);
+	}
+
+	public boolean topo(Long id) {
+		if (id > 0) {
+			LigaAi load = load(id);
+			if (load != null) {
+				load.setTop(Calendar.getInstance());
+				return true;
+			}
+		}
+		return false;
 	}
 
 }
