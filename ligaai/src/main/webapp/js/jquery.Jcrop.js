@@ -1233,8 +1233,8 @@ $(function(){
 		onChange: showPreview,
 		onSelect: updateCoords,
 		minSize: [300, 300],
-		boxWidth: 300, 
-		boxHeight: 300,
+		boxWidth: 80, 
+		boxHeight: 80,
 		aspectRatio: 1
 	});
 	
