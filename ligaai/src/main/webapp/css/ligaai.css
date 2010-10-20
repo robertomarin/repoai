@@ -9,7 +9,7 @@ body{color: #3b3b3b; font-family: Helvetica, Arial; font-size: 12px;}
 .unit{float: left;}
 
 header{position: relative;}
-header#logo{height: 220px; padding-top: 10px;}
+header#logo{height: 125px; padding-top: 10px;}
 header ul#loginTop{
 	background: url(/img/transparentBg.png);
 	border: 1px solid transparent;
