@@ -52,11 +52,12 @@ public class UserController {
 	public ModelAndView conta(@PathVariable long id, final HttpServletRequest request) {
 		User user = userService.load(id);
 
+		User userIn = $.getUserFromRequest(request);
 		if (user == null) {
 			return new ModelAndView(new RedirectView("/"));
 		}
 
-		return new ModelAndView("/u/conta").addObject("user", user);
+		return new ModelAndView("/u/conta").addObject("user", user).addObject("himself", !(userIn != null && userIn.getId() == user.getId()));
 	}
 
 	@RequestMapping("/u/registrar")
