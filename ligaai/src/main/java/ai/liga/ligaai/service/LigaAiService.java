@@ -24,6 +24,9 @@ public class LigaAiService {
 
 	public LigaAi merge(LigaAi ligaAi) {
 		ligaAi = ligaAiDao.merge(ligaAi);
+		if (ligaAi != null) {
+			ligaais.push(ligaAi);
+		}
 		return ligaAi;
 	}
 
@@ -42,11 +45,11 @@ public class LigaAiService {
 			LigaAi ligaAi = load(id);
 			if (ligaAi != null) {
 				ligaAi.setTop(Calendar.getInstance());
-				if(ligaais != null) {
+				if (ligaais != null) {
 					ligaais.remove(ligaAi);
-					ligaais.addFirst(ligaAi);
+					ligaais.push(ligaAi);
 				}
-				
+
 				return true;
 			}
 		}

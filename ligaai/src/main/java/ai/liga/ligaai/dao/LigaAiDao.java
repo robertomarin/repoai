@@ -24,6 +24,7 @@ public class LigaAiDao extends GenericHibernateDAO<LigaAi> {
 		Session session = sf.getCurrentSession();
 
 		ligaAi.setCreated(Calendar.getInstance());
+		ligaAi.setTop(Calendar.getInstance());
 		ligaAi = (LigaAi) session.merge(ligaAi);
 
 		return ligaAi;

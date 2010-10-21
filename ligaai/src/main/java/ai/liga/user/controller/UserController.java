@@ -6,12 +6,14 @@ import javax.validation.Valid;
 
 import net.sf.json.spring.web.servlet.view.JsonView;
 
+import org.apache.commons.validator.GenericValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -87,6 +89,47 @@ public class UserController {
 		response.addCookie(cookieComponent.createExpiredCookie(Constants.USER));
 
 		return "redirect:/";
+	}
+
+	@RequestMapping("/u/atualizar")
+	public ModelAndView atualizar(User user, BindingResult result, HttpServletRequest request) {
+		User userIn = $.getUserFromRequest(request);
+		ModelAndView mav = new ModelAndView(new JsonView());
+		if (userIn == null || user == null)
+			return mav.addObject("ok", false);
+
+		if (userIn.getId() != null && userIn.getId() != user.getId()) {
+			result.addError(new FieldError("user", "email", "Não foi possível atualizar a conta de usuário. :("));
+			return mav.addObject("errors", result.getFieldErrors());
+		}
+
+		userIn = userService.load(user.getId());
+		if (userIn.getId() != null && userIn.getId() != user.getId()) {
+			result.addError(new FieldError("user", "email", "Não foi possível carregar a conta de usuário. :("));
+			return mav.addObject("errors", result.getFieldErrors());
+		}
+
+		if (!GenericValidator.isBlankOrNull(user.getName())) {
+			userIn.setName(user.getName());
+		}
+
+		return mav.addObject("ok", "true");
+	}
+
+	@RequestMapping("/u/atualizar-senha")
+	public ModelAndView atualizarSenha(User user, @RequestParam String newPassword, BindingResult result,
+			HttpServletRequest request) {
+
+		User userIn = $.getUserFromRequest(request);
+		ModelAndView mav = new ModelAndView(new JsonView());
+		if (userIn == null || user == null)
+			return mav.addObject("ok", false);
+
+		if (userIn.getId() == user.getId()) {
+			result.addError(new FieldError("user", "email", "Não foi possível atualizar a conta de usuário, ."));
+		}
+
+		return null;
 	}
 
 	@RequestMapping("/u/criar")
