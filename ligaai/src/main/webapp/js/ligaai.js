@@ -459,7 +459,7 @@ $(function() {
 		return false;
 	});
 	
-	$('#u_criar').submit(function() {
+	$('#u_criar').submit(function(){
 		var el = this;
 		var url = '/u/criar?'
 			+ 'name=' + encodeUrl($(this).find('#name').val())
@@ -483,7 +483,7 @@ $(function() {
 		return false;
 	});
 	
-	$('#u_entrar, #u_entrar_topo').submit(function() {
+	$('#u_entrar, #u_entrar_topo').submit(function(){
 		var el = this;
 		var url = '/u/entrar?'
 			+ 'email=' + encodeUrl($(this).find('#email').val())
@@ -560,7 +560,7 @@ $(function() {
 	  */
 	 
 	 $('#changePassword').click(function(e){
-		 $('#changePasswordForm').fadeIn();
+		 $('#changePasswordForm').slideToggle();
 		 e.preventDefault();
 	 });
 	 
