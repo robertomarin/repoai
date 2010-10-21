@@ -1,6 +1,8 @@
 package ai.liga.ligaai.service;
 
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Deque;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,8 @@ public class LigaAiService {
 
 	private LigaAiDao ligaAiDao;
 
+	private Deque<LigaAi> ligaais;
+
 	@Autowired
 	public LigaAiService(HibernateDAOFactory factory) {
 		ligaAiDao = factory.getLigaAiDao();
@@ -25,9 +29,10 @@ public class LigaAiService {
 		return ligaAi;
 	}
 
-	public List<LigaAi> getTop() {
-
-		return ligaAiDao.loadAll();
+	public Deque<LigaAi> getTop() {
+		if (ligaais == null)
+			ligaais = ligaAiDao.loadAll();
+		return ligaais;
 	}
 
 	public LigaAi load(Long id) {
@@ -36,9 +41,14 @@ public class LigaAiService {
 
 	public boolean topo(Long id) {
 		if (id > 0) {
-			LigaAi load = load(id);
-			if (load != null) {
-				load.setTop(Calendar.getInstance());
+			LigaAi ligaAi = load(id);
+			if (ligaAi != null) {
+				ligaAi.setTop(Calendar.getInstance());
+				if(ligaais != null) {
+					ligaais.remove(ligaAi);
+					ligaais.addFirst(ligaAi);
+				}
+				
 				return true;
 			}
 		}

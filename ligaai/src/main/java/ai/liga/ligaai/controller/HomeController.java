@@ -1,5 +1,6 @@
 package ai.liga.ligaai.controller;
 
+import java.util.Deque;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +23,10 @@ public class HomeController {
 		this.ligaAiService = ligaAiService;
 	}
 
-	@RequestMapping("/home.html")
+	@RequestMapping("/home")
 	public ModelAndView home(@CookieValue(value = Constants.USER, required = false) String userCookie) {
 
-		List<LigaAi> ligaais = ligaAiService.getTop();
+		Deque<LigaAi> ligaais = ligaAiService.getTop();
 		return new ModelAndView("home").addObject("ligaais", ligaais);
 
 	}

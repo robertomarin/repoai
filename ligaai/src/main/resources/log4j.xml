@@ -13,6 +13,11 @@
 		<appender-ref ref="ligaai" />
 	</category>
 	
+	<category name="net">
+		<priority value="WARN" />
+		<appender-ref ref="ligaai" />
+	</category>
+	
 	<category name="org.springframework.orm.hibernate3.support">
 		<priority value="DEBUG" />
 		<appender-ref ref="ligaai" />

@@ -1,18 +1,29 @@
 package ai.liga;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 import org.junit.Test;
 
 import ai.liga.microurl.util.BaseConverter;
 
 public class Tester {
 
-	public static void main(String[] args) throws Exception {
-		new Tester().test();
-	}
 
 	@Test
 	public void test() throws Exception {
-		System.out.println("http://liga.ai/" + BaseConverter.toBase62(23423423));;
+		Deque<String> deque = new ArrayDeque<String>();
+		char c = 'a';
+		for (int i = 0; i < 26; i++) {
+			deque.add("" + ((char) (c + i)));
+		}
+		
+		deque.remove("o");
+		deque.addFirst("o");
+		for (String string : deque) {
+			System.out.println(string);
+		}
+		
 	}
 
 }

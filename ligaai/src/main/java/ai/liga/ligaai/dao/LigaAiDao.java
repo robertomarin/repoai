@@ -1,7 +1,8 @@
 package ai.liga.ligaai.dao;
 
+import java.util.ArrayDeque;
 import java.util.Calendar;
-import java.util.List;
+import java.util.Deque;
 
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
@@ -28,15 +29,14 @@ public class LigaAiDao extends GenericHibernateDAO<LigaAi> {
 		return ligaAi;
 	}
 
-	public List<LigaAi> loadAll() {
+	@SuppressWarnings("unchecked")
+	public Deque<LigaAi> loadAll() {
 		Criteria c = super.getCriteria(true);
 		c.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 		c.setFetchMode("ligaai", FetchMode.JOIN);
 		c.addOrder(Order.desc("top"));
-
-		@SuppressWarnings("unchecked")
-		List<LigaAi> list = (List<LigaAi>) c.list();
-		return list;
+		
+		return new ArrayDeque<LigaAi>(c.list());
 	}
 
 }
