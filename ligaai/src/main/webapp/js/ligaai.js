@@ -622,6 +622,8 @@ $(function() {
 	 /*!
 	  * Input clone
 	 */
+	 $('#firstContact').mask('(99) 9999-9999');
+	 
 	 $('#addMoreContact').click(function(e){
 		var x = $('#cloneable').clone().removeAttr("id").removeClass('hide');
 		var position = $('#position').val();
@@ -679,9 +681,6 @@ $(function() {
 					$('.contactInfo').not('#cloneable .contactInfo').each(function(){
 						contactList += '<li class="'+ $(this).prev().val().toLowerCase() +'">' + $(this).val() + '</a></li>';
 					});
-					var urlAvatar;
-					(user.avatar == true) ? urlAvatar = '/ligaai/avatar/' + user.id + '.jpg' : urlAvatar = 'img/80x80_indisponivel.png';
-					$('#content').prepend('<article class="users"><div class="userPic"><img src="' + urlAvatar + '" class="userPic" /></div><div class="userInfo"><header><hgroup><h1>' + user.name + '</h1><h3>' + $('#message').val() + '</h3><ul>' + contactList + '</ul></hgroup></header></div></article>');
 					
 					$.getJSON($(this).attr('action'), function(data) {
 						if(data.ok) {
