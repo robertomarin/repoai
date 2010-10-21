@@ -631,10 +631,14 @@ $(function() {
 		var t = $(this);
 		$.getJSON('/l/topo/' + t.attr('id'), function(data){
 			if(data.ok) {
-				t.fadeOut(1000);
+				t.parent().fadeOut(1000);
 			} else {
-				//TODO: deixar bonitinho!
-				alert('Não conseguimos computar seu voto! :(');
+				if(t.find('.likeError').size() == 0){
+					t.append('<div class="likeError">Não conseguimos computar seu voto! :(</div>').fadeIn();
+					setTimeout(function(){$('.likeError').fadeOut()}, 5000);
+				} else {
+					t.find('.likeError').fadeIn();
+				}
 			}
 		});
 	});
