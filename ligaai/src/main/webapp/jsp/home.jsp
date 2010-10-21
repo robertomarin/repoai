@@ -78,7 +78,7 @@
 									<a href="#" id="addMoreContact" title="Adicione mais contatos">+</a>
 								</div>
 								
-								<textarea name="message" id="message">Me liga.ai ;-)</textarea>
+								<textarea name="message" id="message" maxlength="200">Me liga.ai ;-)</textarea>
 								<p><input type="checkbox" checked="checked" id="agree" /> <label for="agree">Li e concordo com os <a href="#" title="Veja os termos de uso do liga.ai">termos de uso</a></label></p>						
 								<input type="submit" value="envia.ai" class="sendButton" />
 							</form>
