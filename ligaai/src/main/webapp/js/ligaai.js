@@ -438,11 +438,11 @@ $(function() {
 						contactList += '<li class="'+ $(this).prev().val().toLowerCase() +'">' + $(this).val() + '</a></li>';
 					});
 					
-					$.getJSON($(this).attr('action'), function(data) {
+					$.getJSON($(this).attr('action'), values, function(data) {
 						if(data.ok) {
 							var urlAvatar;
 							(user.avatar == true) ? urlAvatar = '/ligaai/avatar/' + user.id + '.jpg' : urlAvatar = 'img/80x80_indisponivel.png';
-							$('#content').prepend('<article class="users"><div class="userPic"><img src="' + urlAvatar + '" class="userPic" /></div><div class="userInfo"><header><hgroup><h1>' + user.name + '</h1><h3>' + $('#message').val() + '</h3><ul>' + contactList + '</ul></hgroup></header></div></article>');
+							$('#content').prepend('<article class="users"><div class="userPic"><img src="' + urlAvatar + '" class="userPic" /></div><div class="userInfo"><header><hgroup><h1><a href="#">' + user.name + '</a></h1><h3>' + $('#message').val() + '</h3><ul>' + contactList + '</ul></hgroup></header></div></article>');
 						}else{
 							alert('Não foi possivel postar no momento, por favor tente mais tarde');
 						}
@@ -573,15 +573,52 @@ $(function() {
 	  * Trocar nome
 	  */
 	 
-	 $('#editName').click(function(){
-		 $('#editName, #user').hide();
-		 $('#changeNameForm').fadeIn();
+	 
+	 $('#changePasswordForm').submit(function(){
+		 var url = '/u/atualizar-senha?'
+				+ 'password=' + encodeUrl($(this).find('#actualPassword').val())
+				+ '&newpassword=' + encodeUrl($(this).find('#newPassword').val());
+		 $.get(url, function(data){
+			if(data.erros){
+				for(i = 0; i < data.errors.length; i++) {
+					alert(data.errors[i].defaultMessage);
+				};
+			}
+			if(data.ok){
+				alert('Senha alterada com sucesso')
+			}else{
+				alert('Não foi possível alterar a senha')
+			}
+		 });
+		 return false;
 	 });
 	 
-	 $('#changeNameForm').submit(function(){
-		 $(this).hide();
-		 $('#editName').show();
-		 $('#user').html($('#newName').val()).fadeIn();
-		 return false;
-	 })
+	 $('#editName').click(function(e){
+		 $('#editName, #user').hide();
+		 $('#changeNameForm').fadeIn();
+		 e.preventDefault();
+	 });
+	 
+	 $('#changeNameForm').submit(function(e){
+		var el = $(this);
+		var url = '/u/atualizar?'
+			+ 'name=' + encodeUrl($(this).find('#newName').val())
+			+ '&id=' + encodeUrl($('#userId').val());
+		$.get(url, function(data){
+			if(data.erros){
+				for(i = 0; i < data.errors.length; i++) {
+					alert(data.errors[i].defaultMessage);
+				};
+			}
+			if(data.ok){
+				 el.hide();
+				 $('#editName').show();
+				 $('#user').html($('#newName').val()).fadeIn();
+				 return false;
+			}else{
+				alert('Não foi possível alterar o nome');
+			}
+		});
+		e.preventDefault();
+	 });
 });
