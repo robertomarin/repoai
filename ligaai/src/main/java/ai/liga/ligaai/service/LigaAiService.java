@@ -24,7 +24,7 @@ public class LigaAiService {
 
 	public LigaAi merge(LigaAi ligaAi) {
 		ligaAi = ligaAiDao.merge(ligaAi);
-		if (ligaAi != null) {
+		if (ligaAi != null && !ligaais.contains(ligaAi)) {
 			ligaais.push(ligaAi);
 		}
 		return ligaAi;
