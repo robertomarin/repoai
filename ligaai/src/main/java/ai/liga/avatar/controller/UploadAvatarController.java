@@ -22,9 +22,11 @@ import ai.liga.util.$;
 @Controller
 public class UploadAvatarController {
 
-	Pattern regex = Pattern.compile(".*(gif|/p?jpe?g|/png)", Pattern.CASE_INSENSITIVE);
-	
+	private static Logger logger = Logger.getLogger(UploadAvatarController.class);
+
 	private static final int MAX_FILE_SIZE = 10240000;
+
+	Pattern regex = Pattern.compile(".*(gif|/p?jpe?g|/png)", Pattern.CASE_INSENSITIVE);
 
 	private final ImagesTransformationService imageService;
 
@@ -35,8 +37,6 @@ public class UploadAvatarController {
 		this.imageService = imageService;
 		this.userService = userService;
 	}
-
-	private static Logger logger = Logger.getLogger(UploadAvatarController.class);
 
 	@RequestMapping(value = "/uploadAvatar.html", method = RequestMethod.POST)
 	public ModelAndView handleFormUpload(@RequestParam("file") MultipartFile file, final HttpServletRequest request) {
@@ -54,22 +54,22 @@ public class UploadAvatarController {
 			return mav;
 		}
 
-		if (!file.isEmpty()) {
-			String type = file.getContentType();
-			if (!regex.matcher(type).matches()) {
-				mav.addObject("msg",
-						"Opa não entendemos o formato do arquivo enviado, lembrando que os formatos suportados são: gif, jpg e png.");
-				return mav;
-			}
+		if (file.isEmpty()) {
+			mav.addObject("msg", "Ops não conseguimos receber o arquivo, tente novamente.");
+			return mav.addObject("ok", false);
+		}
 
-			mav.addObject("result", imageService.saveImage(file, user.getId()));
-			mav.addObject("user", user);
-
+		String type = file.getContentType();
+		if (!regex.matcher(type).matches()) {
+			mav.addObject("msg",
+					"Opa não entendemos o formato do arquivo enviado, lembrando que os formatos suportados são: gif, jpg e png.");
 			return mav;
 		}
 
-		mav.addObject("msg", "Ops não conseguimos receber o arquivo, tente novamente.");
-		return mav;
+		mav.addObject("user", user);
+		mav.addObject("cutAvatar", imageService.saveImage(file, user.getId()));
+
+		return mav.addObject("ok", true);
 
 	}
 
