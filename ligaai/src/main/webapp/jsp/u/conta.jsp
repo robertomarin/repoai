@@ -7,67 +7,60 @@
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags" %>
 
 <html>
-	<head>
-		<title>Liga.ai</title>
-		<meta charset="UTF-8"/>
-		<meta name="title" content="Liga ai" />
-		<meta name="description" content="Liga ai" />
-		<meta name="keywords" content="Liga ai" /> 
-		<link type="image/x-icon" href="/img/favicon.ico" rel="shortcut icon" />
-		<!--css-->
-		<link rel="stylesheet" href="/css/ligaai.css" />
-		<!--[if lt IE 9]>
-			<script src="/js/html5.js"></script>
-		<![endif]-->
-	</head>
 	<body class="morningBackground">
 		<div class="wrapper">
 		    <my:header/>
 			<div class="containerShadow">
 				<div id="userList">
 					<section id="content">
-						<c:if test="${empty param.monkey and msg == null}">
+						<input type="hidden" id="userId" value="${user.id}" />
+						<c:if test="${!empty param.monkey or !cutAvatar}">
 							<div class="unit avatar">
-								<img src="/ligaai/avatar/original/${user.id}.jpg" />
+								<img src="/ligaai/avatar/${user.id}_300.jpg" onerror="javascript: showUnavailableImage(this, '300x300')" />
 							</div>
+						</c:if>
+						<c:if test="${empty param.monkey and msg == null}">
 							<div class="unit userInfo account">
 								<div class="unit userNameContainer">
-									<h1 id="user" class="userName"><c:out value="${user.name}" /><c:out value="${himself}" /></h1>
+									<h1 id="user" class="userName"><c:out value="${user.name}"></c:out></h1>
 									<a href="#" id="editName">Editar</a>
 								</div>
 								<form id="changeNameForm" class="hide">
 									<input type="text" id="newName" /><input type="submit" id="changeNameButton" value="Mudar Nome" />
 								</form>
-								<ul class="unit">
-									<li><c:out value="${user.email}"></c:out></li>
-									<li><a href="?monkey=x">Recortar avatar atual</a></li>
-									<li><a href="#" id="changeAvatar">Trocar avatar</a></li>
-									<li>
-										<a href="#" id="changePassword">Mudar senha</a>
-										<form id="changePasswordForm" class="hide">
-											<input type="text" id="newPassword" /> <input type="submit" value="Mudar Senha" />
-										</form>
-									</li>
-								</ul>
+									<ul class="unit">
+										<c:if test="${himself}">
+											<li><c:out value="${user.email}"></c:out></li>
+<!--											<li><a href="#" id="cutAvatar">Recortar avatar atual</a></li>-->
+											<li><a href="#" id="changeAvatar">Trocar avatar</a></li>
+											<li>
+												<a href="#" id="changePassword">Mudar senha</a>
+												<form id="changePasswordForm" class="hide">
+													<input type="password" id="actualPassword" /><br />
+													<input type="password" id="newPassword" /> <input type="submit" value="Mudar Senha" />
+												</form>
+											</li>
+										</c:if>
+									</ul>
 							</div>
 						</c:if>
 						<c:if test="${msg != null}">
 							<p class="unit"><c:out value="${msg}" escapeXml="false"/></p>
 						</c:if>
 						<div id="avatarUpload" class="hide unit">
-							<form method="post" action="/uploadAvatar.html" enctype="multipart/form-data">
+							<form method="post" action="/u/avatar/novo" enctype="multipart/form-data">
 								<input type="file" name="file"/> 
 								<input type="submit" name="Upload" class="uploadAvatarbutton"/>
 							</form>
 						</div>
-						<c:if test="${result or !empty param.monkey}">
+						<c:if test="${cutAvatar or !empty param.monkey}">
 							<div id=align="center"> 
 				                <img src="/ligaai/avatar/original/${user.id}.jpg" id="cropbox" />
 				                <div id="previewContainer" class="hide">
 			                        <img src="/ligaai/avatar/original/${user.id}.jpg" id="preview" />
 				                </div>
 							</div>
-							<form action="/cropAvatar.html" id="formCrop" onsubmit="return checkCoords();">
+							<form action="/u/avatar/cortar" id="formCrop" onsubmit="return checkCoords();">
 								<input type="hidden" name="x" id="x" />
 								<input type="hidden" name="y" id="y" />
 								<input type="hidden" name="w" id="w" />

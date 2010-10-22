@@ -10,6 +10,7 @@ body{color: #3b3b3b; font-family: Helvetica, Arial; font-size: 12px;}
 
 header{position: relative;}
 header#logo{height: 125px; padding-top: 10px;}
+header#logo a{text-decoration: none;}
 header ul#loginTop{
 	background: url(/img/transparentBg.png);
 	border: 1px solid transparent;
@@ -205,10 +206,26 @@ h1.ligaStyle{color: #000;}
 	margin: 0 3px;
 	height: 23px;
 	width: 26px;
+	position: relative;
 }
 #content .users .rating span.dislike{background-position: 0 -356px;}
 #content .users .rating span:hover{background-position: 0 -396px;}
 #content .users .rating span.dislike:hover{background-position: 0 -435px;}
+#content .users .rating .likeError{
+	background: #000;
+	color: #fff;
+	position: absolute;
+	opacity: 0.9;
+	left: -123px;
+	width: 100px;
+	font-size: 10px;
+	padding: 10px;
+	line-height: 13px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
 /*advertisiment*/
 #content .middleAd{width: 465px; margin: 15px auto;}
 
@@ -286,9 +303,10 @@ h1.ligaStyle{color: #000;}
 /*.ui-widget-shadow{margin: -8px 0 0 -8px; padding: 8px; background: #aaaaaa; opacity: .3;filter:Alpha(Opacity=30); -moz-border-radius: 8px; -webkit-border-radius: 8px; }*/
 
 /***CROP***/
+.jcrop-holder img{left: 0;}
 #previewContainer{
 	height:100px;
-	left:210px;
+	left:325px;
 	overflow:hidden;
 	position:absolute;
 	top:15px;

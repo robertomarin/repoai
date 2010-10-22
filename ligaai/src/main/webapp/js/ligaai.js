@@ -565,19 +565,9 @@ $(function() {
 	 });
 	 
 	 $('#changePasswordForm').submit(function(){
-		 $(this).fadeOut();
-		 return false;
-	 });
-	 
-	 /**
-	  * Trocar nome
-	  */
-	 
-	 
-	 $('#changePasswordForm').submit(function(){
 		 var url = '/u/atualizar-senha?'
 				+ 'password=' + encodeUrl($(this).find('#actualPassword').val())
-				+ '&newpassword=' + encodeUrl($(this).find('#newPassword').val());
+				+ '&newPassword=' + encodeUrl($(this).find('#newPassword').val());
 		 $.get(url, function(data){
 			if(data.erros){
 				for(i = 0; i < data.errors.length; i++) {
@@ -592,6 +582,10 @@ $(function() {
 		 });
 		 return false;
 	 });
+	 
+	 /**
+	  * Trocar nome
+	  */
 	 
 	 $('#editName').click(function(e){
 		 $('#editName, #user').hide();
@@ -621,4 +615,14 @@ $(function() {
 		});
 		e.preventDefault();
 	 });
+	 
+	 /*
+	  * Cortar Avatar
+	  */
+	 
+	 $('#cutAvatar').click(function(e){
+		 $('#avatarAtual').hide();
+		 $('#cropAvatar').removeClass('hide').show();
+		 e.preventDefault();
+	 })
 });
