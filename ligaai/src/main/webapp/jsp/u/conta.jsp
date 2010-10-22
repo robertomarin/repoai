@@ -32,7 +32,7 @@
 							</div>
 							<div class="unit userInfo account">
 								<div class="unit userNameContainer">
-									<h1 id="user" class="userName"><c:out value="${user.name}"></c:out></h1>
+									<h1 id="user" class="userName"><c:out value="${user.name}" /><c:out value="${himself}" /></h1>
 									<a href="#" id="editName">Editar</a>
 								</div>
 								<form id="changeNameForm" class="hide">

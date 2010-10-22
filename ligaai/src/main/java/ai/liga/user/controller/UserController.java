@@ -57,7 +57,8 @@ public class UserController {
 			return new ModelAndView(new RedirectView("/"));
 		}
 
-		return new ModelAndView("/u/conta").addObject("user", user).addObject("himself", !(userIn != null && userIn.getId() == user.getId()));
+		return new ModelAndView("/u/conta").addObject("user", user).addObject("himself",
+				(userIn != null && userIn.getId() == user.getId()));
 	}
 
 	@RequestMapping("/u/registrar")
@@ -100,20 +101,22 @@ public class UserController {
 			return mav.addObject("ok", false);
 
 		if (userIn.getId() != null && userIn.getId() != user.getId()) {
-			result.addError(new FieldError("user", "email", "Não foi possível atualizar a conta de usuário. :("));
+			result.addError(new FieldError("user", "id", "Não foi possível atualizar a conta de usuário. :("));
 			return mav.addObject("errors", result.getFieldErrors());
 		}
 
 		userIn = userService.load(user.getId());
 		if (userIn.getId() != null && userIn.getId() != user.getId()) {
-			result.addError(new FieldError("user", "email", "Não foi possível carregar a conta de usuário. :("));
+			result.addError(new FieldError("user", "id", "Não foi possível carregar a conta de usuário. :("));
 			return mav.addObject("errors", result.getFieldErrors());
 		}
 
-		if (!GenericValidator.isBlankOrNull(user.getName())) {
-			userIn.setName(user.getName());
+		if (GenericValidator.isBlankOrNull(user.getName())) {
+			result.addError(new FieldError("user", "id", "Não foi possível carregar a conta de usuário. :("));
+			return mav.addObject("errors", result.getFieldErrors());
 		}
 
+		userIn.setName(user.getName());
 		return mav.addObject("ok", "true");
 	}
 
@@ -126,11 +129,30 @@ public class UserController {
 		if (userIn == null || user == null)
 			return mav.addObject("ok", false);
 
-		if (userIn.getId() == user.getId()) {
-			result.addError(new FieldError("user", "email", "Não foi possível atualizar a conta de usuário, ."));
+		if (userIn.getId() != null && userIn.getId() != user.getId()) {
+			result.addError(new FieldError("user", "id", "Não foi possível atualizar a conta de usuário. :("));
+			return mav.addObject("errors", result.getFieldErrors());
 		}
 
-		return null;
+		userIn = userService.load(user.getId());
+		if (userIn.getId() != null && userIn.getId() != user.getId()) {
+			result.addError(new FieldError("user", "id", "Não foi possível carregar a conta de usuário. :("));
+			return mav.addObject("errors", result.getFieldErrors());
+		}
+
+		if (!user.getPassword().equals(userIn.getPassword())) {
+			result.addError(new FieldError("user", "password", "Senha atual não confere. ;)"));
+			return mav.addObject("errors", result.getFieldErrors());
+		}
+
+		if (newPassword == null || newPassword.length() < 6 || newPassword.length() > 20) {
+			result.addError(new FieldError("newPassword", null,
+					"Nova senha não é válida. Digite algo entre 6 e 20 caracteres. ;)"));
+			return mav.addObject("errors", result.getFieldErrors());
+		}
+
+		userIn.setPassword(user.getPassword());
+		return mav.addObject("ok", "true");
 	}
 
 	@RequestMapping("/u/criar")
