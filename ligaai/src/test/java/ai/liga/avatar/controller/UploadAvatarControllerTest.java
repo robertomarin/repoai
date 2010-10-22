@@ -3,11 +3,9 @@ package ai.liga.avatar.controller;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 import junit.framework.Assert;
 
-import org.apache.oro.io.RegexFilenameFilter;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +28,7 @@ public class UploadAvatarControllerTest {
 
 		MockMultipartFile mockMultipartFile = new MockMultipartFile("test", "test", "rrr/txt", is);
 
-		ModelAndView upload = fileUpload.handleFormUpload(mockMultipartFile, null);
+		ModelAndView upload = fileUpload.novoAvatar(mockMultipartFile, null);
 		Map<String, Object> model = upload.getModel();
 		String expected = "Opa não entendemos o formato do arquivo enviado, lembrando que os formatos suportados são: gif, jpg e png.";
 		Assert.assertEquals(expected, model.get("msg"));
@@ -44,7 +42,7 @@ public class UploadAvatarControllerTest {
 
 		MockMultipartFile mockMultipartFile = new MockMultipartFile("mario", "mario.png", "rrr/png", is);
 
-		ModelAndView upload = fileUpload.handleFormUpload(mockMultipartFile, null);
+		ModelAndView upload = fileUpload.novoAvatar(mockMultipartFile, null);
 		Map<String, Object> model = upload.getModel();
 		System.out.println(model.get("msg"));
 

@@ -38,8 +38,8 @@ public class UploadAvatarController {
 		this.userService = userService;
 	}
 
-	@RequestMapping(value = "/uploadAvatar.html", method = RequestMethod.POST)
-	public ModelAndView handleFormUpload(@RequestParam("file") MultipartFile file, final HttpServletRequest request) {
+	@RequestMapping(value = "/u/avatar/novo", method = RequestMethod.POST)
+	public ModelAndView novoAvatar(@RequestParam("file") MultipartFile file, final HttpServletRequest request) {
 
 		User user = $.getUserFromRequest(request);
 
@@ -73,8 +73,8 @@ public class UploadAvatarController {
 
 	}
 
-	@RequestMapping(value = "/cropAvatar.html", method = RequestMethod.GET)
-	public ModelAndView cropAvatar(@RequestParam("x") int x, @RequestParam("y") int y, @RequestParam("w") int w,
+	@RequestMapping(value = "/u/avatar/cortar", method = RequestMethod.GET)
+	public ModelAndView cortarAvatar(@RequestParam("x") int x, @RequestParam("y") int y, @RequestParam("w") int w,
 			@RequestParam("h") int h, final HttpServletRequest request) {
 
 		User user = $.getUserFromRequest(request);
