@@ -473,7 +473,6 @@ $(function() {
 				};
 			}else{
 				if($('#needsubscribe').val()){
-					alert('macaco');
 					$('#ligaai').submit();
 					$('#needsubscribe').val('false');
 				}
